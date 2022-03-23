@@ -1,0 +1,13 @@
+23/03/2022 10:04:46 INFO  Inicio01Application:31 - Nivel info
+23/03/2022 10:04:46 DEBUG Inicio01Application:32 - Nivel debug
+23/03/2022 10:06:36 DEBUG Inicio01Application:32 - Nivel debug
+23/03/2022 10:06:53 TRACE Inicio01Application:31 - Nivel info
+23/03/2022 10:06:53 DEBUG Inicio01Application:32 - Nivel debug
+23/03/2022 10:28:59 DEBUG com.example.inicio01.Inicio01Application:32 - Nivel debug
+23/03/2022 10:29:21 INFO  com.example.inicio01.Inicio01Application:31 - Nivel info
+23/03/2022 10:29:21 DEBUG com.example.inicio01.Inicio01Application:32 - Nivel debug
+23/03/2022 10:29:56 INFO  com.example.inicio01.Inicio01Application:31 - Nivel info
+23/03/2022 10:29:56 DEBUG com.example.inicio01.Inicio01Application:32 - Nivel debug
+23/03/2022 10:29:56 DEBUG com.example.inicio01.Inicio01Application:33 - Nivel debug2
+23/03/2022 10:29:56 DEBUG com.example.inicio01.Inicio01Application:34 - Nivel debug3
+23/03/2022 10:29:56 DEBUG com.example.inicio01.Inicio01Application:35 - Nivel debug4

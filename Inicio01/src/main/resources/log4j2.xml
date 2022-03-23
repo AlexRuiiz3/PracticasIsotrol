@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<File name="LogToFile" fileName="logs/fileLogs.log">
+			<PatternLayout pattern="%d{dd/MM/yyyy HH:mm:ss} %-5p %logger{36}:%L - %m%n" />
+		</File>
+		<Console name="LogToConsole" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{dd/MM/yyyy HH:mm:ss} %-5p %logger{36}:%L - %m%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Root level="all">
+			<AppenderRef ref="LogToFile" level="debug"/>
+			<AppenderRef ref="LogToConsole" level="info"/>
+		</Root>
+	</Loggers>
+</Configuration>
