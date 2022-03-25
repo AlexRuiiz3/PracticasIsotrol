@@ -1,0 +1,13 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="https://thymeleaf.org">
+<body>
+	<h2>Login</h2>
+	<form th:action="@{/index}" method="post">
+		<p>Nombre de usuario</p>
+		<input type="text" name="txtUsuario" placeholder="Usuario">
+		<p>Contraseña</p>
+		<input type="text" name="txtContrasenha" placeholder="contrasenha"><br></br>
+		<input type="submit">  <p th:text="${MsgError}"></p>
+	</form>
+</body>
+</html>

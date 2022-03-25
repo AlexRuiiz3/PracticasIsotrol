@@ -10,6 +10,6 @@ public class IndexCrontroller {
 	@RequestMapping() //Para relacionar este metodo con una ruta url. Cuando se escriba index, se ejecute este metodo
 	public String index() {
 		
-		return "index";
+		return "index";//Nombre de la vista a la que tiene que ir 
 	}
 }

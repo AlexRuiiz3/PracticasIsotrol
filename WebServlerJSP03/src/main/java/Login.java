@@ -28,7 +28,12 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("principal.jsp").forward(request, response);
+		String usuario = request.getParameter("txtUsuario"), contrasneha = request.getParameter("txtContrasenha");
+		if (usuario.equalsIgnoreCase("isotrol") && contrasneha.equalsIgnoreCase("123")) {
+			request.setAttribute("txtUsuario", usuario);
+			request.setAttribute("txtContrasenha", contrasneha);
+			response.sendRedirect("principal.jsp");
+		}
 	}
 
 	/**
@@ -37,13 +42,6 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.sendRedirect("principal.jsp");/*
-		String usuario = request.getParameter("txtUsuario"), contrasneha = request.getParameter("txtContrasenha");
-		if (usuario.equalsIgnoreCase("isotrol") && contrasneha.equalsIgnoreCase("123")) {
-			// request.setAttribute("txtUsuario", usuario);
-			// request.setAttribute("txtContrasenha", contrasneha);
-			response.sendRedirect("principal.jsp");
-		}*/
+		doGet(request,response);
 	}
-
 }

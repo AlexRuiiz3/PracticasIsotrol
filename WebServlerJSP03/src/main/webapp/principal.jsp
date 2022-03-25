@@ -8,6 +8,13 @@
 </head>
 <body>
 	Bienvenido
-	<label></label>
+	<% String usuario = (String) request.getAttribute("Usuario");
+		if(usuario == null){
+			usuario = "default";
+		}
+	%>
+	<label>
+	<%= usuario %>
+	</label>
 </body>
 </html>
