@@ -1,0 +1,21 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="https://thymeleaf.org">
+<body>
+<h2>Delete</h2>
+Detalles de la persona a eliminar
+<form th:action="@{/eliminar}" method="post">
+	<input type="text" hidden name="idPersona" th:value="${persona.id}"></input>
+	Nombre:
+	<label th:text="${persona.nombre}"></label><br></br> 
+	Apellidos:
+	<label th:text="${persona.apellidos}"></label><br></br> 
+	Edad:
+	<label th:text="${persona.edad}"></label><br></br> 
+	Nombre de Usuario:
+	<label th:text="${persona.nombreUsuario}"></label><br></br> 
+	Contraseña: 
+	<label th:text="${persona.contrasenha}"></label><br></br> 
+	<input type="submit" value="Eliminar"></p>
+	</form>
+</body>
+</html>

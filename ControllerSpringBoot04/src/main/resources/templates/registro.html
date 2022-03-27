@@ -1,15 +1,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <html xmlns:th="https://thymeleaf.org">
 <body>
+<h2>Registro</h2>
+Ingrese los campos para completar el registro
+<form th:action="@{/registro}" method="post">
+	<input type="text" hidden name="id" value="1"></input>
 	Nombre:
-	<input type="text" th:value="${nombrePersona}"><br></br> 
+	<input type="text" name="nombre"><br></br> 
 	Apellidos:
-	<input type="text" th:value="${apellidosPersona}"><br></br> 
+	<input type="text" name="apellidos"><br></br> 
 	Edad:
-	<input type="text" th:value="${edadPersona}"><br></br> 
+	<input type="text" name="edad"><br></br> 
 	Nombre de Usuario:
-	<input type="text" th:value="${usuarioPersona}"><br></br> 
-	Contraseña: 
-	<input type="text" th:value="${contrasenhaPersona}">
+	<input type="text" name="nombreUsuario"><br></br> 
+	ContraseÃ±a: 
+	<input type="password" name="contrasenha"><br></br> 
+	<input type="submit" value="Registrase"> <p th:text="${MsgErrorCrearPersona}"></p>
+	</form>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package com.example.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,17 @@ public class PersonaService {
 	
 	public int anhadirPersona(Persona persona) {
 		return personaDAO.anhadirPersona(persona);
+	}
+	
+	public int editarPersona(Persona persona) {
+		return personaDAO.editarPersona(persona);
+	}
+	
+	public int eliminarPersona(int id) {
+		return personaDAO.eliminarPersona(id);
+	}
+	public List<Persona> obtenerPersonas() {
+		return personaDAO.obtenerPersonas();
 	}
 	
 	public Persona obtenerPersona(int idPersona) {

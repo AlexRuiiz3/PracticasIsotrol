@@ -1,0 +1,21 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="https://thymeleaf.org">
+<body>
+<h2>Edit</h2>
+Modifique los campos que desee
+<form th:action="@{/editar}" method="post">
+	<input type="text" hidden name="id" th:value="${persona.id}"></input>
+	Nombre:
+	<input type="text" name="nombre" th:value="${persona.nombre}"><br></br> 
+	Apellidos:
+	<input type="text" name="apellidos" th:value="${persona.apellidos}"><br></br> 
+	Edad:
+	<input type="text" name="edad" th:value="${persona.edad}"><br></br> 
+	Nombre de Usuario:
+	<input type="text" name="nombreUsuario" th:value="${persona.nombreUsuario}"><br></br> 
+	Contraseña: 
+	<input type="password" name="contrasenha" th:value="${persona.contrasenha}"><br></br> 
+	<input type="submit" value="Editar"></p>
+	</form>
+</body>
+</html>
