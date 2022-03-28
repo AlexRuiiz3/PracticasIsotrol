@@ -2,10 +2,11 @@
 <html xmlns:th="https://thymeleaf.org">
 
 <body>
-<div th:if="${not #lists.isEmpty(productos)}">
+<div th:if="${not #lists.isEmpty(ListadoProductos)}">
 	<table border="1">
 		<tbody>
-			<tr th:each="producto : productos">
+			<tr th:each="producto : ${ListadoProductos}">
+			<td>Hola</td>
 				<td><span th:text="${producto.nombre}"></span></td>
 				<td><span th:text="${producto.precio}"></span></td>
 			</tr>
