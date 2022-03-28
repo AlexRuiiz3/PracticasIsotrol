@@ -1,10 +1,10 @@
-package com.example.PruebaHibernate;
+package com.isotrol.pruebaConHibernate;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PruebaHibernateApplicationTests {
+class PruebaConHibernateApplicationTests {
 
 	@Test
 	void contextLoads() {

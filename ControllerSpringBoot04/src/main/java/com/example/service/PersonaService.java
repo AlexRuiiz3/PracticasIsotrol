@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.example.pojo.Persona;
 import com.example.repository.PersonaDAOImpl;
 
-@Component
 @Service
 public class PersonaService {
 	

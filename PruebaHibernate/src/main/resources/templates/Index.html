@@ -1,0 +1,20 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="https://thymeleaf.org">
+
+<body>
+<div th:if="${not #lists.isEmpty(productos)}">
+	<table border="1">
+		<tbody>
+			<tr th:each="producto : productos">
+				<td><span th:text="${producto.nombre}"></span></td>
+				<td><span th:text="${producto.precio}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div th:if="${#lists.isEmpty(ListadoProductos)}">
+<p>La lista de productos esta vacia</p>
+</div>
+</body>
+</html>
