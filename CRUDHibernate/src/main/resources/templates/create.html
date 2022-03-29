@@ -1,5 +1,20 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <html xmlns:th="https://thymeleaf.org">
 <body>
-Create 
+<h2>Create</h2>
+Ingrese los campos
+<form th:action="@{/personas/create}" method="post">
+	Nombre:
+	<input type="text" name="nombre"><br></br> 
+	Apellidos:
+	<input type="text" name="apellidos"><br></br> 
+	Edad:
+	<input type="text" name="edad"><br></br> 
+	Email:
+	<input type="email" name="email"><br></br> 
+	Telefono: 
+	<input type="number" name="telefono"><br></br> 
+	<input type="submit" value="Crear"> <p th:text="${MsgErrorCrearPersona}"></p>
+	</form>
 </body>
+</html>

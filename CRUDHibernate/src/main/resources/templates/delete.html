@@ -1,0 +1,21 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="https://thymeleaf.org">
+<body>
+<h2>Delete</h2>
+<form th:action="@{/personas/delete}" method="post">
+	<input type="text" hidden name="id" th:value="${persona.id}"></input>
+	Nombre:
+	<label th:text="${persona.nombre}"></label><br></br> 
+	Apellidos:
+	<label th:text="${persona.apellidos}"></label><br></br> 
+	Edad:
+	<label th:text="${persona.edad}"></label><br></br> 
+	Email:
+	<label th:text="${persona.email}"></label><br></br> 
+	Telefono:
+	<label th:text="${persona.telefono}"></label><br></br> 
+	
+	<input type="submit" value="Eliminar">
+	</form>
+</body>
+</html>

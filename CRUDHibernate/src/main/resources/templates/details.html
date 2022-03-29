@@ -1,0 +1,17 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="https://thymeleaf.org">
+<body>
+<h2>Details</h2>
+	Nombre:
+	<label th:text="${persona.nombre}"></label><br></br> 
+	Apellidos:
+	<label th:text="${persona.apellidos}"></label><br></br> 
+	Edad:
+	<label th:text="${persona.edad}"></label><br></br> 
+	Email:
+	<label th:text="${persona.email}"></label><br></br> 
+	Telefono:
+	<label th:text="${persona.telefono}"></label><br></br> 
+	<a th:href="@{/personas/index}">Volver</a>
+</body>
+</html>

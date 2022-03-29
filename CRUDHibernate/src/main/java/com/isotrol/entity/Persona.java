@@ -1,22 +1,22 @@
 package com.isotrol.entity;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
 
 
 /**
- * The persistent class for the persona database table.
+ * The persistent class for the personas database table.
  * 
  */
 @Entity
+@Table(name="personas")
 @NamedQuery(name="Persona.findAll", query="SELECT p FROM Persona p")
 public class Persona implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idPersona;
+	private int id;
 
 	private String apellidos;
 
@@ -31,12 +31,12 @@ public class Persona implements Serializable {
 	public Persona() {
 	}
 
-	public int getIdPersona() {
-		return this.idPersona;
+	public int getId() {
+		return this.id;
 	}
 
-	public void setIdPersona(int idPersona) {
-		this.idPersona = idPersona;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getApellidos() {

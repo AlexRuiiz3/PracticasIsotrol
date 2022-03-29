@@ -18,11 +18,11 @@ public class PersonaService {
 		personaDao.save(persona);
 	}
 	
-	public void eliminarPersona(Long id) {
+	public void eliminarPersona(int id) {
 		personaDao.deleteById(id);
 	}
 	
-	public Persona obtenerPersona(Long id) {
+	public Persona obtenerPersona(int id) {
 		return personaDao.getById(id);
 	}
 	

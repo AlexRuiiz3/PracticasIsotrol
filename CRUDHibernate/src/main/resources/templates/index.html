@@ -3,16 +3,41 @@
 
 <body>
 
-<h2>Listado de Personas</h2>
-<a th:href="@{/personas/create}">Crear</a>
-<div th:if="${#lists.isEmpty(ListadoPersonas)}">
-<p>La lista de productos esta vacia</p>
-</div>
+	<h2>Listado de Personas</h2>
+	<a th:href="@{/personas/create}">Crear</a>
+	<div th:if="${#lists.isEmpty(ListadoPersonas)}">
+		<p>La lista de productos esta vacia</p>
+	</div>
 
-	<table border=1>
-		<tr th:each="persona : ${ListadoPersonas}">
-			<td><span th:text="${persona.nombre}"></span></td>
-			<td><span th:text="${persona.apellidos}"></span></td>
-		</tr>
-	</table>
+	<div th:if="${not #lists.isEmpty(ListadoPersonas)}">
+		<table border=1>
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Apellidos</th>
+					<th>Edad</th>
+				</tr>
+			</thead>
+
+			<tr th:each="persona : ${ListadoPersonas}">
+				<td><span th:text="${persona.nombre}"></span></td>
+				<td><span th:text="${persona.apellidos}"></span></td>
+				<td><span th:text="${persona.edad}"></span></td>
+				<td><form th:action="@{/personas/details}" method="get">
+				<input type="submit" value="Detalles">
+						<input hidden name="id" th:value="${persona.id}">
+					</form></td>
+				<td><form th:action="@{/personas/edit}" method="get">
+				<input type="submit" value="Editar">
+						<input hidden name="id" th:value="${persona.id}">
+					</form></td>
+				<td><form th:action="@{/personas/delete}" method="get">
+				<input type="submit" value="Eliminar">
+						<input hidden name="id" th:value="${persona.id}">
+					</form></td>
+			</tr>
+		</table>
+	</div>
+
+
 </body>
