@@ -1,20 +1,60 @@
 package com.isotrol.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.io.Serializable;
+import javax.persistence.*;
 
-import lombok.Data;
 
+/**
+ * The persistent class for the producto database table.
+ * 
+ */
 @Entity
-@Data
-public class Producto {
+@NamedQuery(name="Producto.findAll", query="SELECT p FROM Producto p")
+public class Producto implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-	@Id //Campo de identificacion unico
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
-	private Long id;
-	private String nombre;
+	@Id
+	private long id;
+
 	private String descripcion;
+
+	private String nombre;
+
 	private double precio;
+
+	public Producto() {
+	}
+
+	public long getId() {
+		return this.id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getDescripcion() {
+		return this.descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public String getNombre() {
+		return this.nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public double getPrecio() {
+		return this.precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+
 }
