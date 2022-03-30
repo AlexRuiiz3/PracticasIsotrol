@@ -15,17 +15,22 @@ public class Persona implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(unique=true, nullable=false)
 	private int id;
 
+	@Column(nullable=false, length=45)
 	private String apellidos;
 
+	@Column(nullable=false)
 	private short edad;
 
+	@Column(nullable=false, length=45)
 	private String email;
 
+	@Column(nullable=false, length=45)
 	private String nombre;
 
+	@Column(length=9)
 	private String telefono;
 
 	public Persona() {

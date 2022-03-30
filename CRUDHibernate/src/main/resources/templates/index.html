@@ -1,43 +1,29 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <html xmlns:th="https://thymeleaf.org">
-
+<link rel="stylesheet" th:href="@{/css/style.css}"></html>
 <body>
-
-	<h2>Listado de Personas</h2>
+	<h2 class="color-blue">Listado de Personas</h2>
 	<a th:href="@{/personas/create}">Crear</a>
 	<div th:if="${#lists.isEmpty(ListadoPersonas)}">
 		<p>La lista de productos esta vacia</p>
 	</div>
 
-	<div th:if="${not #lists.isEmpty(ListadoPersonas)}">
-		<table border=1>
-			<thead>
-				<tr>
-					<th>Nombre</th>
-					<th>Apellidos</th>
-					<th>Edad</th>
-				</tr>
-			</thead>
-
-			<tr th:each="persona : ${ListadoPersonas}">
-				<td><span th:text="${persona.nombre}"></span></td>
-				<td><span th:text="${persona.apellidos}"></span></td>
-				<td><span th:text="${persona.edad}"></span></td>
-				<td><form th:action="@{/personas/details}" method="get">
-				<input type="submit" value="Detalles">
-						<input hidden name="id" th:value="${persona.id}">
-					</form></td>
-				<td><form th:action="@{/personas/edit}" method="get">
-				<input type="submit" value="Editar">
-						<input hidden name="id" th:value="${persona.id}">
-					</form></td>
-				<td><form th:action="@{/personas/delete}" method="get">
-				<input type="submit" value="Eliminar">
-						<input hidden name="id" th:value="${persona.id}">
-					</form></td>
+	<table border=1 th:if="${not #lists.isEmpty(ListadoPersonas)}">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Apellidos</th>
+				<th>Edad</th>
 			</tr>
-		</table>
-	</div>
+		</thead>
 
-
+		<tr th:each="persona : ${ListadoPersonas}">
+			<td><span th:text="${persona.nombre}"></span></td>
+			<td><span th:text="${persona.apellidos}"></span></td>
+			<td><span th:text="${persona.edad}"></span></td>
+			<td><a th:href="@{/personas/details(id=${persona.id})}">Detalles</a></td>
+			<td><a th:href="@{/personas/edit(id=${persona.id})}">Editar</a></td>
+			<td><a th:href="@{/personas/delete(id=${persona.id})}">Eliminar</a></td>
+		</tr>
+	</table>
 </body>

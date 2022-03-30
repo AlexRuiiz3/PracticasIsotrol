@@ -1,10 +1,13 @@
 package com.isotrol.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,21 +37,21 @@ public class PersonasController {
 	}
 	
 	@GetMapping("/details")
-	public ModelAndView details(@RequestParam(name = "id") int id) {
+	public ModelAndView details(@RequestParam int id) {
 		ModelMap map = new ModelMap();
 		map.put("persona",personaService.obtenerPersona(id));
 		return new ModelAndView("/details",map);
 	}
 	
 	@GetMapping("/edit")
-	public ModelAndView edit(@RequestParam(name = "id") int id) {
+	public ModelAndView edit(@RequestParam int id) {
 		ModelMap map = new ModelMap();
 		map.put("persona",personaService.obtenerPersona(id));
 		return new ModelAndView("/edit",map);
 	}
 	
 	@GetMapping("/delete")
-	public ModelAndView delete(@RequestParam(name = "id") int id) {
+	public ModelAndView delete(@RequestParam int id) {
 		ModelMap map = new ModelMap();
 		map.put("persona",personaService.obtenerPersona(id));
 		return new ModelAndView("/delete",map);
@@ -57,18 +60,24 @@ public class PersonasController {
 	@PostMapping("/create")
 	public String createPost(Persona persona) {
 		personaService.insertarPersona(persona);
-		return "/index";
+		return "redirect:/personas/index"; //redirect para que luego en la ruta despues de eliminar no se quede arriba el /personas/delete
 	}
 	
 	@PostMapping("/edit")
-	public String edit(Persona persona) {
+	public String edit(Persona persona) { //Si se quiere obtener varios parametros se puede poniendo como parametro HttpServletRequest y luego se hace un get con el nombre del atributo que se haya indicado in thymeleaf
 		personaService.insertarPersona(persona);
-		return "/index";
+		return "redirect:/personas/index"; //redirect para que luego en la ruta despues de eliminar no se quede arriba el /personas/delete
 	}
 	
 	@PostMapping("/delete")
-	public String deletePost(@RequestParam(name = "id") int id) {
+	public String deletePost(@RequestParam int id) {//@RequestParam(name = "id") int id es redundante ya que con el nombre de la variable si se llama igual que en el html no hay que poner nada de name
 		personaService.eliminarPersona(id);
-		return "/index";
+		return "redirect:/personas/index"; //forward para rutas internas del proyecto y no para paginas externas
+	}
+	
+	@ModelAttribute("listaCadenas") //Esto sirve para pasar datos a la vista, pero de esta forma es mas generica ya que, se puede llamar desde varios metodos, haciendo de esa forma que varios metodos envien los mismos datos gracias a este metodo
+	public List<String> poblarLista(){
+		//Aqui se rellenaria la lista
+		return new ArrayList<>();
 	}
 }
