@@ -3,9 +3,13 @@ package com.isotrol.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,14 +18,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.isotrol.entity.Persona;
-import com.isotrol.service.PersonaService;
+import com.isotrol.service.IService;
 
 @Controller
 @RequestMapping("/personas")
 public class PersonasController {
 
 	@Autowired
-	private PersonaService personaService;
+	@Qualifier("PersonaService")//Si hay dos clases que implementan la interfaz IService, no se sabria cual inyectar, entonces con @Qualifier("Nombre Servicio") se indica cual es el que se quiere inyectar
+	private IService personaService;
 	
 	@GetMapping("/index")
 	public ModelAndView get() {
@@ -32,7 +37,7 @@ public class PersonasController {
 	}
 	
 	@GetMapping("/create")
-	public String create() {
+	public String create(@ModelAttribute("persona") Persona persona) {
 		return "/create";
 	}
 	
@@ -58,9 +63,14 @@ public class PersonasController {
 	}
 	
 	@PostMapping("/create")
-	public String createPost(Persona persona) {
-		personaService.insertarPersona(persona);
-		return "redirect:/personas/index"; //redirect para que luego en la ruta despues de eliminar no se quede arriba el /personas/delete
+	public String createPost(@Valid @ModelAttribute("persona") Persona persona, BindingResult result) {
+		String viewDestino = "/create";
+		if(!result.hasErrors()) {
+			personaService.insertarPersona(persona);
+			viewDestino = "redirect:/personas/index";
+		}
+		
+		return viewDestino; //redirect para que luego en la ruta despues de eliminar no se quede arriba el /personas/delete
 	}
 	
 	@PostMapping("/edit")

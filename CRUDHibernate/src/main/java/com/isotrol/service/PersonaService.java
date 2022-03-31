@@ -8,8 +8,9 @@ import org.springframework.stereotype.Service;
 import com.isotrol.entity.Persona;
 import com.isotrol.repository.PersonaDAO;
 
-@Service
-public class PersonaService {
+@Service("PersonaService")
+//@Primary para que use este service por defecto ya que en el controller los que hay es una referencia a la interfaz, entonces si hay dos calses que implementan la interfaz, no sabria cual inyectar, pues para eso esta @Primary para asignar una por defecto
+public class PersonaService implements IService{ //Hacer que implemente una interfaz asi el codigo esta menos acoplado
 
 	@Autowired
 	private PersonaDAO personaDao;

@@ -1,21 +1,57 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <html xmlns:th="https://thymeleaf.org">
+<link rel="stylesheet" th:href = "@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href = "@{/css/style.css}">
 <body>
-<h2>Create</h2>
-Ingrese los campos
-<form th:action="@{/personas/create}" method="post">
-	Nombre:
-	<input type="text" name="nombre"><br></br> 
-	Apellidos:
-	<input type="text" name="apellidos"><br></br> 
-	Edad:
-	<input type="text" name="edad"><br></br> 
-	Email:
-	<input type="email" name="email"><br></br> 
-	Telefono: 
-	<input type="number" name="telefono"><br></br> 
+<h2 class="color-blue">Create</h2>
+<h5>Rellene los campos</h5>
+<form th:action="@{/personas/create}" method="post" th:object="${persona}">
+	<div class="form-row">
+	
+		<div class="form-group div-definitions">
+			<label for="inputNombre">Nombre</label>
+			<input id="inputNombre" type="text" name="nombre" placeholder="* Ingrese su nombre" aria-describedby="inputNombreHelp" 
+			class="form-control" maxlength="45" th:field="*{nombre}">
+			<small id="inputNombreHelp" class="form-text text-muted">Maximo 45 caracteres</small>
+			<p th:if="${#fields.hasErrors('nombre')}" class="alert alert-danger" role="alert"><span th:errors="*{nombre}"></span></p>
+		</div>
+	
+		<div class="form-group">
+			<label for="inputApellidos">Apellidos</label>
+			<input type="text" name="apellidos" id="inputApellidos" placeholder="* Ingrese los apellidos" maxlength="45" aria-describedby="inputApellidosHelp"
+			class="form-control" th:field="*{apellidos}">
+			<small id="inputApellidosHelp" class="form-text text-muted">Maximo 45 caracteres</small>
+			<p th:if="${#fields.hasErrors('apellidos')}" class="alert alert-danger" role="alert"><span th:errors="*{apellidos}"></span></p>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="inputEmail">Email</label>
+			<input type="email" name="email" class="form-control" id="inputEmail" placeholder="* Ingrese su correo electronico" 
+			aria-describedby="inputEmailHelp" maxlength="45" th:field="*{email}">
+		<small id="inputEmailHelp" class="form-text text-muted">Maximo 45 caracteres</small>
+		<p th:if="${#fields.hasErrors('email')}" class="alert alert-danger" role="alert"><span th:errors="*{email}"></span></p>
+	</div>
+	
+	<div class="form-row" >
+		<div class="form-group div-definitions">
+			<label for="inputEdad">Edad</label>
+			<input id="inputEdad" type="number" name="edad" placeholder="* Ingrese su edad"
+			class="form-control" maxlength="2" th:field="*{edad}">
+		</div>
+		<p th:if="${#fields.hasErrors('edad')}" class="alert alert-danger" role="alert"><span th:errors="*{edad}"></span></p>
+	
+		<div class="form-group">
+			<label for="inputTelefono">Telefono</label>
+			<input type="number" name="telefono" id="inputTelefono" placeholder="Ingrese su telefono"  maxlength="9" 
+			class="form-control">
+		</div>
+	</div>
+	
 	<input type="submit" value="Crear"> <p th:text="${MsgErrorCrearPersona}"></p>
 	</form>
-	<a th:href="@{/personas/index}">Volver</a>
+	<a th:href="@{/personas/index}">Volver</a><br>
+	
+	<label class="label-definitions">* Campos obligatorios</label>
 </body>
 </html>

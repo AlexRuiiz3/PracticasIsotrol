@@ -1,8 +1,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <html xmlns:th="https://thymeleaf.org">
 <body>
-<h2>Edit</h2>
-Modifique los campos que desee
+<h2 class="color-blue">Edit</h2>
+<h5>Modifique los campos que desee</h5>
 <form th:action="@{/personas/edit}" method="post">
 	<input type="text" hidden name="id" th:value="${persona.id}"></input>
 	Nombre:

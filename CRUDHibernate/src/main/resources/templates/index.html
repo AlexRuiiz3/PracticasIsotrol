@@ -1,6 +1,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <html xmlns:th="https://thymeleaf.org">
-<link rel="stylesheet" th:href="@{/css/style.css}"></html>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<link rel="stylesheet" th:href = "@{/css/bootstrap.min.css}">
+</html>
 <body>
 	<h2 class="color-blue">Listado de Personas</h2>
 	<a th:href="@{/personas/create}">Crear</a>
@@ -8,7 +10,7 @@
 		<p>La lista de productos esta vacia</p>
 	</div>
 
-	<table border=1 th:if="${not #lists.isEmpty(ListadoPersonas)}">
+	<table class = "table table-responsive table-bordered table-striped" th:if="${not #lists.isEmpty(ListadoPersonas)}">
 		<thead>
 			<tr>
 				<th>Nombre</th>

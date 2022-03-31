@@ -2,6 +2,11 @@ package com.isotrol.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.UniqueElements;
+import org.springframework.lang.NonNull;
 
 
 /**
@@ -18,15 +23,19 @@ public class Persona implements Serializable {
 	@Column(unique=true, nullable=false)
 	private int id;
 
+	@NotEmpty(message="Los apellidos no pueden estar vacios")
 	@Column(nullable=false, length=45)
 	private String apellidos;
 
+	//@NotEmpty(message="Debe ingresar alguna edad")
 	@Column(nullable=false)
 	private short edad;
 
+	@NotEmpty(message="El email no puede estar vacio")
 	@Column(nullable=false, length=45)
 	private String email;
 
+	@NotEmpty(message="El nombre no puede estar vacio")
 	@Column(nullable=false, length=45)
 	private String nombre;
 
