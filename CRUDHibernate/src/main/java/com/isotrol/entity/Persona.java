@@ -3,11 +3,6 @@ package com.isotrol.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.UniqueElements;
-import org.springframework.lang.NonNull;
-
 
 /**
  * The persistent class for the personas database table.

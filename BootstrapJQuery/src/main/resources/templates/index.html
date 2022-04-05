@@ -1,39 +1,28 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <html xmlns:th="https://thymeleaf.org">
 <head>
-<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
-	rel="stylesheet">
+<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 <script src="webjars/bootstrap/3.3.6/css/bootstrap.min.js"></script>
 <script src="webjars/jquery/3.6.0/jquery.min.js"></script>
+
+	
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
-	<input id="inputTxtEjemplo" type="text" placeholder="Ingresa algo">
-	<p id="textResultado"></p>
 	<input id="inputBtnOcultar" type="Button" value="Ocultar">
-	<input class="btn btn-default" id="inputBtnShowAlert" type="button"
-		value="Ver resultados">
-	<!--  
-	<script>
-		$("#inputBtnShowAlert").on("click", function(e){
-				var texto = $("#inputTxtEjemplo").val();
-				alert(texto);
-			});
+	<input class="btn btn-default" id="inputBtnShowAlert" type="button" Value="Ver resultados">
+
+	<form id="formularioPrueba" method="post" th:action="@{/indexPost}">
+		<p><input id="inputTxtEjemplo" name="inputAlgo" type="text" placeholder="Ingresa algo"></p>
+		<p><input id="inputSoloNumeros" name="inputNumero" type="text" placeholder="Solo numeros"></p>
+		<p><input id="inputRango" name="inputRangoNumero" type="text" placeholder="Algo entre 1 y 3"></p>
 	
-		$("#inputBtnOcultar").on("click", function(e){	
-				var inputTxt = $("#inputTxtEjemplo");
-				var estaVisible = inputTxt.is(":visible");
-				
-				if(!estaVisible){
-					inputTxt.show();
-				}else{
-					inputTxt.hide();
-				}
-		});	
-	</script> 
-	-->
-	<script src="/js/producto.js"></script>
+		<input type="submit" value="Enviar">
+	</form>
+<script src="/js/producto.js"></script>
+<script text="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+
 </body>
 </html>
