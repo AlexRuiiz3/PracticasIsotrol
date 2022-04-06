@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:jee="http://www.springframework.org/schema/jee"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xsi:schemaLocation="
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+      http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
+      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+  <context:component-scan base-package="es.juntadeandalucia.aacid.persistenciatramitacionagenda" />
+  <jee:jndi-lookup id="dataSourceaacid" jndi-name="java:/ACCIDDS" />
+  <jee:jndi-lookup id="dataSourceaacidviejo" jndi-name="java:/aacidViejo" />
+  <tx:annotation-driven transaction-manager="transactionManagerAACID" />
+  <tx:annotation-driven transaction-manager="transactionManagerAACIDViejo" />
+
+  <bean id="transactionManagerAACID" class="org.springframework.orm.jpa.JpaTransactionManager"
+    p:entityManagerFactory-ref="entityManagerFactory" />
+
+  <bean id="transactionManagerAACIDViejo" class="org.springframework.orm.jpa.JpaTransactionManager"
+    p:entityManagerFactory-ref="entityManagerFactoryAntiguo" />
+
+  <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+
+  <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+    p:persistenceUnitName="persistenciaTramitadorAgenda"
+    p:dataSource-ref="dataSourceaacid">
+    <property name="jpaVendorAdapter">
+      <bean
+        class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
+        p:showSql="false" p:generateDdl="false"
+        p:databasePlatform="org.hibernate.dialect.Oracle10gDialect" />
+    </property>
+  </bean>
+
+  <bean id="entityManagerFactoryAntiguo" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+    p:persistenceUnitName="persistenciaTramitadorAgendaAntiguo"
+    p:dataSource-ref="dataSourceaacidviejo">
+    <property name="jpaVendorAdapter">
+      <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
+        p:showSql="false" p:generateDdl="false"
+        p:databasePlatform="org.hibernate.dialect.Oracle10gDialect" />
+    </property>
+  </bean>
+
+  <!-- Servicios -->
+  <bean id="convocatoriasService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.ConvocatoriasServiceImpl">
+    <property name="convocatoriaDao" ref="convocatoriaDao" />
+  </bean>
+  <bean id="solicitudService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.SolicitudServiceImpl">
+    <property name="solicitudDao" ref="solicitudDao" />
+    <property name="subsanacionDao" ref="subsanacionDao" />
+    <property name="trewaService" ref="trewaService" />
+  </bean>
+  <bean id="subsanacionService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.SubsanacionServiceImpl">
+    <property name="subsanacionDao" ref="subsanacionDao" />
+    <property name="paisSolicitudDao" ref="paisSolicitudDao" />
+    <property name="solicitudDao" ref="solicitudDao" />
+    <property name="catalogoDAO" ref="catalogoDao" />
+    <property name="catalogoSubsanacionDao" ref="catalogoSubsanacionDao" />
+    <property name="convocatoriaDao" ref="convocatoriaDao" />
+    <property name="trewaService" ref="trewaService" />
+    <property name="catalogoService" ref="catalogoService" />
+    <property name="finalidadService" ref="finalidadService" />
+    <property name="paeSolicitudService" ref="paeSolicitudService" />
+    <property name="paeContribucionesService" ref="paeContribucionesService"/>
+  </bean>
+  <bean id="trewaService" class="es.juntadeandalucia.aacid.comuntramitacion.service.impl.TrewaServiceImpl">
+  </bean>
+  <bean id="tipoCatalogoService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.TipoCatalogoServiceImpl">
+    <property name="tipoCatalogoDao" ref="tipoCatalogoDao" />
+  </bean>
+  <bean id="catalogoService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.CatalogoServiceImpl">
+    <property name="catalogoDao" ref="catalogoDao" />
+  </bean>
+  <bean id="exclusionService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.ExclusionServiceImpl">
+    <property name="exclusionDAO" ref="exclusionDAO" />
+    <property name="exclusionesSolicitudDAO" ref="exclusionesSolicitudDAO" />
+    <property name="paisSolicitudDao" ref="paisSolicitudDao" />
+    <property name="solicitudDao" ref="solicitudDao" />
+    <property name="convocatoriaDao" ref="convocatoriaDao" />
+    <property name="trewaService" ref="trewaService" />
+    <property name="finalidadService" ref="finalidadService" />
+    <property name="paeSolicitudService" ref="paeSolicitudService" />
+    <property name="paeContribucionesService" ref="paeContribucionesService"/>
+    <property name="parametrosConfiguracionService" ref="parametrosConfiguracionService"/>
+  </bean>
+  <bean id="catalogoSubsanacionService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.CatalogoSubsanacionServiceImpl">
+    <property name="catalogoSubsanacionDao" ref="catalogoSubsanacionDao" />
+  </bean>
+  <bean id="historicoService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.HistoricoServiceImpl">
+    <property name="historicoDao" ref="historicoDao" />
+  </bean>
+
+  <bean id="paeSolicitudService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.PaeSolicitudServiceImpl">
+    <property name="paeSolicitudDao" ref="paeSolicitudDao" />
+    <property name="configService" ref="configService" />
+  </bean>
+
+  <bean id="contraparteService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.ContraparteServiceImpl">
+    <property name="contrapartesDao" ref="contrapartesDao" />
+    <property name="paeSolicitudService" ref="paeSolicitudService" />
+  </bean>
+
+  <bean id="agrupacionService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.AgrupacionServiceImpl">
+    <property name="agrupacionDao" ref="agrupacionDao" />
+  </bean>
+
+  <bean id="criteriosService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.CriteriosServiceImpl">
+    <property name="criteriosDao" ref="criteriosDao" />
+  </bean>
+  <bean id="solicitudCriteriosService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.SolicitudCriteriosServiceImpl">
+    <property name="solicitudCriteriosDao" ref="solicitudCriteriosDao" />
+    <property name="solicitudTipoCriterioService" ref="solicitudTipoCriterioService" />
+    <property name="solicitudesAuxiliarService" ref="solicitudesAuxiliarService" />
+    <property name="tipoCriteriosService" ref="tipoCriteriosService" />
+    <property name="criteriosService" ref="criteriosService" />
+  </bean>
+
+  <bean id="solicitudTipoCriterioService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.SolicitudTipoCriterioServiceImpl">
+    <property name="solicitudTipoCriteriosDao" ref="solicitudTipoCriteriosDao" />
+  </bean>
+
+  <bean id="tipoCriteriosService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.TipoCriteriosServiceImpl">
+    <property name="tipoCriteriosDao" ref="tipoCriteriosDao" />
+  </bean>
+
+  <bean id="finalidadService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.FinalidadServiceImpl">
+    <property name="finalidadDao" ref="finalidadDao" />
+    <property name="solicitudService" ref="solicitudService" />
+  </bean>
+
+  <bean id="criteriosConvocatoriaService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.CriteriosConvocatoriaServiceImpl">
+    <property name="criteriosConvocatoriaDao" ref="criteriosConvocatoriaDao" />
+  </bean>
+
+  <bean id="solicitudesAuxiliarService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.SolicitudesAuxiliarServiceImpl">
+    <property name="solicitudesAuxiliarDao" ref="solicitudesAuxiliarDao" />
+  </bean>
+  
+  <bean id="capacidadGestionService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.CapacidadGestionServiceImpl">
+    <property name="solicitudService" ref="solicitudService" />
+    <property name="capacidadGestionDao" ref="capacidadGestionDao" />
+  </bean>
+  
+  <bean id="paisService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.PaisServiceImpl">
+    <property name="paisDao" ref="paisDao" />
+  </bean>
+
+  <bean id="gastosService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.GastosServiceImpl">
+    <property name="gastoDao" ref="gastoDao" />
+    <property name="entidadContribucionService" ref="entidadContribucionService" />
+  </bean>
+  
+  <bean id="contrapartesService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.ContraparteServiceImpl">
+      <property name="contrapartesDao" ref="contrapartesDao" />
+   <property name="paeSolicitudService" ref="paeSolicitudService" />
+  </bean>
+
+  <bean id="contribucionesService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.ContribucionesServiceImpl">
+      <property name="contribucionDao" ref="contribucionDao" />
+      <property name="paeSolicitudService" ref="paeSolicitudService" />
+      <property name="paeContribucionesService" ref="paeContribucionesService"/>
+  </bean>
+
+  <bean id="entidadContribucionService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.EntidadContribucionServiceImpl">
+      <property name="entidadesParticipantesService" ref="entidadesParticipantesService" />
+      <property name="paeSolicitudService" ref="paeSolicitudService" />
+      <property name="contribucionesService" ref="contribucionesService" />
+  </bean>
+  <bean id="entidadesParticipantesService"
+    class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.EntidadesParticipantesServiceImpl">
+    <property name="funcionService" ref="funcionService" />
+    <property name="entidadesParticipantesDao" ref="entidadesParticipantesDao" />
+    <property name="tipoEntidadParticipanteService" ref="tipoEntidadParticipanteService" />
+  </bean>
+
+  <bean id="paeContribucionesService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.PaeContribucionesServiceImpl">
+      <property name="paeContribucionesDao" ref="paeContribucionesDao" />
+      <property name="paeSolicitudService" ref="paeSolicitudService" />
+  </bean>
+
+  <bean id="gastosContribucionService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.GastoContribucionServiceImpl">
+      <property name="entidadContribucionService" ref="entidadContribucionService" />
+  </bean>
+  
+  <bean id="reformulaService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.ReformulaServiceImpl">
+      <property name="reformulaDao" ref="reformulaDao" />
+  </bean>
+  
+  <bean id="relacionProvisionalService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.RelacionesProvisionalesServiceImpl">
+    <property name="finalidadService" ref="finalidadService" />
+    <property name="convocatoriasService" ref="convocatoriasService" />
+    <property name="solicitudService" ref="solicitudService" />
+    <property name="paeSolicitudService" ref="paeSolicitudService" />
+    <property name="solicitudConcesionService" ref="solicitudConcesionService" />
+    <property name="solicitudCriteriosService" ref="solicitudCriteriosService" />
+    <property name="solicitudesAuxiliarService" ref="solicitudesAuxiliarService" />
+    <property name="solicitudTipoCriterioService" ref="solicitudTipoCriterioService" />
+    <property name="paisSolicitudDao" ref="paisSolicitudDao" />
+    <property name="paeContribucionesService" ref="paeContribucionesService" />
+    <property name="trewaService" ref="trewaService" />
+  </bean>
+  
+  <bean id="solicitudConcesionService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.SolicitudConcesionServiceImpl">
+      <property name="solicitudConcesionDao" ref="solicitudConcesionDao" />
+      <property name="trewaService" ref="trewaService" />
+  </bean>
+  <bean id="concesionDefinitivaService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.ConcesionDefinitivaServiceImpl">
+    <property name="finalidadService" ref="finalidadService" />
+    <property name="convocatoriasService" ref="convocatoriasService" />
+    <property name="solicitudService" ref="solicitudService" />
+    <property name="paeSolicitudService" ref="paeSolicitudService" />
+    <property name="solicitudConcesionService" ref="solicitudConcesionService" />
+    <property name="solicitudCriteriosService" ref="solicitudCriteriosService" />
+    <property name="solicitudesAuxiliarService" ref="solicitudesAuxiliarService" />
+    <property name="solicitudTipoCriterioService" ref="solicitudTipoCriterioService" />
+    <property name="paisSolicitudDao" ref="paisSolicitudDao" />
+    <property name="trewaService" ref="trewaService" />
+    <property name="paeContribucionesService" ref="paeContribucionesService" />
+    <property name="exclusionService" ref="exclusionService" />
+  </bean>
+  <bean id="validacionPresupuestoService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.ValidacionPresupuestoServiceImpl"/>
+  <bean id="funcionService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.FuncionServiceImpl">
+    <property name="funcionDao" ref="funcionDao"/>
+  </bean>
+  
+   <bean id="documentoExpedienteService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.DocumentoExpedienteServiceImpl">
+        <property name="documentoExpedienteDao" ref="documentoExpedientenDao"/>
+   </bean>
+    
+  <bean id="tipoEntidadParticipanteService" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.service.impl.TipoEntidadParticipanteServiceImpl">
+    <property name="tipoEntidadParticipanteDao" ref="tipoEntidadParticipanteDao"/>
+  </bean>
+
+  <!-- DAOs -->
+  <bean id="convocatoriaDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.ConvocatoriaDao" />
+  <bean id="solicitudDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.SolicitudDao">
+    <property name="agrupacionDao" ref="agrupacionDao" />
+  </bean>
+  <bean id="subsanacionDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.SubsanacionDao" />
+  <bean id="tipoCatalogoDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.TipoCatalogoDao" />
+  <bean id="catalogoDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.CatalogoDao" />
+  <bean id="exclusionDAO" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.ExclusionDAO" />
+  <bean id="catalogoSubsanacionDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.CatalogoSubsanacionDao" />
+  <bean id="exclusionesSolicitudDAO" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.ExclusionesSolicitudDAO" />
+  <bean id="historicoDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.HistoricoDao" />
+  <bean id="paeSolicitudDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.PaeSolicitudDao" />
+  <bean id="agrupacionDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.AgrupacionDao" />
+  <bean id="contrapartesDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.ContrapartesDao" />
+  <bean id="criteriosDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.CriteriosDao" />
+  <bean id="solicitudCriteriosDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.SolicitudCriteriosDao" />
+  <bean id="criteriosConvocatoriaDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.CriteriosConvocatoriaDao" />
+  <bean id="solicitudTipoCriteriosDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.SolicitudTipoCriteriosDao" />
+  <bean id="tipoCriteriosDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.TipoCriteriosDao" />
+  <bean id="finalidadDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.FinalidadDao" />
+  <bean id="solicitudesAuxiliarDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.SolicitudesAuxiliarDao" />
+  <bean id="capacidadGestionDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.CapacidadGestionDao" />
+  <bean id="paisDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.PaisDao" />
+  <bean id="paisSolicitudDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.PaisSolicitudDao" />
+  <bean id="contribucionDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.ContribucionDao" />
+  <bean id="entidadesParticipantesDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.EntidadesParticipantesDao" />
+  <bean id="paeContribucionesDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.PaeContribucionesDao" />
+  <bean id="gastoDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.GastoDao" />
+  <bean id="reformulaDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.ReformulaDao" />
+  <bean id="solicitudConcesionDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.SolicitudConcesionDao" />
+  <bean id="funcionDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.FuncionDao" />
+  <bean id="tipoEntidadParticipanteDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.TipoEntidadParticipanteDao" />
+  <bean id="documentoExpedientenDao" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl.DocumentoExpedienteDAO" />
+  
+<!--   QUARTZ -->
+<bean name="notificacionFinComunicacionInicio" class="es.juntadeandalucia.aacid.persistenciatramitacionagenda.quartz.trabajos.NotificacionFinComunicacionInicio"/>
+<bean name="quartzScheduler" class="org.springframework.scheduling.quartz.JobDetailBean">
+    <property name="jobClass" value="es.juntadeandalucia.aacid.persistenciatramitacionagenda.quartz.QuartzScheduler" />
+    <property name="jobDataAsMap">
+      <map>
+        <entry key="notificacionFinComunicacionInicio" value-ref="notificacionFinComunicacionInicio" />
+      </map>
+    </property>
+  </bean>
+  
+  <bean id="avisoTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+    <property name="jobDetail" ref="quartzScheduler" />
+    <property name="cronExpression" value="0 0 4 ? * * *" />
+<!--     <property name="cronExpression" value="0 0/15 * * * ?" /> -->
+  </bean>
+  
+  <!-- Scheduler -->
+  <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    <property name="jobDetails">
+      <list>
+        <ref bean="quartzScheduler" />
+      </list>
+    </property>
+    <property name="triggers">
+      <list>
+        <ref bean="avisoTrigger" />
+      </list>
+    </property>
+  </bean>
+</beans>

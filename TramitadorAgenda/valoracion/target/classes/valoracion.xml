@@ -1,0 +1,16 @@
+<modulo>
+  <def-modulo>
+    <nombre>valoracion</nombre>
+    <version>1.0</version>
+    <titulo>Utilidad Valoración</titulo>
+    <descripcion>Utilidad Valoración</descripcion>
+    <url>../modulos/valoracion/inicio.action</url>
+    <tipoInstalacion>UTILIDADES</tipoInstalacion>
+    <autor>
+      <nombre>Isotrol</nombre>
+      <email></email>
+      <grupo>staff</grupo>
+    </autor>
+    <type>STRUTS-2</type>
+  </def-modulo>
+</modulo>

@@ -1,0 +1,27 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:jee="http://www.springframework.org/schema/jee"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xsi:schemaLocation="
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+      http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd">
+
+  <bean id="valoracionAction" class="es.juntadeandalucia.aacid.valoracion.action.ValoracionAction" scope="prototype">
+    <property name="criteriosService" ref="criteriosService" />
+    <property name="solicitudTipoCriterioService" ref="solicitudTipoCriterioService" />
+    <property name="solicitudService" ref="solicitudService" />
+    <property name="solicitudesAuxiliarService" ref="solicitudesAuxiliarService" />
+    <property name="finalidadService" ref="finalidadService" />
+    <property name="solicitudCriteriosService" ref="solicitudCriteriosService"/>
+    <property name="capacidadGestionService" ref="capacidadGestionService"/>
+    <property name="paisService" ref="paisService"/>
+    <property name="trewaService" ref="trewaService"/>
+    <property name="generacionDocumentosService" ref="generacionDocumentosService"/>
+        <property name="documentoExpedienteService" ref="documentoExpedienteService"/>
+  </bean>
+</beans>

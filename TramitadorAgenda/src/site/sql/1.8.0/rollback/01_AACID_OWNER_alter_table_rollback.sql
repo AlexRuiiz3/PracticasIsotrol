@@ -1,0 +1,10 @@
+SPOOL 01_AACID_OWNER_alter_table_rollback.log
+
+DEF USUARIO=AACID_OWNER;
+
+--Fecha postegración comunicación inicio--
+
+ALTER TABLE "&USUARIO".AACI_T_SOLICITUDSUBONGD DROP COLUMN "FH_POSTEGRACION_COMUN_INI";
+
+
+SPOOL OFF

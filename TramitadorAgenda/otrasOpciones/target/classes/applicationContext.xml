@@ -1,0 +1,64 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:jee="http://www.springframework.org/schema/jee"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd">
+
+<!--   Action -->
+  <bean id="abstractOtrasOpcionesAction" class="es.juntadeandalucia.aacid.otrasopciones.action.AbstractOtrasOpcionesAction" scope="prototype" abstract="true">
+  </bean>
+
+  <bean id="gestionDatosGeneraleAction" class="es.juntadeandalucia.aacid.otrasopciones.action.DatosGeneralesAction" scope="prototype">
+    <property name="trewaService" ref="trewaService" />
+    <property name="permisosService" ref="permisosService" />
+    <property name="solicitudService" ref="solicitudService" />
+    <property name="subsanacionService" ref="subsanacionService" />
+    <property name="historicoService" ref="historicoService" />
+    <property name="resourceBundleLocator" ref="otrasOpcionesAgregateResourceBundleLocator" />
+    <property name="paeSolicitudService" ref="paeSolicitudService" />
+    <property name="contraparteService" ref="contraparteService" />
+    <property name="agrupacionService" ref="agrupacionService" />
+    <property name="exclusionService" ref="exclusionService" />
+    <property name="parametrosConfiguracionService" ref="parametrosConfiguracionService" />
+    <property name="festivosAACIDService" ref="festivosAACIDService" />
+  </bean>
+
+  <bean id="datosSubsanacionAction" class="es.juntadeandalucia.aacid.otrasopciones.action.DatosSubsanacionAction" scope="prototype">
+    <property name="tipoCatalogoService" ref="tipoCatalogoService" />
+    <property name="catalogoService" ref="catalogoService" />
+    <property name="subsanacionService" ref="subsanacionService" />
+    <property name="catalogoSubsanacionService" ref="catalogoSubsanacionService" />
+    <property name="historicoService" ref="historicoService" />
+    <property name="resourceBundleLocator" ref="otrasOpcionesAgregateResourceBundleLocator" />
+    <property name="trewaService" ref="trewaService" />
+  </bean>
+
+    <bean id="gestionDocumentosAction" class="es.juntadeandalucia.aacid.otrasopciones.action.GestionDocumentosAction"
+          scope="prototype">
+        <property name="documentoExpedienteService" ref="documentoExpedienteService"/>
+        <property name="generacionDocumentosService" ref="generacionDocumentosService"/>
+        <property name="trewaService" ref="trewaService"/>
+    </bean>
+  <bean id="datosHistoricoAction" class="es.juntadeandalucia.aacid.otrasopciones.action.DatosHistoricoAction" scope="prototype">
+    <property name="historicoService" ref="historicoService" />
+    <property name="trewaService" ref="trewaService" />
+  </bean>
+  <!-- Servicios -->
+  <bean id="permisosService" class="es.juntadeandalucia.aacid.otrasopciones.service.impl.PermisosServiceImpl" scope="prototype"></bean>
+
+  <util:list id="validationMessagesOtrasOpciones">
+    <value>ValidationMessages-otrasOpciones</value>
+  </util:list>
+  
+  <bean id="otrasOpcionesAgregateResourceBundleLocator" class="org.hibernate.validator.resourceloading.AggregateResourceBundleLocator">
+    <constructor-arg ref="validationMessagesOtrasOpciones"></constructor-arg>
+  </bean>
+  
+</beans>

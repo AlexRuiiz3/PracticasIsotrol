@@ -1,0 +1,142 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+  <constant name="struts.objectFactory" value="spring" />
+
+  <package name="otrasOpciones" namespace="/modulos/otrasOpciones"
+    extends="struts-default, json-default">
+
+    <action name="inicio" method="inicio" class="gestionDatosGeneraleAction">
+      <result name="success">/modulos/otrasOpciones/pantallaDGA.jsp</result>
+      <result name="error">/modulos/otrasOpciones/pantallaDGA.jsp</result>
+    </action>
+
+    <action name="cargarListaAgrupaciones" method="obtenerAgrupaciones" class="gestionDatosGeneraleAction">
+      <result name="success" type="json">
+        <param name="root">
+          datosGeneralesDTO.listaAgrupacion
+        </param>
+      </result>
+      <interceptor-ref name="defaultStack" />
+    </action>
+    
+    <action name="guardarDatosGenerales" method="guardarDatosGenerales" class="gestionDatosGeneraleAction">
+      <result name="success">templates/error_messages.jsp</result>
+      <result name="error">templates/error_messages.jsp</result>
+      <interceptor-ref name="basicStack" />
+    </action>
+
+    <!-- Subsanaciones valorador -->
+
+    <action name="inicioSubsanacion" method="valorarSubsanacion" class="datosSubsanacionAction">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/otrasOpciones/subsanacion/datosSubsanacion.jsp</result>
+      <result name="error">/modulos/otrasOpciones/subsanacion/datosSubsanacion.jsp</result>
+    </action>
+
+    <action name="guardarSubsanacionesValorador" method="guardarSubsanacionesValorador" class="datosSubsanacionAction">
+      <interceptor-ref name="basicStack" />
+      <result name="success">templates/error_messages.jsp</result>
+      <result name="error">templates/error_messages.jsp</result>
+    </action>
+
+    <action name="buscarTipoCatalogo" method="buscarTipoCatalogo" class="datosSubsanacionAction">
+      <interceptor-ref name="json" />
+      <interceptor-ref name="basicStack" />
+      <result name="success" type="json">
+        <param name="ignoreHierarchy">false</param>
+        <param name="includeProperties">
+          listaTipoCatalogo\[\d+\]\.id,
+          listaTipoCatalogo\[\d+\]\.nombre
+        </param>
+      </result>
+    </action>
+
+    <action name="buscarCatalogo" method="buscarCatalogo" class="datosSubsanacionAction">
+      <interceptor-ref name="json" />
+      <interceptor-ref name="basicStack" />
+      <result name="success" type="json">
+        <param name="ignoreHierarchy">false</param>
+        <param name="includeProperties">
+          listaCatalogo\[\d+\]\.id,
+          listaCatalogo\[\d+\]\.descripcion,
+          listaCatalogo\[\d+\]\.motivo,
+          listaCatalogo\[\d+\]\.nombreCompleto,
+          listaCatalogo\[\d+\]\.puedeEditar
+        </param>
+      </result>
+    </action>
+
+    <action name="buscarSolicitudesSeleccionadas" method="buscarSolicitudesSeleccionadas" class="datosSubsanacionAction">
+      <interceptor-ref name="json" />
+      <interceptor-ref name="basicStack" />
+      <result name="success" type="json">
+        <param name="ignoreHierarchy">false</param>
+        <param name="includeProperties">
+          fechaSubsanacion,
+          fechaRegistro,
+          fechaLimite,
+          fechaEntrega,
+          lugarRegistro,
+          catalogosSeleccionados\[\d+\]\.motivo,
+          catalogosSeleccionados\[\d+\]\.puedeEditar,
+          catalogosSeleccionados\[\d+\]\.catalogo,
+          catalogosSeleccionados\[\d+\]\.catalogo.id,
+          catalogosSeleccionados\[\d+\]\.catalogo.descripcion,
+          catalogosSeleccionados\[\d+\]\.catalogo.motivo,
+          catalogosSeleccionados\[\d+\]\.catalogo.nombreCompleto,
+          catalogosSeleccionados\[\d+\]\.catalogo.codigo
+        </param>
+      </result>
+    </action>
+    
+    <!-- Pestaña historico -->
+    <action name="cargaListadoHistorico" method="cargaListadoHistorico" class="datosHistoricoAction">
+      <result name="success" type="json">
+        <param name="root">
+          listaHistoricos
+        </param>
+      </result>
+      <interceptor-ref name="defaultStack" />
+    </action>
+    <!-- Pestaña comunicación inicio -->
+    <action name="cargaListadoExpComuInicio" method="cargarTabComunicacionInicio" class="gestionDatosGeneraleAction">
+      <result name="success" type="json">
+        <param name="root">
+          listadoExpedientesComuInicio
+        </param>
+      </result>
+      <interceptor-ref name="defaultStack" />
+    </action>
+
+        <!-- Acciones de modificación de los documentos -->
+        <action name="modificarDocumentoPDF" method="modificarDocumentoPDF" class="gestionDocumentosAction">
+            <result name="success">/modulos/otrasOpciones/gestionDocumentos/modificarDocumento.jsp</result>
+        </action>
+        <action name="descargarDocumento" method="descargarDocumento" class="gestionDocumentosAction">
+            <result name="success" type="stream">
+                <param name="contentType">application/vnd.oasis.opendocument.text</param>
+                <param name="inputName">ficheroDescarga</param>
+                <param name="bufferSize">1024</param>
+                <param name="contentDisposition">attachment;filename="${nombreFicheroDescarga}"</param>
+            </result>
+          <result name="error">/modulos/otrasOpciones/gestionDocumentos/modificarDocumento.jsp</result>
+        </action>
+        <action name="subirDocumento" method="subirDocumento" class="gestionDocumentosAction">
+            <interceptor-ref name="defaultStack"/>
+            <result name="success">/modulos/bloquesPermitidos/cerrarVentana.jsp</result>
+            <result name="error">/modulos/otrasOpciones/gestionDocumentos/modificarDocumento.jsp</result>
+        </action>
+
+        <action name="eliminarDocumento" method="eliminarDocumento" class="gestionDocumentosAction">
+            <interceptor-ref name="defaultStack"/>
+            <result name="success" type="redirectAction">
+                <param name="actionName">eliminadoc.action</param>
+                <param name="namespace">/modulos/docsAsociadosExpediente</param>
+                <param name="refdoc">${refDoc}</param>
+            </result>
+        </action>
+    </package>
+</struts>

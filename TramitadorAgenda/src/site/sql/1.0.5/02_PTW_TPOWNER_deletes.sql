@@ -1,0 +1,9 @@
+SPOOL 03_AACI_deletes.log
+
+DEF USUARIO=PTW_TPOWNER;
+
+
+delete from "&USUARIO".RESERVA;
+commit;
+
+SPOOL OFF

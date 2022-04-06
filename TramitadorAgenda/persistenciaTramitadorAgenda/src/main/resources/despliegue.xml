@@ -1,0 +1,13 @@
+<def-modulo>
+	<nombre>persistenciaTramitadorAgenda</nombre>
+	<version>1.0</version>
+	<titulo>Capa de persistencia de tramitación Agenda</titulo>
+	<descripcion>Capa de persistencia de tramitación Agenda</descripcion>
+	<autor>
+		<nombre>Isotrol</nombre>
+		<email></email>
+		<grupo>staff</grupo>
+	</autor>
+	<type>STRUTS-2</type>
+	<tipoInstalacion>NONE</tipoInstalacion>
+</def-modulo>

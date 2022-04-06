@@ -1,0 +1,116 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+  <constant name="struts.objectFactory" value="spring" />
+
+  <package name="valoracion" namespace="/modulos/valoracion" extends="struts-default, json-default">
+
+    <action name="inicio" method="inicio" class="valoracionAction">
+      <result name="success">/modulos/valoracion/pestanasValoracion.jsp</result>
+      <result name="error">/modulos/valoracion/pestanasValoracion.jsp</result>
+    </action>
+    
+    
+    <action name="cargaListadoPertinencia" method="cargaListadoPertinencia" class="valoracionAction">
+      <result name="success" type="json">
+        <param name="root">
+          valoracionSolicitudDTO.pertinencia.listaValoraciones
+        </param>
+      </result>
+      <interceptor-ref name="defaultStack" />
+    </action>
+    
+    <action name="cargaListadoViabilidad" method="cargaListadoViabilidad" class="valoracionAction">
+      <result name="success" type="json">
+        <param name="root">
+          valoracionSolicitudDTO.viabilidad.listaValoraciones
+        </param>
+      </result>
+      <interceptor-ref name="defaultStack" />
+    </action>
+
+    <action name="cargaListadoCoherencia" method="cargaListadoCoherencia" class="valoracionAction">
+      <result name="success" type="json">
+        <param name="root">
+          valoracionSolicitudDTO.coherencia.listaValoraciones
+        </param>
+      </result>
+      <interceptor-ref name="defaultStack" />
+    </action>
+    
+    <action name="cargaListadoConectividad" method="cargaListadoConectividad" class="valoracionAction">
+      <result name="success" type="json">
+        <param name="root">
+          valoracionSolicitudDTO.conectividad.listaValoraciones
+        </param>
+      </result>
+      <interceptor-ref name="defaultStack" />
+    </action>
+    
+    <action name="cargaListadoSostenibilidad" method="cargaListadoSostenibilidad" class="valoracionAction">
+      <result name="success" type="json">
+        <param name="root">
+          valoracionSolicitudDTO.sostenibilidad.listaValoraciones
+        </param>
+      </result>
+      <interceptor-ref name="defaultStack" />
+    </action>
+    
+    <action name="cargaListadoImpacto" method="cargaListadoImpacto" class="valoracionAction">
+      <result name="success" type="json">
+        <param name="root">
+          valoracionSolicitudDTO.impacto.listaValoraciones
+        </param>
+      </result>
+      <interceptor-ref name="defaultStack" />
+    </action>
+    
+    <action name="cargaListadoConvergencia" method="cargaListadoConvergencia" class="valoracionAction">
+      <result name="success" type="json">
+        <param name="root">
+          valoracionSolicitudDTO.convergencia.listaValoraciones
+        </param>
+      </result>
+      <interceptor-ref name="defaultStack" />
+    </action>
+    
+    <action name="cargaListadoCapacidadGestion" method="cargaListadoCapacidadGestion" class="valoracionAction">
+      <result name="success" type="json">
+        <param name="root">
+          valoracionSolicitudDTO.capacidadGestion.listaValoraciones
+        </param>
+      </result>
+      <interceptor-ref name="defaultStack" />
+    </action>
+
+    <action name="cargaListadoIncrementos" method="cargaListadoIncrementos" class="valoracionAction">
+      <result name="success" type="json">
+        <param name="root">
+          valoracionSolicitudDTO.incrementos.listaValoraciones
+        </param>
+      </result>
+      <interceptor-ref name="defaultStack" />
+    </action>
+    
+    <action name="guardarValoracion" method="guardarValoracion" class="valoracionAction">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/valoracion/templates/error_messages.jsp</result>
+      <result name="error">/modulos/valoracion/templates/error_messages.jsp</result>
+    </action>
+    
+<!--     Informes valoracion y evaluacion-->
+    <action name="informeValoracion" method="incorporarInfValoracion" class="valoracionAction">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/valoracion/templates/error_messages.jsp</result>
+      <result name="error">/modulos/valoracion/templates/error_messages.jsp</result>
+    </action>
+    <action name="informeEvaluacion" method="incorporarInfEvaluacion" class="valoracionAction">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/valoracion/templates/error_messages.jsp</result>
+      <result name="error">/modulos/valoracion/templates/error_messages.jsp</result>
+    </action>
+
+  </package>
+</struts>

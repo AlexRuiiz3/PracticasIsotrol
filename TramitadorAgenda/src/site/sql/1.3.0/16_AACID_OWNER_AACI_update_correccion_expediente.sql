@@ -1,0 +1,8 @@
+SPOOL 16_AACID_OWNER_AACI_update_correccion_expediente.log
+
+DEF USUARIO=AACID_OWNER;
+
+update "&USUARIO".AACI_T_SOLICITUDSUBONGD sol set sol.LG_CHECKTIPO3 = 0, sol.LG_CHECKTIPO4 = 1 where sol.TX_CODIDENTIFICATIVO = '2021UF008';
+commit;
+
+SPOOL OFF

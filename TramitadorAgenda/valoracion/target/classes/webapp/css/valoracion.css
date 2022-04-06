@@ -1,0 +1,93 @@
+div.imagenCabecera {
+  background-image: url("../imagenes/cabeceraAACID.png");
+  width: 752px;
+  height: 98px;
+}
+
+/**
+ * estilos para poner un listado de check en vertical
+ */
+.checkboxLabel {
+  user-select: none;
+}
+
+.checkbox-vertical input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-vertical input[type="checkbox"]+.checkboxLabel:before {
+  content: "\2713";
+  font-weight: bold;
+  margin-right: 0.5em;
+  background: lightgray;
+  border-radius: 3px;
+  padding: 0 4px;
+  color: lightgray;
+}
+
+.checkbox-vertical input[type="checkbox"]:checked.checkboxLabel:before {
+  content: "\2713";
+  font-weight: bold;
+  margin-right: 0.5em;
+  background: lightgray;
+  border-radius: 3px;
+  padding: 0 4px;
+}
+
+.checkbox-vertical input[type="checkbox"]:checked+.checkboxLabel:before {
+  color: inherit;
+}
+
+/* Limita un div 400px y mete scroll */
+.scroll-400 {
+  max-height: 400px;
+  overflow-x: auto;
+}
+
+/* Activa scroll interno en el modal */
+.modal-dialog {
+  overflow-y: initial !important
+}
+
+.modal-body {
+  height: 80vh;
+  overflow-y: auto;
+}
+
+.obligatorio::after {
+  content: "(*)";
+  color: red;
+}
+
+.buttons-excel {
+  padding: 0 !important;
+  border: none !important;
+}
+
+.hide {
+  display: none;
+}
+
+.centradoVertical {
+  vertical-align: middle !important;
+}
+
+/**Tablas Criterios */
+.tableCriterios th {
+  border-top: none;
+}
+
+table.tableCriterios tfoot th, table.dataTable tfoot td {
+  padding: 8px 10px !important;
+}
+
+.text-hide {
+  cursor: context-menu;
+  background-color: transparent !important;
+}
+
+.errorLabel {
+  text-align: left;
+  color: red;
+  font-style: italic;
+}

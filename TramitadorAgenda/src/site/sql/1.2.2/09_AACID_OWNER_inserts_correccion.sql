@@ -1,0 +1,22 @@
+SPOOL 03_AACI_inserts.log
+
+DEF USUARIO=AACID_OWNER;
+
+Update "&USUARIO".AACI_EXCLUSION set EXCL_LI_DESCRIPCION = 'No haber presentado la subsanación requerida (art. 22), siempre que lo solicitado se refiera a algún requisito exigido por la Orden reguladora.', EXCL_LI_PERFIL = 'DGA,COORDINADOR' WHERE EXCL_NU_ORDEN = 95;
+Update "&USUARIO".AACI_EXCLUSION set EXCL_LI_DESCRIPCION = 'Subsanación fuera de plazo (art. 22), siempre que lo presentado fuera de plazo se refiera a algún requisito exigido por la Orden reguladora.', EXCL_LI_PERFIL = 'DGA,COORDINADOR' WHERE EXCL_NU_ORDEN = 96;
+Update "&USUARIO".AACI_EXCLUSION set EXCL_LI_DESCRIPCION = 'Subsanación incompleta (art. 22), siempre que lo no presentado se refiera a algún requisito exigido por la Orden reguladora.', EXCL_LI_PERFIL = 'DGA,COORDINADOR' WHERE EXCL_NU_ORDEN = 97;
+Update "&USUARIO".AACI_EXCLUSION set EXCL_LI_DESCRIPCION = 'Desistimiento de la universidad.', EXCL_LI_PERFIL = 'DGA,COORDINADOR' where EXCL_NU_ORDEN = 98;
+Update "&USUARIO".AACI_EXCLUSION set EXCL_LI_DESCRIPCION = 'No aportar la documentación que acredite la concesión de financiación de las administraciones o instituciones públicas o privadas cofinanciadoras de la intervención distintas a las provenientes del país o países donde se vaya a desarrollar la intervención (art. 21).' where EXCL_NU_ORDEN = 99;
+Update "&USUARIO".AACI_EXCLUSION set EXCL_LI_DESCRIPCION = 'No aportar documentación acreditativa de la propiedad del terreno y su disponibilidad para que se realice la rehabilitación de inmuebles que contempla el proyecto (art. 21)' where EXCL_NU_ORDEN = 100;
+Update "&USUARIO".AACI_EXCLUSION set EXCL_LI_DESCRIPCION = 'No aportar certificado de disponibilidad de la autoridad en la zona, cuando la propietaria del terreno o inmueble fuera una administración pública o una entidad comunal (art. 21).' where EXCL_NU_ORDEN = 101;
+Update "&USUARIO".AACI_EXCLUSION set EXCL_LI_DESCRIPCION = 'No tener como contraparte a una o varias Universidades o centros de enseñanza superior, de carácter público, del país en el que se desarrolla el proyecto (art.3.1.b))' where EXCL_NU_ORDEN = 102;
+Update "&USUARIO".AACI_EXCLUSION set EXCL_LI_DESCRIPCION = 'No tener documento Marco de Colaboración suscrito con la entidad o entidades contrapartes del proyecto (art. 3.1.b))' where EXCL_NU_ORDEN = 103;
+Update "&USUARIO".AACI_EXCLUSION set EXCL_LI_DESCRIPCION = 'No acreditar tener como contraparte a entidad o entidades, sin ánimo de lucro, públicas o privadas,  legalmente constituidas y/o inscritas como entidades nacionales en los correspondientes Registros oficiales del país en el que se desarrolla el proyecto (art. 3.1.c) y art. 21)' where EXCL_NU_ORDEN = 104;
+Update "&USUARIO".AACI_EXCLUSION set EXCL_LI_DESCRIPCION = 'No presentar Convenio con el agente andaluz de cooperación, debidamente inscrito en el RACDA, con experiencia en la zona, que actúe como entidad colaboradora, donde se manifieste haber participado en la identificación y formulación del proyecto, así como sus responsabilidades específicas en la aplicación de la investigación o innovación (art. 3.1.c) y art. 21)' where EXCL_NU_ORDEN = 105;
+Update "&USUARIO".AACI_EXCLUSION set EXCL_LI_DESCRIPCION = 'No aportar documentación acreditativa del agente andaluz de cooperación con experiencia en la zona y en el sector de intervención, esto es, identificación del agente que va a participar, así como declaración jurada del representante del agente andaluz de las actividades desarrolladas en la zona (art. 3.1.c) y art. 21)' where EXCL_NU_ORDEN = 106;
+Update "&USUARIO".AACI_EXCLUSION set EXCL_LI_DESCRIPCION = 'No aportar documentación acreditativa de que la persona coordinadora del proyecto está en posesión del título de doctor (art. 3.1.c) y art. 21)' where EXCL_NU_ORDEN = 107;
+Update "&USUARIO".AACI_EXCLUSION set EXCL_LI_DESCRIPCION = 'No aportar documentación del grupo de investigación al que pertenece la persona coordinadora del proyecto (art. 3.1.c) y art. 21) ' where EXCL_NU_ORDEN = 108;
+Update "&USUARIO".AACI_EXCLUSION set EXCL_LI_DESCRIPCION = 'No aportar manifestación por escrito de la contraparte o contrapartes de haber participado en la identificación y formulación del proyecto, así como de sus responsabilidades específicas en su (art. 21' where EXCL_NU_ORDEN = 109;
+commit;
+
+SPOOL OFF

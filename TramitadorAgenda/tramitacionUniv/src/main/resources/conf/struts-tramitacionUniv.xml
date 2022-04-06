@@ -1,0 +1,424 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+  <constant name="struts.objectFactory" value="spring" />
+  <!-- Fixme: eliminar al entregar -->
+  <constant name="struts.devMode" value="true" />
+
+  <package name="tramitacionUniv" namespace="/agenda/tareas" extends="struts-default, json-default">
+  
+    <action name="mostrarTablaExpedientesHijosConvocatoria" method="cargarListadoExpedientesHijosConvocatoria" class="tareasCONVOCATORIA_UNIV_Action">
+      <result name="success" type="json">
+        <param name="root">
+          listaExpedientesHijosConvocatoriaDTO
+        </param>
+      </result>
+      <interceptor-ref name="defaultStack" />
+    </action>
+
+    <!-- Fin de listar expedientes hijos convocatoria -->
+
+    <!-- Listar expedientes hijos convocatoria -->
+    <action name="tareaEntradaLISTAR_HIJOS_CONVOCATORIA_UNIV" method="cargarListadoExpedientesHijosConvocatoriaUniv" class="tareasCONVOCATORIA_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/convocatoria/listadoHijosConvocatoria.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+    </action>
+    <!-- Fin de listar expedientes hijos convocatoria -->
+
+    <!-- Modificar convocatoria -->
+    <action name="tareaEntradaMODIFICAR_CONVOCATORIA_UNIV" method="modificarConvocatoria" class="tareasCONVOCATORIA_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/convocatoria/modificarConvocatoria.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/convocatoria/modificarConvocatoria.jsp</result>
+    </action>
+
+    <action name="guardarDatosConvocatoriaUniv" method="guardarDatosConvocatoriaUniv" class="tareasCONVOCATORIA_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+    </action>
+
+    <!-- Fin de modificar convocatoria -->
+
+    <!-- Subsanaciones valorador -->
+
+    <action name="tareaEntradaSUBSANACIONES_VALORADOR_UNIV" method="valorarSubsanacion" class="tareasSUBSANACION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/subsanacion/datosSubsanacion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/subsanacion/datosSubsanacion.jsp</result>
+    </action>
+
+    <action name="tareaEntradaSUBSANACIONES_VALORADOR2_UNIV" method="valorarSubsanacion" class="tareasSUBSANACION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/subsanacion/datosSubsanacion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/subsanacion/datosSubsanacion.jsp</result>
+    </action>
+
+    <action name="guardarSubsanacionesValoradorUniv" method="guardarSubsanacionesValorador" class="tareasSUBSANACION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+    </action>
+
+    <action name="buscarTipoCatalogoUniv" method="buscarTipoCatalogo" class="tareasSUBSANACION_UNIV_Action">
+      <interceptor-ref name="json" />
+      <interceptor-ref name="basicStack" />
+      <result name="success" type="json">
+        <param name="ignoreHierarchy">false</param>
+        <param name="includeProperties">
+          listaTipoCatalogo\[\d+\]\.id,
+          listaTipoCatalogo\[\d+\]\.nombre
+        </param>
+      </result>
+    </action>
+
+    <action name="buscarCatalogoUniv" method="buscarCatalogo" class="tareasSUBSANACION_UNIV_Action">
+      <interceptor-ref name="json" />
+      <interceptor-ref name="basicStack" />
+      <result name="success" type="json">
+        <param name="ignoreHierarchy">false</param>
+        <param name="includeProperties">
+          listaCatalogo\[\d+\]\.id,
+          listaCatalogo\[\d+\]\.descripcion,
+          listaCatalogo\[\d+\]\.motivo,
+          listaCatalogo\[\d+\]\.nombreCompleto,
+          listaCatalogo\[\d+\]\.puedeEditar
+        </param>
+      </result>
+    </action>
+
+    <action name="buscarSolicitudesSeleccionadasUniv" method="buscarSolicitudesSeleccionadas" class="tareasSUBSANACION_UNIV_Action">
+      <interceptor-ref name="json" />
+      <interceptor-ref name="basicStack" />
+      <result name="success" type="json">
+        <param name="ignoreHierarchy">false</param>
+        <param name="includeProperties">
+          catalogosSeleccionados\[\d+\]\.motivo,
+          catalogosSeleccionados\[\d+\]\.puedeEditar,
+          catalogosSeleccionados\[\d+\]\.catalogo,
+          catalogosSeleccionados\[\d+\]\.catalogo.id,
+          catalogosSeleccionados\[\d+\]\.catalogo.descripcion,
+          catalogosSeleccionados\[\d+\]\.catalogo.motivo,
+          catalogosSeleccionados\[\d+\]\.catalogo.nombreCompleto,
+          catalogosSeleccionados\[\d+\]\.catalogo.codigo
+        </param>
+      </result>
+      <result name="error">
+      
+      </result>
+    </action>
+
+    <action name="tareaEntradaGENERAR_SUB_SOL_UNIV" method="generarSubsanacionSolicitud" class="tareasSUBSANACION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/subsanacion/generarSubsanacion.jsp </result>
+      <result name="error">/modulos/tramitacionUniv/subsanacion/generarSubsanacion.jsp </result>
+    </action>
+
+    <action name="tareaEntradaGENERAR_SUB_CONV_UNIV" method="generarListadoSubsanaciones" class="tareasSUBSANACION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/subsanacion/generarSubsanacion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/subsanacion/generarSubsanacion.jsp</result>
+    </action>
+
+  <action name="tareaEntradaGENERAR_SUB_CONV_UNIV_ALE" method="generarListadoSubsanacionesAle" class="tareasSUBSANACION_UNIV_Action">
+    <interceptor-ref name="basicStack" />
+    <result name="success">/modulos/tramitacionUniv/subsanacion/generarSubsanacion.jsp
+    </result>
+    <result name="error">/modulos/tramitacionUniv/subsanacion/generarSubsanacion.jsp
+    </result>
+  </action>
+
+    <action name="tareaEntradaGENERAR_SUB_SOL_ALE_UNIV" method="generarSubsanacionSolicitud" class="tareasSUBSANACION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/subsanacion/generarSubsanacion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/subsanacion/generarSubsanacion.jsp</result>
+    </action>
+    <!-- Fin de subsanaciones valorador -->
+
+    <!-- Exclusiones tipo 1 -->
+
+    <action name="tareaEntradaEXCL_TRAM_UNIV" method="cargarExclusionNoAdmisionTramitacion" class="tareasEXCLUSION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/exclusion/exclusionAdmisionTramite.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/exclusion/exclusionAdmisionTramite.jsp</result>
+    </action>
+
+    <!-- Exclusiones tras subsanacion tipo 2 -->
+
+    <action name="tareaEntradaEXCL_POS_SU_UNIV" method="cargarExclusionPosSubsanacion" class="tareasEXCLUSION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/exclusion/exclusionPosSubsanacion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/exclusion/exclusionPosSubsanacion.jsp</result>
+    </action>
+
+    <!-- Exclusiones tras subsanacion tipo 2 tras alegacion -->
+
+    <action name="tareaEntradaEXCL_TRAM_ALEG_UNIV" method="cargarExclusionPosSubsanacion" class="tareasEXCLUSION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/exclusion/exclusionPosSubsanacion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/exclusion/exclusionPosSubsanacion.jsp</result>
+    </action>
+
+    <action name="tareaEntradaEXCL_POS_SU_UNIV2" method="cargarExclusionPosSubsanacion" class="tareasEXCLUSION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/exclusion/exclusionPosSubsanacion.jsp</result>
+       <result name="error">/modulos/tramitacionUniv/exclusion/exclusionPosSubsanacion.jsp</result>
+    </action>              
+    
+    <action name="guardarExclusionTramitacionUniv" method="guardarExclusionTramitacion" class="tareasEXCLUSION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+    </action>
+
+    <action name="tareaEntradaGENERAR_EXCL_PROV_CONV_UNIV" method="generarListaExclusionProvisional" class="tareasEXCLUSION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/exclusion/generarInformeExclusion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/exclusion/generarInformeExclusion.jsp</result>
+    </action>
+
+    <action name="tareaEntradaGENERAR_EXC_PROV_UNIV" method="generarResolucionProvisionalExcluidas" class="tareasEXCLUSION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/exclusion/generarInformeExclusion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/exclusion/generarInformeExclusion.jsp</result>
+    </action>
+
+    <!-- Fin de exclusiones -->
+
+    <action name="guardarExclusionPosSubsanacionUniv" method="guardarExclusionPosSubsanacion" class="tareasEXCLUSION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+    </action>
+
+    <action name="tareaEntradaGENERAR_EXCL_DEF_CONV_UNIV" method="generarListaExclusionDefinitiva" class="tareasEXCLUSION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/exclusion/generarInformeExclusion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/exclusion/generarInformeExclusion.jsp</result>
+    </action>
+
+    <action name="tareaEntradaGENERAR_EXC_DEF_UNIV" method="generarResolucionDefinitivaExcluidas" class="tareasEXCLUSION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/exclusion/generarInformeExclusion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/exclusion/generarInformeExclusion.jsp</result>
+    </action>
+
+    <action name="tareaEntradaGENERAR_EXC_DEF_ALE_UNIV" method="generarResolucionDefinitivaExcluidas" class="tareasEXCLUSION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/exclusion/generarInformeExclusion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/exclusion/generarInformeExclusion.jsp</result>
+    </action>
+    <action name="tareaEntradaGENERAR_DESEST_CONV_UNIV" method="generarListaDesestimadasUniv" class="tareasEXCLUSION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/exclusion/generarInformeDesestimacion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/exclusion/generarInformeDesestimacion.jsp</result>
+    </action>
+     <action name="tareaEntradaGENERAR_DES_UNIV" method="generarResolucionDesestimadaUniv" class="tareasEXCLUSION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/exclusion/generarInformeDesestimacion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/exclusion/generarInformeDesestimacion.jsp</result>
+    </action>
+    
+    <!-- Fin de exclusiones tras subsanacion -->
+ <!-- Envio de emails -->
+     <action name="tareaEntradaGENERAR_EMAIL_AUTOMATICO_UNIV" method="envioEmailDocumentoSubsanacionUniv" class="tareasSUBSANACION_UNIV_Action">
+        <interceptor-ref name="basicStack" />
+        <result name="success">/modulos/tramitacionUniv/subsanacion/generarEmailAutomatico.jsp</result>
+        <result name="error">/modulos/tramitacionUniv/subsanacion/generarEmailAutomatico.jsp</result>
+    </action>
+    
+         <action name="tareaEntradaGENERAR_EMAIL_AUTOMATICO_VUELTA_UNIV" method="envioEmailDocumentoSubsanacionUniv" class="tareasSUBSANACION_UNIV_Action">
+        <interceptor-ref name="basicStack" />
+        <result name="success">/modulos/tramitacionUniv/subsanacion/generarEmailAutomatico.jsp</result>
+        <result name="error">/modulos/tramitacionUniv/subsanacion/generarEmailAutomatico.jsp</result>
+    </action>
+    
+         <action name="tareaEntradaGENERAR_EMAIL_AUTOMATICO_ALEG_UNIV" method="envioEmailDocumentoExclusionUniv" class="tareasEXCLUSION_UNIV_Action">
+        <interceptor-ref name="basicStack" />
+        <result name="success">/modulos/tramitacionUniv/exclusion/generarEmailAutomatico.jsp</result>
+        <result name="error">/modulos/tramitacionUniv/exclusion/generarEmailAutomatico.jsp</result>
+    </action>
+    
+    <!--     Causas de desestimiento -->
+    <action name="tareaEntradaCAUSAS_DESEST_UNIV" method="cargarExclusionCausasDesestimiento" class="tareasEXCLUSION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/exclusion/causasDesestimacion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/exclusion/causasDesestimacion.jsp</result>
+    </action>
+    <action name="guardarCausasDesestimacion" method="guardarCausasDesestimacion" class="tareasEXCLUSION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+    </action>
+<!--     Fin Causas de desestimiento -->
+
+    <!--     Causas de inadmisión -->
+    <action name="tareaEntradaCAUSAS_INADMISION_UNIV" method="cargarExclusionCausasInadmisionPosPropProvConce" class="tareasEXCLUSION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/exclusion/causasInadmision.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/exclusion/causasInadmision.jsp</result>
+    </action>
+    <action name="guardarCausasInadmision" method="guardarCausasInadmision" class="tareasEXCLUSION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+    </action>
+<!--     Fin Causas de inadmisión -->
+    
+    <action name="tareaEntradaGENERAR_EMAIL_DESESTIMADAS_UNIV" method="envioEmailDocumentoResolucionDesestimadasUniv" class="tareasEXCLUSION_UNIV_Action">
+     <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/exclusion/generarEmailAutomatico.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/exclusion/generarEmailAutomatico.jsp</result>
+    </action>
+    
+<!-- INICIO - Tarea de validar de presupuesto -->
+     <action name="tareaEntradaVALIDAR_PRESUPUESTO_UNIV" method="inicioValidacionPresupuesto" class="tareasVALIDAR_PRESUPUESTO_UNIV_Action">
+        <interceptor-ref name="basicStack" />
+        <result name="success">/modulos/tramitacionUniv/validacionPresupuesto/validacionPresupuesto.jsp</result>
+        <result name="error">/modulos/tramitacionUniv/validacionPresupuesto/validacionPresupuesto.jsp</result>
+    </action>
+     <action name="recargaTablaContribucionesUniv" method="recargaTablaContribuciones" class="tareasVALIDAR_PRESUPUESTO_UNIV_Action">
+      <result name="success" type="json">
+        <param name="includeProperties">
+          listaGastosEntidadSeleccionada\[\d+\]\.idGastoContribucion,
+          listaGastosEntidadSeleccionada\[\d+\]\.gasto,
+          listaGastosEntidadSeleccionada\[\d+\]\.gasto.descripcionCodigo,
+          listaGastosEntidadSeleccionada\[\d+\]\.gasto.idGasto,
+          listaGastosEntidadSeleccionada\[\d+\]\.valorTitle,
+          listaGastosEntidadSeleccionada\[\d+\]\.valorNoValidadoTitle,
+          listaGastosEntidadSeleccionada\[\d+\]\.valorValidadoTitle,
+          listaGastosEntidadSeleccionada\[\d+\]\.disabled
+        </param>
+      </result>
+            <interceptor-ref name="basicStack" />
+    </action>
+    <action name="guardarValidacionPresupuestoUniv" method="guardar" class="tareasVALIDAR_PRESUPUESTO_UNIV_Action">
+        <interceptor-ref name="basicStack" />
+        <result name="success">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+        <result name="error">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+    </action>
+    
+    <action name="tareaEntradaGENERAR_EMAIL_AUTOMATICO_PRESUPUESTO_VALIDADO_UNIV"  method="envioEmailDocumentoPresupuestoValidadoUniv" class="tareasVALIDAR_PRESUPUESTO_UNIV_Action">
+     <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/validacionPresupuesto/generarEmailAutomatico.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/validacionPresupuesto/generarEmailAutomatico.jsp</result>
+    </action>
+    
+    <action name="tareaEntradaGENERAR_EMAIL_AUTOMATICO_INF_VALORACION_UNIV"  method="envioEmailDocumentoInformeValoracionUniv" class="tareasVALIDAR_PRESUPUESTO_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/validacionPresupuesto/generarEmailAutomatico.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/validacionPresupuesto/generarEmailAutomatico.jsp</result>
+    </action>
+    
+    <action name="tareaEntradaGENERAR_EMAIL_AUTOMATICO_BENEF_SUPL_UNIV"  method="envioEmailDocumentoBeneficiarosSuplentesUniv" class="tareasVALIDAR_PRESUPUESTO_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/validacionPresupuesto/generarEmailAutomatico.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/validacionPresupuesto/generarEmailAutomatico.jsp</result>
+    </action>
+    <!-- FIN - Tarea validar de presupuesto -->
+    
+    <action name="tareaEntradaGENERAR_DOC_BEN_SUP_UNIV"  method="generarDocumentoBeneficiariasSuplentesUniv" class="tareasRELACION_PROVISIONAL_CONCESION_UNIV_Action">
+     <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/relacionProvisionalConcesion/generarInformeConcesion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/relacionProvisionalConcesion/generarInformeConcesion.jsp</result>
+    </action>
+    <action name="tareaEntradaGENERAR_LISTADO_PROPUESTAS_PROV_BENEF_SUPLEN_UNIV"  method="generarDocumentoListadoBeneficiariasSuplentesUniv" class="tareasRELACION_PROVISIONAL_CONCESION_UNIV_Action">
+     <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/relacionProvisionalConcesion/generarInformeConcesion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/relacionProvisionalConcesion/generarInformeConcesion.jsp</result>
+   </action>
+    
+    <!-- Tarea de Notificacion de Reformulacion -->
+    <action name="tareaEntradaNOTIF_REFORMULA_UNIV" method="inicioNotificacionReformulacion" class="tareasNOTIF_REFORMULA_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/notificacionReformulacion/notificacionReformulacion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/notificacionReformulacion/notificacionReformulacion.jsp</result>
+    </action>
+    
+    <action name="guardarReformulaUniv" method="guardarReformula" class="tareasNOTIF_REFORMULA_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+    </action>
+    
+    <action name="incorporarNotificacionReformulaUniv" method="incorporarNotificacionReformula" class="tareasNOTIF_REFORMULA_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+    </action>
+    <!-- Fin de Notificacion de Reformulacion -->
+    <action name="tareaEntradaGENERAR_DOC_RESOLUCION_DEFINITIVA_UNIV"  method="generarDocumentoResolucionDefinitivaUniv" class="tareasRESOLUCION_DEFINITIVA_CONCESION_UNIV_Action">
+     <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/resolucionDefinitivaConcesion/generarInformeConcesion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/resolucionDefinitivaConcesion/generarInformeConcesion.jsp</result>
+    </action>
+
+    <action name="tareaEntradaGENERAR_LIST_RESOLUCION_DEFINITIVA_UNIV"  method="generarDocumentoListadoResolucionDefinitivaUniv" class="tareasRESOLUCION_DEFINITIVA_CONCESION_UNIV_Action">
+     <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/resolucionDefinitivaConcesion/generarInformeConcesion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/resolucionDefinitivaConcesion/generarInformeConcesion.jsp</result>
+    </action>
+    
+        <action name="tareaEntradaGENERAR_EMAIL_RESOL_DEFADM_UNIV"  method="envioEmailDocumentoConcesionDefinitivaUniv" class="tareasRESOLUCION_DEFINITIVA_CONCESION_UNIV_Action">
+     <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/validacionPresupuesto/generarEmailAutomatico.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/validacionPresupuesto/generarEmailAutomatico.jsp</result>
+    </action>
+    <action name="tareaEntradaGENERAR_EMAIL_AUTOMATICO_RES_EXCL_DEF_UNIV"  method="envioEmailDocumentoResolucionExclusionDefinitivaUniv" class="tareasEXCLUSION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/exclusion/generarEmailAutomatico.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/exclusion/generarEmailAutomatico.jsp</result>
+    </action>
+    
+         <!-- Listar expedientes hijos convocatoria provisional concesión -->
+    <action name="tareaEntradaLISTAR_SOLICITUDES_PROV_CONCE_UNIV" method="mostrarListadoExpedientesProvConce" class="tareasCONVOCATORIA_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/convocatoria/listados/listadoExpedientesProvConce.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+    </action>
+
+    <action name="mostrarTablaListadoExpedientesProvConce" method="cargarListadoExpedientesProvConceDesest" class="tareasCONVOCATORIA_UNIV_Action">
+      <result name="success" type="json">
+        <param name="root">
+          listaExpedientesHijosConvocatoriaDTO
+        </param>
+      </result>
+      <interceptor-ref name="defaultStack" />
+    </action>
+    <!-- Fin de listar expedientes hijos convocatoria -->
+    <!--  Pantalla para seleccionar beneficiarios y suplentes -->
+    <action name="tareaEntradaSELECCIONAR_BENEFICIARIOS_SUPLENTES_UNIV" method="seleccionarBeneficiariaSuplentes" class="tareasCONVOCATORIA_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/convocatoria/beneficiariasSuplentes/beneficiariasSuplentes.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+    </action>
+    
+    <action name="cargaListadoExpedientesPorFinalidadUniv" method="cargarListadoExpedientesProvConce" class="tareasCONVOCATORIA_UNIV_Action">
+      <result name="success" type="json">
+        <param name="root">
+          listaSolicitudConcesionDTO
+        </param>
+      </result>
+      <interceptor-ref name="defaultStack" />
+    </action>
+    
+    <action name="guardarBeneficiarioSuplenteUniv" method="guardarBeneficiariasSuplentes" class="tareasCONVOCATORIA_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+    </action>
+    
+    <action name="tareaEntradaGENERAR_AL_AC_RE_PRE_DOCUMENTACION_UNIV" method="cargarListadoSolicitudesSubsanacionesDocumentacionUniv" class="tareasSUBSANACION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/subsanacionDocumentacion/listadoSubsanacionesDocumentacion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+    </action>
+        <action name="tareaEntradaGENERAR_REQ_SUB_DOC_APORTADAS_UNIV" method="cargarDocumentoSubsanacionDocumentacionAportadaUniv" class="tareasSUBSANACION_UNIV_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionUniv/subsanacionDocumentacion/generarSubsanacion.jsp</result>
+      <result name="error">/modulos/tramitacionUniv/templates/error_messages.jsp</result>
+    </action>
+  </package>
+</struts>

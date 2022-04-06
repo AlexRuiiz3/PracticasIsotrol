@@ -1,0 +1,45 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+  <bean id="baseTareasAACIDAction" class="es.juntadeandalucia.aacid.comuntramitacion.action.BaseTareasAction" abstract="true" scope="prototype">
+  </bean>
+
+  <bean id="tareasService" class="es.juntadeandalucia.aacid.comuntramitacion.service.impl.TareasServiceImpl">
+    <property name="documentacionService" ref="documentacionService" />
+    <property name="trewaService" ref="trewaService" />
+    <property name="generacionDocumentosService" ref="generacionDocumentosService" />
+  </bean>
+
+  <bean id="validacionConvocatoriaService" class="es.juntadeandalucia.aacid.comuntramitacion.service.impl.ValidacionConvocatoriasServiceImpl">
+  </bean>
+
+  <bean id="trewaService" class="es.juntadeandalucia.aacid.comuntramitacion.service.impl.TrewaServiceImpl">
+  <property name="trewaService" ref="trewaService" />
+  </bean>
+  
+  <bean id="generacionDocumentosService" class="es.juntadeandalucia.aacid.comuntramitacion.service.impl.GeneracionDocumentosServiceImpl" >
+    <property name="tareasService" ref="tareasService" />
+    <property name="trewaService" ref="trewaService"/>
+  </bean>
+
+
+  <bean id="envioEmailAutomaticoService" class="es.juntadeandalucia.aacid.comuntramitacion.service.impl.EnvioEmailAutomaticoServiceImpl">
+    <property name="trewaService" ref="trewaService" />
+    <property name="configService" ref="configService" />
+  </bean>
+  
+  <bean id="parametrosConfiguracionService" class="es.juntadeandalucia.aacid.comuntramitacion.service.impl.ParametrosConfiguracionServiceImpl">
+      <property name="sistemasService" ref="sistemasService"/>
+      <property name="procedimientoService" ref="procedimientoService" />
+      <property name="configService" ref="configService" />
+  </bean>
+  
+  <bean id="festivosAACIDService" class="es.juntadeandalucia.aacid.comuntramitacion.service.impl.FestivosAACIDServiceImpl">
+      <property name="festivosService" ref="festivosService" />
+  </bean>
+
+</beans>

@@ -1,0 +1,16 @@
+<modulo>
+	<def-modulo>
+		<id>persistenciaTramitadorAgenda</id>
+		<nombre>persistenciaTramitadorAgenda</nombre>
+		<version>1.0</version>
+		<titulo>Capa de persistencia de autorizaciones</titulo>
+		<descripcion>Capa de persistencia de autorizaciones</descripcion>
+		<autor>
+			<nombre>Isotrol</nombre>
+			<email></email>
+			<grupo>staff</grupo>
+		</autor>
+		<type>STRUTS-2</type>
+		<tipoInstalacion>NONE</tipoInstalacion>
+	</def-modulo>
+</modulo>

@@ -1,0 +1,746 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--Generado desde Model@ v3.3.1 [9852969ó3820539ó2211891]-->
+<DEF_PROCEDIMIENTO id="54" nombre="UNIV" descripcion="Subvenciones AACID para proyectos Universidades 21" codigo_rpa="22522" clasificacion="A01014190_PRO_000000000000000000000000022522" sistema="AACID" version="1.0.0" organo="1" organo_competente="1" organo_resuelve="1" organo_tramita="1" motor_tramita="TREW@" informar="S" descrip_ampliada="Subvenciones a las Universidades de Andalucía que realicen proyectos de Cooperación Internacional para el Desarrollo." vigente="S" categoria="P">
+<PERFILES_USUARIO>
+<PERFIL_USUARIO id="54" nombre="COORDINADOR" descripcion="COORDINADOR"/>
+<PERFIL_USUARIO id="47" nombre="CIUDADANIA" descripcion="Ciudadanía"/>
+<PERFIL_USUARIO id="52" nombre="OEF" descripcion="OPERADOR ECONÓMICO FINANCIERO"/>
+<PERFIL_USUARIO id="55" nombre="VALORADOR" descripcion="VALORADOR"/>
+</PERFILES_USUARIO>
+<BLOQUES>
+<BLOQUE id="73" nombre="EXCL_TRAM_UNIV" descripcion="Exclusión de no admisión a trámite de la solicitud" tipo="W" informar="N"></BLOQUE>
+<BLOQUE id="6239" nombre="EXCL_POS_SU_UNIV" descripcion="Exclusión de la solicitud tras la subsanación" tipo="W" informar="N"></BLOQUE>
+<BLOQUE id="16467" nombre="GENERAR_EXC_POS_SUB_UNIV" descripcion="Generar documento exclusión tras subsanación" tipo="W" informar="N"></BLOQUE>
+<BLOQUE id="32281" nombre="GENERAR_EXC_DEF_UNIV" descripcion="Tarea para incorporar documento de exclusion definitiva" tipo="W" informar="N"></BLOQUE>
+<BLOQUE id="16464" nombre="GENERAR_EXC_PROV_UNIV" descripcion="Generar documento de exclusión provisional" tipo="W" informar="N"></BLOQUE>
+<BLOQUE id="6589" nombre="GENERAR_SUB_SOL_UNIV" descripcion="Generación de documento de subsanación" tipo="W" informar="N"></BLOQUE>
+<BLOQUE id="78" nombre="SUBSANACIONES_VALORADOR_UNIV" descripcion="Validación de la subsanación" tipo="W" informar="N"></BLOQUE>
+</BLOQUES>
+<RAZONES_INTERES_DEFPROC>
+<RAZON_INTERES id="1" abreviatura="REPLEGAL" descripcion="REPRESENTANTE" obsoleto="N" cardinalidad_minima="0" cardinalidad_maxima="1" comentario="" oblig_rel_app_elec="N"/>
+<RAZON_INTERES id="2" abreviatura="SOLICITANT" descripcion="SOLICITANTE" obsoleto="N" cardinalidad_minima="1" cardinalidad_maxima="1" comentario="" oblig_rel_app_elec="N"/>
+</RAZONES_INTERES_DEFPROC>
+<CERTIFICADOS>
+<CERTIFICADO id="11" nombre="ANTECEDENTES_PENALES" descripcion="CERTIFICADO DE ANTECEDENTES PENALES" url="http://ws056.juntadeandalucia.es/scspv3/processes/" clase="es.juntadeandalucia.plataforma.consultaSCSP." cod_scsp="SVDR_20090505_000050"/>
+<CERTIFICADO id="12" nombre="ANTECEDENTES_SEXUALES" descripcion="CERTIFICADO DE ANTECEDENTES DE DELITOS DE NATURALEZA SEXUAL" url="http://ws056.juntadeandalucia.es/scspv3/processes/" clase="es.juntadeandalucia.plataforma.consultaSCSP." cod_scsp="SVDR_20090505_000050"/>
+<CERTIFICADO id="1" nombre="IDENTIDAD" descripcion="CERTIFICADO DE DATOS DE IDENTIDAD" url="http://ws056.juntadeandalucia.es/scspv3/processes/ConsultaDatosIdentidadDGP.jpd" clase="es.juntadeandalucia.plataforma.consultaSCSP.consultaIdentidad.ConsultaDatosIdentidad" cod_scsp="SVDR_20090505_000050"/>
+<CERTIFICADO id="13" nombre="IRPF" descripcion="CERTIFICADO DE DATOS IMPUESTO SOBRE LA RENTA DE LAS PERSONAS FÍSICAS (I.R.P.F)" url="http://ws056.juntadeandalucia.es/scspv3/processes/" clase="es.juntadeandalucia.plataforma.consultaSCSP." cod_scsp="SVDR_20090505_000050"/>
+<CERTIFICADO id="6" nombre="RESIDENCIA" descripcion="CERTIFICADO DE DATOS DE RESIDENCIA" url="http://ws056.juntadeandalucia.es/scspv3/processes/VerificacionResidenciaFechaINE.jpd" clase="es.juntadeandalucia.plataforma.consultaSCSP.consultaResidenciaPadronal.ConsultaDatosResidenciaPadronal" cod_scsp="SVDR_20090505_000050"/>
+</CERTIFICADOS>
+<TIPOS_DOCUMENTOS>
+<TIPO_DOCUMENTO id="766" etiqueta="ACU_EXP_FIN" nombre="ACUERDOS_EXP_FINANCIA_CONTRAPARTES" descripcion="Acuerdos expresos de la financiación de la contraparte, socios locales públicos o privados u otras organizaciones colaboradoras en el país o paises donde se vaya a desarrollar la intervención" cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="N" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD20" fusionar="N" firma_digital="S" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="1483" etiqueta="ANX_FIN_PRO" nombre="SOLIC_SUBV_FINANC_PROY_COOP_INT" descripcion="Anexo 1: Solicitud de subvención a Universidades para la financiación de proyectos de cooperación internacional para el desarrollo" cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="N" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD14" fusionar="N" firma_digital="S" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="804" etiqueta="ANX_FORM" nombre="ANEXO_FORMULACION" descripcion="Anexo: Documento de formulación del proyecto" cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="N" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD20" fusionar="N" firma_digital="S" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="793" etiqueta="ANX_MATRIZ" nombre="ANEXO_MATRIZ" descripcion="Anexo: Matriz de planificación" cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="N" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD20" fusionar="N" firma_digital="S" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="805" etiqueta="ANX_PRESU" nombre="ANEXO_PRESUPUESTO" descripcion="Anexo: Presupuesto desglosado y global (anexo V)" cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="N" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD20" fusionar="N" firma_digital="S" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="806" etiqueta="ANX_PRESU_A" nombre="ANEXO_PRESUPUESTO_ACTIVIDADES" descripcion="Anexo: Presupuesto por actividades" cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="N" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD20" fusionar="N" firma_digital="S" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="823" etiqueta="AUT_CARTAS" nombre="AUT_CARTAS" descripcion="Autorizaciones, cartas de apoyo y cartas de compromiso" cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="N" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD20" fusionar="N" firma_digital="S" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="826" etiqueta="CONVENIOS" nombre="CONVENIOS" descripcion="Convenios de colaboración" cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="N" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD20" fusionar="N" firma_digital="S" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="697" etiqueta="CON_FIN_ACU" nombre="DOC_ACR_CON_FIN" descripcion="Documentación acreditativa de la concesión de financiación de las administraciones o instituciones públicas o privadas cofinanciadas del proyecto distintas a las provenientes del país o paises donde se vaya a desarrollar el proyecto." cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="N" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD20" fusionar="N" firma_digital="S" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="698" etiqueta="CV_PER_INT" nombre="CV_PER_INT" descripcion="CV del personal que va a llevar a cabo la intervención (Proyectos de educación para el desarrollo y formación, investigacion e innovación)" cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="N" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD20" fusionar="N" firma_digital="S" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="699" etiqueta="DGN_PRO" nombre="DGN_PRO" descripcion="Diagnósticos de la problemática. (Proyectos de educación parad el desarrollo)" cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="N" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD20" fusionar="N" firma_digital="S" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="700" etiqueta="DOC_ACR_GID" nombre="DOC_ACR_GAS_IDN" descripcion="Documentación acreditativa de los gastos de identificación y formulación que se contiene en el artículo 10.1" cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="N" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD20" fusionar="N" firma_digital="S" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="701" etiqueta="DOC_AC_PVOL" nombre="DOC_ACU_PER_VOL" descripcion="Documento de acuerdo de incorporación de personal voluntario utilizado por la Entidad, así como compromiso de su suscrición y entrega a la AACID." cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="N" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD20" fusionar="N" firma_digital="S" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="17033" etiqueta="DOC_EXC_POS" nombre="DOCUMENTO_EXCLUSION_POS_SUBSANACION" descripcion="Documento de exclusión tras subsanación" cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="S" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD06" fusionar="N" firma_digital="N" firma_dinamica="N" informacion_publica="N" tipo_firma="-"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="32323" etiqueta="DOC_EX_DE_U" nombre="DOCUMENTO_EXCLUSION_DEFINITIVA_UNIV" descripcion="Tarea para la generación del documento de exclusión definitiva" cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="N" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD99" fusionar="N" firma_digital="S" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="16996" etiqueta="DOC_EX_PR_U" nombre="DOCUMENTO_EXCLUSION_PROVISIONAL_UNIV" descripcion="Documento de exclusión provisional" cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="S" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD06" fusionar="N" firma_digital="N" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="702" etiqueta="DOC_MAN_CON" nombre="DOC_MANIF_CONT" descripcion="Documento de manifestación de la/s contraparte/s de haber intervenido en la identificación y formulación del proyecto y sus responsabilidades especificas en su ejecución." cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="N" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD20" fusionar="N" firma_digital="S" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="1634" etiqueta="DOC_PER_RES" nombre="DOC_ACRED_PERSONA_RESPONSABLE_PROY" descripcion="Documentación acreditativa de la persona responsable del proyecto IP de estar en posesión del título de contratado doctor y, en su caso, del grupo de investigación al que pertenece. (Proyectos de investigación e innovación)." cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="N" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD20" fusionar="N" firma_digital="S" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="1485" etiqueta="DOC_REL_CON" nombre="DOC_RELATIVA_CONTRAPARTES" descripcion="Documentación a la que se refiere el artículo 3.1 e) de la Orden, relativa a las contrapartes" cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="N" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD20" fusionar="N" firma_digital="S" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="863" etiqueta="DOC_SB_SO_U" nombre="DOCUMENTO_SUBSANACION_SOLI_UNIV" descripcion="Documento de subsanación de solicitud" cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="S" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD06" fusionar="N" firma_digital="N" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="1635" etiqueta="FOR_PRO_PRE" nombre="FORM_PROYECTO_PRESUPUESTO" descripcion="Formulario del proyecto, y su presupuesto" cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="N" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD20" fusionar="N" firma_digital="S" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="729" etiqueta="NoDefinido" nombre="NoDefinido" descripcion="Documentación voluntaria no catalogada" cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="N" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD20" fusionar="N" firma_digital="S" firma_dinamica="N" informacion_publica="N" tipo_firma="C"></TIPO_DOCUMENTO>
+<TIPO_DOCUMENTO id="708" etiqueta="SIS_ACT_INT" nombre="SIS_ACT_INT" descripcion="Sistematizaciones de actuaciones anteriores relacionadas con la intervención. (Proyectos de educación para el desarrollo)" cons_valida="N" ent_sal="E" inc_gen="I" multiple="N" fecha_firma="N" informar="S" archivable="N" versionable="N" reutilizable="N" registrable="S" notificable="N" administrativo="S" td_editable="S" modogen="R" clase_doc="G" tipo_eni="TD20" fusionar="N" firma_digital="S" firma_dinamica="N" informacion_publica="N" tipo_firma="-"></TIPO_DOCUMENTO>
+</TIPOS_DOCUMENTOS>
+<TAREAS>
+<TAREA id="1" nombre="ACUERDOS_EXP_FINANCIA_CONTRAPARTES" descripcion="Acuerdos expresos de la financiación de la contraparte, socios locales públicos o privados u otras organizaciones colaboradoras en el país o paises donde se vaya a desarrollar la intervención" tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="766"/>
+<TAREA id="2" nombre="SOLIC_SUBV_FINANC_PROY_COOP_INT" descripcion="Anexo 1: Solicitud de subvención a Universidades para la financiación de proyectos de cooperación internacional para el desarrollo" tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="1483"/>
+<TAREA id="3" nombre="ANEXO_FORMULACION" descripcion="Anexo: Documento de formulación del proyecto" tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="804"/>
+<TAREA id="4" nombre="ANEXO_MATRIZ" descripcion="Anexo: Matriz de planificación" tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="793"/>
+<TAREA id="5" nombre="ANEXO_PRESUPUESTO" descripcion="Anexo: Presupuesto desglosado y global (anexo V)" tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="805"/>
+<TAREA id="6" nombre="ANEXO_PRESUPUESTO_ACTIVIDADES" descripcion="Anexo: Presupuesto por actividades" tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="806"/>
+<TAREA id="7" nombre="AUT_CARTAS" descripcion="Autorizaciones, cartas de apoyo y cartas de compromiso" tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="823"/>
+<TAREA id="8" nombre="CONVENIOS" descripcion="Convenios de colaboración" tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="826"/>
+<TAREA id="9" nombre="DOC_ACR_CON_FIN" descripcion="Documentación acreditativa de la concesión de financiación de las administraciones o instituciones públicas o privadas cofinanciadas del proyecto distintas a las provenientes del país o paises donde se vaya a desarrollar el proyecto." tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="697"/>
+<TAREA id="10" nombre="CV_PER_INT" descripcion="CV del personal que va a llevar a cabo la intervención (Proyectos de educación para el desarrollo y formación, investigacion e innovación)" tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="698"/>
+<TAREA id="11" nombre="DGN_PRO" descripcion="Diagnósticos de la problemática. (Proyectos de educación parad el desarrollo)" tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="699"/>
+<TAREA id="12" nombre="DOC_ACR_GAS_IDN" descripcion="Documentación acreditativa de los gastos de identificación y formulación que se contiene en el artículo 10.1" tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="700"/>
+<TAREA id="13" nombre="DOC_ACU_PER_VOL" descripcion="Documento de acuerdo de incorporación de personal voluntario utilizado por la Entidad, así como compromiso de su suscrición y entrega a la AACID." tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="701"/>
+<TAREA id="15" nombre="DOCUMENTO_EXCLUSION_POS_SUBSANACION" descripcion="Documento de exclusión tras subsanación" tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="17033"/>
+<TAREA id="14" nombre="DOCUMENTO_EXCLUSION_DEFINITIVA_UNIV" descripcion="Tarea para la generación del documento de exclusión definitiva" tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="32323"/>
+<TAREA id="16" nombre="DOCUMENTO_EXCLUSION_PROVISIONAL_UNIV" descripcion="Documento de exclusión provisional" tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="16996"/>
+<TAREA id="17" nombre="DOC_MANIF_CONT" descripcion="Documento de manifestación de la/s contraparte/s de haber intervenido en la identificación y formulación del proyecto y sus responsabilidades especificas en su ejecución." tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="702"/>
+<TAREA id="18" nombre="DOC_ACRED_PERSONA_RESPONSABLE_PROY" descripcion="Documentación acreditativa de la persona responsable del proyecto IP de estar en posesión del título de contratado doctor y, en su caso, del grupo de investigación al que pertenece. (Proyectos de investigación e innovación)." tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="1634"/>
+<TAREA id="19" nombre="DOC_RELATIVA_CONTRAPARTES" descripcion="Documentación a la que se refiere el artículo 3.1 e) de la Orden, relativa a las contrapartes" tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="1485"/>
+<TAREA id="20" nombre="DOCUMENTO_SUBSANACION_SOLI_UNIV" descripcion="Documento de subsanación de solicitud" tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="863"/>
+<TAREA id="21" nombre="EXCL_TRAM" descripcion="Exclusión de no admisión a trámite de la solicitud" tipo="MANIPULAR_DATOS" tipodoc_bloque_id="73"/>
+<TAREA id="22" nombre="EXCL_POS_SU" descripcion="Exclusión de la solicitud tras la subsanación" tipo="MANIPULAR_DATOS" tipodoc_bloque_id="6239"/>
+<TAREA id="23" nombre="FORM_PROYECTO_PRESUPUESTO" descripcion="Formulario del proyecto, y su presupuesto" tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="1635"/>
+<TAREA id="25" nombre="GENERAR_EXC_POS_SUB" descripcion="Generar documento exclusión tras subsanación" tipo="MANIPULAR_DATOS" tipodoc_bloque_id="16467"/>
+<TAREA id="24" nombre="GENERAR_EXC_DEF_UNIV" descripcion="Tarea para incorporar documento de exclusion definitiva" tipo="MANIPULAR_DATOS" tipodoc_bloque_id="32281"/>
+<TAREA id="26" nombre="GENERAR_EXC_PROV" descripcion="Generar documento de exclusión provisional" tipo="MANIPULAR_DATOS" tipodoc_bloque_id="16464"/>
+<TAREA id="27" nombre="GENERAR_SUB_SOL_UNIV" descripcion="Generación de documento de subsanación" tipo="MANIPULAR_DATOS" tipodoc_bloque_id="6589"/>
+<TAREA id="28" nombre="NoDefinido" descripcion="Documentación voluntaria no catalogada" tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="729"/>
+<TAREA id="29" nombre="SIS_ACT_INT" descripcion="Sistematizaciones de actuaciones anteriores relacionadas con la intervención. (Proyectos de educación para el desarrollo)" tipo="INCORPORAR_DOCUMENTO" tipodoc_bloque_id="708"/>
+<TAREA id="30" nombre="SUBSANACIONES_VALORADOR" descripcion="Validación de la subsanación" tipo="MANIPULAR_DATOS" tipodoc_bloque_id="78"/>
+</TAREAS>
+<CONDICIONES>
+<CONDICION id="31144" nombre="COMPROBAR_FASES_PADRE" descripcion="CONDICION QUE COMPRUEBA LA FASE DEL EXPEDIENTE PADRE" param_ref_exp="N" param_ref_tran="N" param_ref_docper="N" param_ref_expxfas="S" param_ref_tipevo="N" param_ref_fecha="N" param_ref_usuario="N" param_ref_fase="N" param_ref_tipdoc="N" implementacion="J" paquete="es.juntadeandalucia.aacid.persistenciatramitacionagenda.condiciones.Condiciones" nombre_funcion="comprobarFasePadre" compleja="N"/>
+<CONDICION id="6316" nombre="COMPROBAR_EXCLUSIONES_SOLICITUD" descripcion="COMPRUEBA SI LA SOLICITUD TIENE EXCLUSIONES PENDIENTES" param_ref_exp="S" param_ref_tran="N" param_ref_docper="N" param_ref_expxfas="N" param_ref_tipevo="N" param_ref_fecha="N" param_ref_usuario="N" param_ref_fase="N" param_ref_tipdoc="N" implementacion="J" paquete="es.juntadeandalucia.aacid.persistenciatramitacionagenda.condiciones.Condiciones" nombre_funcion="comprobarExclusiones" compleja="N"/>
+<CONDICION id="25586" nombre="COMPROBAR_TIPODOC_EXC_NOT" descripcion="CONDICION QUE COMPRUEBA QUE EL DOCUMENTO DE EXCLUSION SE HAYA GENERADO" param_ref_exp="N" param_ref_tran="N" param_ref_docper="N" param_ref_expxfas="N" param_ref_tipevo="N" param_ref_fecha="N" param_ref_usuario="N" param_ref_fase="N" param_ref_tipdoc="N" implementacion="J" paquete="es.juntadeandalucia.aacid.persistenciatramitacionagenda.condiciones.Condiciones" nombre_funcion="comprobarNotificacionRequerimientoExclu" compleja="N"/>
+<CONDICION id="31131" nombre="COMPROBAR_EXCL_SUBV_SOLICITUD" descripcion="Funcion que comprueba que la solicitud no tenga exclusiones o subsanaciones relacionadas y, además, que las tareas de exclusion y subsanacion estén finalizadas." param_ref_exp="S" param_ref_tran="N" param_ref_docper="N" param_ref_expxfas="N" param_ref_tipevo="N" param_ref_fecha="N" param_ref_usuario="N" param_ref_fase="N" param_ref_tipdoc="N" implementacion="J" paquete="es.juntadeandalucia.aacid.persistenciatramitacionagenda.condiciones.Condiciones" nombre_funcion="compruebaExclSubsSolicitud" compleja="N"/>
+<CONDICION id="17359" nombre="COMPROBAR_SUBSANACIONES_SOLICITUD" descripcion="Comprobar subsanaciones de la solicitud" param_ref_exp="S" param_ref_tran="N" param_ref_docper="N" param_ref_expxfas="N" param_ref_tipevo="N" param_ref_fecha="N" param_ref_usuario="N" param_ref_fase="N" param_ref_tipdoc="N" implementacion="J" paquete="es.juntadeandalucia.aacid.persistenciatramitacionagenda.condiciones.Condiciones" nombre_funcion="comprobarSubsanaciones" compleja="N"/>
+<CONDICION id="18090" nombre="COMPROBAR_TIPODOC_SUBS_NOT" descripcion="Comprueba si el tipo de documento es notificable" param_ref_exp="S" param_ref_tran="N" param_ref_docper="N" param_ref_expxfas="N" param_ref_tipevo="N" param_ref_fecha="N" param_ref_usuario="N" param_ref_fase="N" param_ref_tipdoc="S" implementacion="J" paquete="es.juntadeandalucia.aacid.persistenciatramitacionagenda.condiciones.Condiciones" nombre_funcion="comprobarNotificacionRequerimientoSubsana" compleja="N"/>
+<CONDICION id="31149" nombre="COMPROBAR_NO_EXCLUSIONES_SOLICITUD" descripcion="COMPROBAR QUE EL EXPEDIENTE HAYA FINALIZADO LA TAREA DE EXCLUSIONES Y, ADEMÁS, QUE NO TENGA EXCLUSIONES SELECCIONADAS." param_ref_exp="S" param_ref_tran="N" param_ref_docper="N" param_ref_expxfas="N" param_ref_tipevo="N" param_ref_fecha="N" param_ref_usuario="N" param_ref_fase="N" param_ref_tipdoc="N" implementacion="J" paquete="es.juntadeandalucia.aacid.persistenciatramitacionagenda.condiciones.Condiciones" nombre_funcion="comprobarNoTieneExclusionesSolicitud" compleja="N"/>
+<CONDICION id="12" nombre="OBTENER_ESTADO_SUBSANACION" descripcion="OBTIENE EL ESTADO FINALIZADO DE LA TAREA SUBSANACIONES DEL VALORADOR" param_ref_exp="S" param_ref_tran="N" param_ref_docper="N" param_ref_expxfas="N" param_ref_tipevo="N" param_ref_fecha="N" param_ref_usuario="N" param_ref_fase="N" param_ref_tipdoc="N" implementacion="J" paquete="es.juntadeandalucia.aacid.comuntramitacion.condiciones.Condiciones" nombre_funcion="comprobarEstadoFinalizadaTareas" compleja="N"/>
+</CONDICIONES>
+<ACCIONES>
+<ACCION id="10600" nombre="INVOCAR_WS_TRA_VIEJO" descripcion="Invocación WS tramitador viejo" param_ref_exp="S" param_ref_tran="N" param_ref_docper="N" param_ref_expxfas="N" param_ref_tipevo="N" param_ref_fecha="N" param_ref_usuario="N" param_ref_fase="N" param_ref_tipdoc="N" implementacion="J" paquete="es.juntadeandalucia.aacid.tramitacionongd.acciones.Acciones" nombre_funcion="invocarWsTramitadorViejo"/>
+</ACCIONES>
+<METAFASES>
+<METAFASE id="377" nombre="CONTROL_ADMINISTRATIVO" descripcion="CONTROL_ADMINISTRATIVO" informar="N">
+<FASES>
+<FASE id="42025" nombre="Comprobacion requisitos subsanacion tras alegacion" descripcion="Fase de comprobacion de requisitos de subsanacion tras alegacion" informar="N" telematica="N" informacion_publica="N"></FASE>
+<FASE id="6974" nombre="Comprobación de requisitos de alegación" descripcion="Comprobación de requisitos de alegación" informar="N" telematica="N" informacion_publica="N"></FASE>
+<FASE id="691" nombre="Comprobación de requisitos de la solicitud" descripcion="Comprobación de requisitos de la solicitud" informar="N" telematica="N" informacion_publica="N"></FASE>
+<FASE id="7959" nombre="Comprobación requisitos subsanación" descripcion="Comprobación requisitos subsanación" informar="N" telematica="N" informacion_publica="N"></FASE>
+<FASE id="7452" nombre="Desestimación por requisitos" descripcion="Desestimación por requisitos" informar="N" telematica="N" informacion_publica="N"></FASE>
+<FASE id="7109" nombre="Desistimiento" descripcion="Desistimiento" informar="N" telematica="N" informacion_publica="N"></FASE>
+<FASE id="692" nombre="Requerimiento de subsanación" descripcion="Requerimiento de subsanación" informar="N" telematica="N" informacion_publica="N"></FASE>
+<FASE id="41783" nombre="Requerimiento de subsanación tras alegación" descripcion="Fase de comprobacion de requisitos de subsanacion tras alegacion" informar="N" telematica="N" informacion_publica="N"></FASE>
+<FASE id="6993" nombre="Resolución definitiva de exclusión" descripcion="Resolución definitiva de exclusión" informar="N" telematica="N" informacion_publica="N"></FASE>
+<FASE id="6829" nombre="Resolución provisional exclusión solicitud" descripcion="Resolución provisional exclusión solicitud" informar="N" telematica="N" informacion_publica="N"></FASE>
+<FASE id="7017" nombre="Valoración solicitud" descripcion="Valoración solicitud" informar="N" telematica="N" informacion_publica="N"></FASE>
+<FASE id="42081" nombre="Resolucion desestimadas por requisitos" descripcion="Fase de resolucion de desestimadas por requisitos" informar="N" telematica="N" informacion_publica="N"></FASE>
+<FASE id="7543" nombre="Resolución provisional exclusión subsanación" descripcion="Resolución provisional exclusión subsanación" informar="N" telematica="N" informacion_publica="N"></FASE>
+</FASES>
+</METAFASE>
+<METAFASE id="399" nombre="PRESENTACION_SOLICITUD_SUBVENCIONES_UNIVERSIDADES" descripcion="METAFASE DE PRESENTACIÓN TELEMÁTICA" informar="S">
+<FASES>
+<FASE id="41885" nombre="Recepcion, registro subsanacion uni tras alegac" descripcion="Fase de recepcion y registro de subsanacion en ONGD tras alegacion" informar="N" telematica="N" informacion_publica="N"></FASE>
+<FASE id="6941" nombre="Recepción, registro de alegación universidades" descripcion="Recepción, registro de alegación universidades" informar="N" telematica="N" informacion_publica="N"></FASE>
+<FASE id="693" nombre="Recepción, registro de la solicitud universidades" descripcion="Recepción, registro de la solicitud universidades" informar="S" telematica="S" informacion_publica="N"></FASE>
+<FASE id="7954" nombre="Recepción, registro de subsanación universidades" descripcion="Recepción, registro de subsanación universidades" informar="N" telematica="N" informacion_publica="N"></FASE>
+</FASES>
+</METAFASE>
+</METAFASES>
+<TRANSICIONES>
+<TRANSICION id="1167" etiqueta="com_req_sol" descripcion="Comprobación requisitos solicitud" tipo="N" valida="S" informar="N" etiq_larga="com_req_sol">
+<FASE_INI>
+<FASE_ID id="693"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="691"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="1169" etiqueta="tra_ini_tel" descripcion="Inicio telemático del expediente" tipo="I" valida="S" informar="N" etiq_larga="TRANSICION_INICIO_TELEM">
+<FASES_FIN>
+<FASE_ID id="693"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="47" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="6907" etiqueta="res_exc_sol" descripcion="Resolución provisional exclusión solicitud" tipo="N" valida="N" informar="N" etiq_larga="res_exc_sol">
+<FASE_INI>
+<FASE_ID id="691"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="6829"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="6960" etiqueta="rec_reg_ale" descripcion="Recepción, registro de alegación" tipo="N" valida="S" informar="N" etiq_larga="rec_reg_ale">
+<FASE_INI>
+<FASE_ID id="6829"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="6941"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+<PERFIL_TRANSICION perfil_id="52" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="6977" etiqueta="com_req_ale" descripcion="Comprobación de requisitos de alegación" tipo="N" valida="S" informar="N" etiq_larga="com_req_ale">
+<FASE_INI>
+<FASE_ID id="6941"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="6974"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="6996" etiqueta="res_def_exc" descripcion="Resolución definitiva de exlusión" tipo="N" valida="S" informar="N" etiq_larga="res_def_exc">
+<FASE_INI>
+<FASE_ID id="6974"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="6993"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="7020" etiqueta="val_solic" descripcion="Valoración solicitud" tipo="N" valida="N" informar="N" etiq_larga="val_solic">
+<FASE_INI>
+<FASE_ID id="6974"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="7017"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="7112" etiqueta="desis_uni_r" descripcion="Desistimiento" tipo="N" valida="S" informar="N" etiq_larga="desis_uni_r">
+<FASE_INI>
+<FASE_ID id="6941"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="7109"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+<PERFIL_TRANSICION perfil_id="52" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="7132" etiqueta="desis_uni_c" descripcion="Desistimiento" tipo="N" valida="N" informar="N" etiq_larga="desis_uni_c">
+<FASE_INI>
+<FASE_ID id="691"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="7109"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+<PERFIL_TRANSICION perfil_id="52" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="7397" etiqueta="val_solic" descripcion="Valoración solicitud" tipo="N" valida="N" informar="N" etiq_larga="val_solic">
+<FASE_INI>
+<FASE_ID id="691"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="7017"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="7754" etiqueta="req_sub" descripcion="Requerimiento de subsanación" tipo="N" valida="N" informar="N" etiq_larga="req_sub">
+<FASE_INI>
+<FASE_ID id="691"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="692"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+<PERFIL_TRANSICION perfil_id="52" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="8033" etiqueta="rec_reg_sub" descripcion="Recepción registro de subsanación" tipo="N" valida="S" informar="N" etiq_larga="rec_reg_sub">
+<FASE_INI>
+<FASE_ID id="692"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="7954"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+<PERFIL_TRANSICION perfil_id="52" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="8149" etiqueta="com_req_sub" descripcion="Comprobación requisitos subsanación" tipo="N" valida="S" informar="N" etiq_larga="com_req_sub">
+<FASE_INI>
+<FASE_ID id="7954"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="7959"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+<PERFIL_TRANSICION perfil_id="52" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="8354" etiqueta="val_solic" descripcion="Valoración solicitud" tipo="N" valida="N" informar="N" etiq_larga="val_solic">
+<FASE_INI>
+<FASE_ID id="7959"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="7017"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="8442" etiqueta="desis_uni_r" descripcion="Desistimiento" tipo="N" valida="S" informar="N" etiq_larga="desis_uni_r">
+<FASE_INI>
+<FASE_ID id="7954"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="7109"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+<PERFIL_TRANSICION perfil_id="52" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="10369" etiqueta="des_req" descripcion="Desestimación por requisitos" tipo="N" valida="S" informar="N" etiq_larga="des_req">
+<FASE_INI>
+<FASE_ID id="6941"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="7452"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+<PERFIL_TRANSICION perfil_id="52" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="10409" etiqueta="des_req" descripcion="Desestimación por requisitos" tipo="N" valida="S" informar="N" etiq_larga="des_req">
+<FASE_INI>
+<FASE_ID id="7954"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="7452"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+<PERFIL_TRANSICION perfil_id="52" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="31673" etiqueta="res_pro_exc" descripcion="Resolución provisional exclusión subsanación" tipo="N" valida="S" informar="N" etiq_larga="res_pro_exc">
+<FASE_INI>
+<FASE_ID id="7959"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="6829"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+<PERFIL_TRANSICION perfil_id="52" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="41786" etiqueta="res_sub_ale" descripcion="Transicion desde &apos;Comprobacion de requisitos de alegacion&apos; a &apos;Comprobacion requisitos subsanacion tras alegacion&apos;" tipo="N" valida="S" informar="N">
+<FASE_INI>
+<FASE_ID id="6974"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="41783"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="52" permiso="A"/>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="41891" etiqueta="rg_s_ale_on" descripcion="Transicion con origen en la fase &apos;Requerimiento de subsanación tras alegacion&apos; y fin &apos;Recepcion, registro subsanacion ONGD tras alegacion." tipo="N" valida="S" informar="N">
+<FASE_INI>
+<FASE_ID id="41783"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="41885"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+<PERFIL_TRANSICION perfil_id="52" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="41976" etiqueta="desis_uni_r" descripcion="Transicion hasta desistimiento" tipo="N" valida="S" informar="N" etiq_larga="desis_uni_r">
+<FASE_INI>
+<FASE_ID id="41885"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="7109"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+<PERFIL_TRANSICION perfil_id="52" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="42031" etiqueta="c_s_ale_ong" descripcion="Transicion desde la fase &apos;Recepcion,registro subsanacion ONGD tras alegacion&apos; a la fase final &apos;Comprobacion requisitos subsanacion tras alegacion&apos;." tipo="N" valida="S" informar="N">
+<FASE_INI>
+<FASE_ID id="41885"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="42025"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+<PERFIL_TRANSICION perfil_id="52" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="42087" etiqueta="c_r_des_ong" descripcion="Transicion que va desde &apos;Comprobacion requisitos subsanacion tras alegacion&apos; a &apos;Resolucion desestimadas por requisitos&apos;." tipo="N" valida="S" informar="N">
+<FASE_INI>
+<FASE_ID id="42025"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="42081"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+<TRANSICION id="42145" etiqueta="v_so_al_ong" descripcion="Transicion desde la fase &apos;Comprobacion requisitos subsanacion tras alegacion&apos; a la fase final &apos;Valoracion solicitud&apos;." tipo="N" valida="N" informar="N">
+<FASE_INI>
+<FASE_ID id="42025"/>
+</FASE_INI>
+<FASES_FIN>
+<FASE_ID id="7017"/>
+</FASES_FIN>
+<PERMISOS_TRAMITACION>
+<PERFIL_TRANSICION perfil_id="54" permiso="A"/>
+</PERMISOS_TRAMITACION></TRANSICION>
+</TRANSICIONES>
+<TAREAS_FASE>
+<TAREA_FASE id="1" etiqueta="ACU_EXP_FIN" descripcion="Acuerdos expresos de la financiación de la contraparte, socios locales públicos o privados u otras organizaciones colaboradoras en el país o paises donde se vaya a desarrollar la intervención" obligatoria="N" tarea_id="1" fase_id="693" valida="S" informar="S">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="47" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="2" etiqueta="ANX_FIN_PRO" descripcion="Anexo 1: Solicitud de subvención a Universidades para la financiación de proyectos de cooperación internacional para el desarrollo" obligatoria="N" tarea_id="2" fase_id="693" valida="S" informar="S">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="47" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="3" etiqueta="ANX_FORM" descripcion="Anexo: Documento de formulación del proyecto" obligatoria="N" tarea_id="3" fase_id="693" valida="S" informar="S">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="47" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="4" etiqueta="ANX_MATRIZ" descripcion="Anexo: Matriz de planificación" obligatoria="N" tarea_id="4" fase_id="693" valida="S" informar="S">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="47" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="5" etiqueta="ANX_PRESU" descripcion="Anexo: Presupuesto desglosado y global (anexo V)" obligatoria="N" tarea_id="5" fase_id="693" valida="S" informar="S">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="47" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="6" etiqueta="ANX_PRESU_A" descripcion="Anexo: Presupuesto por actividades" obligatoria="N" tarea_id="6" fase_id="693" valida="S" informar="S">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="47" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="7" etiqueta="AUT_CARTAS" descripcion="Autorizaciones, cartas de apoyo y cartas de compromiso" obligatoria="N" tarea_id="7" fase_id="693" valida="S" informar="S">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="47" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="8" etiqueta="CONVENIOS" descripcion="Convenios de colaboración" obligatoria="N" tarea_id="8" fase_id="693" valida="S" informar="S">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="47" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="9" etiqueta="CON_FIN_ACU" descripcion="Documentación acreditativa de la concesión de financiación de las administraciones o instituciones públicas o privadas cofinanciadas del proyecto distintas a las provenientes del país o paises donde se vaya a desarrollar el proyecto." obligatoria="N" tarea_id="9" fase_id="693" valida="S" informar="S">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="47" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="10" etiqueta="CV_PER_INT" descripcion="CV del personal que va a llevar a cabo la intervención (Proyectos de educación para el desarrollo y formación, investigacion e innovación)" obligatoria="N" tarea_id="10" fase_id="693" valida="S" informar="S">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="47" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="11" etiqueta="DGN_PRO" descripcion="Diagnósticos de la problemática. (Proyectos de educación parad el desarrollo)" obligatoria="N" tarea_id="11" fase_id="693" valida="S" informar="S">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="47" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="12" etiqueta="DOC_ACR_GID" descripcion="Documentación acreditativa de los gastos de identificación y formulación que se contiene en el artículo 10.1" obligatoria="N" tarea_id="12" fase_id="693" valida="S" informar="S">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="47" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="13" etiqueta="DOC_AC_PVOL" descripcion="Documento de acuerdo de incorporación de personal voluntario utilizado por la Entidad, así como compromiso de su suscrición y entrega a la AACID." obligatoria="N" tarea_id="13" fase_id="693" valida="S" informar="S">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="47" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="15" etiqueta="DOC_EXC_POS" descripcion="Documento de exclusión tras subsanación" obligatoria="S" tarea_id="15" fase_id="7543" valida="S" informar="N">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="54" permiso="T"/><PERFIL_TAREA perfil_id="55" permiso="T"/><PERFIL_TAREA perfil_id="52" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="14" etiqueta="DOC_EX_DE_U" descripcion="Tarea para la generación del documento de exclusión definitiva" obligatoria="S" tarea_id="14" fase_id="6993" valida="S" informar="N">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="54" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="16" etiqueta="DOC_EX_PR_U" descripcion="Documento de exclusión provisional" obligatoria="S" tarea_id="16" fase_id="6829" valida="S" informar="N">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="52" permiso="T"/><PERFIL_TAREA perfil_id="54" permiso="T"/><PERFIL_TAREA perfil_id="55" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="17" etiqueta="DOC_MAN_CON" descripcion="Documento de manifestación de la/s contraparte/s de haber intervenido en la identificación y formulación del proyecto y sus responsabilidades especificas en su ejecución." obligatoria="N" tarea_id="17" fase_id="693" valida="S" informar="S">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="47" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="18" etiqueta="DOC_PER_RES" descripcion="Documentación acreditativa de la persona responsable del proyecto IP de estar en posesión del título de contratado doctor y, en su caso, del grupo de investigación al que pertenece. (Proyectos de investigación e innovación)." obligatoria="N" tarea_id="18" fase_id="693" valida="S" informar="S">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="47" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="19" etiqueta="DOC_REL_CON" descripcion="Documentación a la que se refiere el artículo 3.1 e) de la Orden, relativa a las contrapartes" obligatoria="N" tarea_id="19" fase_id="693" valida="S" informar="S">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="47" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="20" etiqueta="DOC_SB_SO_U" descripcion="Documento de subsanación de solicitud" obligatoria="S" tarea_id="20" fase_id="692" valida="S" informar="N">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="54" permiso="T"/><PERFIL_TAREA perfil_id="52" permiso="T"/><PERFIL_TAREA perfil_id="55" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="21" etiqueta="EXCL_TRAM_U" descripcion="Exclusión de no admisión a trámite de la solicitud" obligatoria="S" tarea_id="21" fase_id="691" valida="S" informar="N">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="52"/><PERFIL_TAREA perfil_id="54"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="22" etiqueta="EXC_POS_UNI" descripcion="Exclusión de la solicitud tras la subsanación" obligatoria="S" tarea_id="22" fase_id="7959" valida="S" informar="N">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="54"/><PERFIL_TAREA perfil_id="52"/><PERFIL_TAREA perfil_id="55"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="23" etiqueta="FOR_PRO_PRE" descripcion="Formulario del proyecto, y su presupuesto" obligatoria="N" tarea_id="23" fase_id="693" valida="S" informar="S">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="47" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="25" etiqueta="GEN_EXC_POS" descripcion="Generar documento exclusión tras subsanación" obligatoria="N" tarea_id="25" fase_id="7543" valida="S" informar="N">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="54"/><PERFIL_TAREA perfil_id="55"/><PERFIL_TAREA perfil_id="52"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="24" etiqueta="GEN_EX_DE_U" descripcion="Tarea para incorporar documento de exclusion definitiva" obligatoria="S" tarea_id="24" fase_id="6993" valida="S" informar="N">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="54"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="26" etiqueta="GEN_EX_PR_U" descripcion="Generar documento de exclusión provisional" obligatoria="S" tarea_id="26" fase_id="6829" valida="S" informar="N">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="54"/><PERFIL_TAREA perfil_id="52"/><PERFIL_TAREA perfil_id="55"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="27" etiqueta="GEN_SUB_UNI" descripcion="Generación de documento de subsanación" obligatoria="N" tarea_id="27" fase_id="692" valida="S" informar="N">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="54"/><PERFIL_TAREA perfil_id="52"/><PERFIL_TAREA perfil_id="55"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="28" etiqueta="NoDefinido" descripcion="Documento de libre aportación" obligatoria="N" tarea_id="28" fase_id="693" valida="S" informar="S">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="47" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="29" etiqueta="SIS_ACT_INT" descripcion="Sistematizaciones de actuaciones anteriores relacionadas con la intervención. (Proyectos de educación para el desarrollo)" obligatoria="N" tarea_id="29" fase_id="693" valida="S" informar="S">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="47" permiso="T"/></PERMISOS_TRAMITACION>
+</TAREA_FASE><TAREA_FASE id="30" etiqueta="SUB_VAL_U" descripcion="Validación de la subsanación" obligatoria="N" tarea_id="30" fase_id="691" valida="S" informar="N">
+<PERMISOS_TRAMITACION>
+<PERFIL_TAREA perfil_id="54"/></PERMISOS_TRAMITACION>
+</TAREA_FASE>
+</TAREAS_FASE>
+<CONDICIONES_TRAMITACION>
+<CONDICIONES_TRANSICION>
+<CONDICION_TRANSICION id="31224" obligatoria="S" condicion_id="31144" transicion_id="1167" comprobar="A" mostrar_msj="A" valida="S"/>
+<CONDICION_TRANSICION id="13190" obligatoria="S" condicion_id="6316" transicion_id="6907" comprobar="A" mostrar_msj="A" valida="S"/>
+<CONDICION_TRANSICION id="18189" obligatoria="S" condicion_id="31144" transicion_id="6960" comprobar="A" mostrar_msj="A" valida="S"/>
+<CONDICION_TRANSICION id="31877" obligatoria="N" condicion_id="25586" transicion_id="6960" comprobar="A" mostrar_msj="A" valida="S"/>
+<CONDICION_TRANSICION id="31971" obligatoria="S" condicion_id="31144" transicion_id="6977" comprobar="A" mostrar_msj="A" valida="S"/>
+<CONDICION_TRANSICION id="32168" obligatoria="S" condicion_id="6316" transicion_id="6996" comprobar="A" mostrar_msj="A" valida="S"/>
+<CONDICION_TRANSICION id="32176" obligatoria="S" condicion_id="31144" transicion_id="6996" comprobar="A" mostrar_msj="A" valida="S"/>
+<CONDICION_TRANSICION id="32065" obligatoria="S" condicion_id="31131" transicion_id="7020" comprobar="A" mostrar_msj="A" valida="S"/>
+<CONDICION_TRANSICION id="17391" obligatoria="S" condicion_id="31131" transicion_id="7397" comprobar="A" mostrar_msj="A" valida="S"/>
+<CONDICION_TRANSICION id="17394" obligatoria="S" condicion_id="17359" transicion_id="7754" comprobar="A" mostrar_msj="A" valida="S"/>
+<CONDICION_TRANSICION id="18231" obligatoria="N" condicion_id="18090" transicion_id="8033" comprobar="A" mostrar_msj="A" valida="S"/>
+<CONDICION_TRANSICION id="31413" obligatoria="S" condicion_id="31144" transicion_id="8033" comprobar="A" mostrar_msj="A" valida="S"/>
+<CONDICION_TRANSICION id="13148" obligatoria="S" condicion_id="31149" transicion_id="8354" comprobar="A" mostrar_msj="A" valida="S"/>
+<CONDICION_TRANSICION id="31777" obligatoria="N" condicion_id="31144" transicion_id="8354" comprobar="A" mostrar_msj="A" valida="S"/>
+<CONDICION_TRANSICION id="31676" obligatoria="S" condicion_id="6316" transicion_id="31673" comprobar="A" mostrar_msj="A" valida="S"/>
+<CONDICION_TRANSICION id="41789" obligatoria="S" condicion_id="31149" transicion_id="41786" comprobar="A" mostrar_msj="A" valida="S"/>
+<CONDICION_TRANSICION id="41836" obligatoria="S" condicion_id="17359" transicion_id="41786" comprobar="A" mostrar_msj="A" valida="S"/>
+<CONDICION_TRANSICION id="42090" obligatoria="S" condicion_id="6316" transicion_id="42087" comprobar="A" mostrar_msj="A" valida="S"/>
+<CONDICION_TRANSICION id="42148" obligatoria="S" condicion_id="31149" transicion_id="42145" comprobar="A" mostrar_msj="A" valida="S"/>
+</CONDICIONES_TRANSICION>
+<CONDICIONES_TAREA>
+<CONDICION_TAREA id="19078" obligatoria="N" condicion_id="12" tareafase_id="25" comprobar="I" mostrar_msj="A" valida="S"/>
+<CONDICION_TAREA id="19073" obligatoria="N" condicion_id="12" tareafase_id="26" comprobar="I" mostrar_msj="A" valida="S"/>
+<CONDICION_TAREA id="8953" obligatoria="N" condicion_id="12" tareafase_id="27" comprobar="I" mostrar_msj="A" valida="S"/>
+<CONDICION_TAREA id="38090" obligatoria="S" condicion_id="31149" tareafase_id="30" comprobar="I" mostrar_msj="A" valida="S"/>
+</CONDICIONES_TAREA>
+</CONDICIONES_TRAMITACION>
+<ACCIONES_TRAMITACION>
+<ACCIONES_TRANSICION>
+<ACCION_TRANSICION  id="10644" accion_id="10600" transicion_id="8033" comprobar="A" mostrar_msj="A" valida="N"/>
+</ACCIONES_TRANSICION>
+</ACCIONES_TRAMITACION>
+<RAZONES_INTERES_DOCUMENTOS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="1" razoninteres_id="1" tareafase_id="1" cardinalidad_minima="0" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+<RAZON_INTERES_TAREA id="21" razoninteres_id="2" tareafase_id="1" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="19" razoninteres_id="1" tareafase_id="2" cardinalidad_minima="0" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+<RAZON_INTERES_TAREA id="36" razoninteres_id="2" tareafase_id="2" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="18" razoninteres_id="1" tareafase_id="3" cardinalidad_minima="0" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+<RAZON_INTERES_TAREA id="34" razoninteres_id="2" tareafase_id="3" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="17" razoninteres_id="1" tareafase_id="4" cardinalidad_minima="0" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+<RAZON_INTERES_TAREA id="32" razoninteres_id="2" tareafase_id="4" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="16" razoninteres_id="1" tareafase_id="5" cardinalidad_minima="0" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+<RAZON_INTERES_TAREA id="30" razoninteres_id="2" tareafase_id="5" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="15" razoninteres_id="1" tareafase_id="6" cardinalidad_minima="0" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+<RAZON_INTERES_TAREA id="28" razoninteres_id="2" tareafase_id="6" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="14" razoninteres_id="1" tareafase_id="7" cardinalidad_minima="0" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+<RAZON_INTERES_TAREA id="26" razoninteres_id="2" tareafase_id="7" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="13" razoninteres_id="1" tareafase_id="8" cardinalidad_minima="0" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+<RAZON_INTERES_TAREA id="24" razoninteres_id="2" tareafase_id="8" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="12" razoninteres_id="1" tareafase_id="9" cardinalidad_minima="0" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+<RAZON_INTERES_TAREA id="22" razoninteres_id="2" tareafase_id="9" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="2" razoninteres_id="1" tareafase_id="10" cardinalidad_minima="0" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+<RAZON_INTERES_TAREA id="20" razoninteres_id="2" tareafase_id="10" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="11" razoninteres_id="1" tareafase_id="11" cardinalidad_minima="0" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+<RAZON_INTERES_TAREA id="35" razoninteres_id="2" tareafase_id="11" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="10" razoninteres_id="1" tareafase_id="12" cardinalidad_minima="0" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+<RAZON_INTERES_TAREA id="31" razoninteres_id="2" tareafase_id="12" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="9" razoninteres_id="1" tareafase_id="13" cardinalidad_minima="0" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+<RAZON_INTERES_TAREA id="27" razoninteres_id="2" tareafase_id="13" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="17171" razoninteres_id="2" tareafase_id="15" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="17162" razoninteres_id="2" tareafase_id="16" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="8" razoninteres_id="1" tareafase_id="17" cardinalidad_minima="0" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+<RAZON_INTERES_TAREA id="23" razoninteres_id="2" tareafase_id="17" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="7" razoninteres_id="1" tareafase_id="18" cardinalidad_minima="0" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+<RAZON_INTERES_TAREA id="33" razoninteres_id="2" tareafase_id="18" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="6" razoninteres_id="1" tareafase_id="19" cardinalidad_minima="0" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+<RAZON_INTERES_TAREA id="25" razoninteres_id="2" tareafase_id="19" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="11039" razoninteres_id="2" tareafase_id="20" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="5" razoninteres_id="1" tareafase_id="23" cardinalidad_minima="0" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+<RAZON_INTERES_TAREA id="29" razoninteres_id="2" tareafase_id="23" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="4" razoninteres_id="1" tareafase_id="28" cardinalidad_minima="0" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+<RAZON_INTERES_TAREA id="37" razoninteres_id="2" tareafase_id="28" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+<RAZONES_INTERES_TAREAS>
+<RAZON_INTERES_TAREA id="3" razoninteres_id="1" tareafase_id="29" cardinalidad_minima="0" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+<RAZON_INTERES_TAREA id="38" razoninteres_id="2" tareafase_id="29" cardinalidad_minima="1" cardinalidad_maxima="1" firma_minima="0" firma_maxima="1" editar="S" telematica="S"/>
+</RAZONES_INTERES_TAREAS>
+</RAZONES_INTERES_DOCUMENTOS>
+<ORGANISMOS>
+<ORGANISMO id="1" codigo="AACID" nombre="Agencia Andaluza de Cooperación" nombre_largo="Agencia Andaluza de Cooperación Internacional para el Desarrollo" tipo="SC"/>
+</ORGANISMOS>
+<DEFPROC_GR id="332" titulo="Subvenciones a las Universidades de Andalucía">
+<GRAFICOS_METAFASE>
+<METAFASE_GR id="42085" metafase_id="377" xizq="0" yarr="0" ancho="50" alto="50" color_fondo="-39322" color_texto="-16777216"></METAFASE_GR>
+<METAFASE_GR id="41889" metafase_id="399" xizq="0" yarr="0" ancho="50" alto="50" color_fondo="-205" color_texto="-16777216"></METAFASE_GR>
+</GRAFICOS_METAFASE>
+<GRAFICOS_EXTREMOS_TRANSICION>
+<EXTREMOTRAN_GR id="3259" tipo="FA" fase_id="692" xizq="-14" yarr="-487" ancho="338" alto="113"/>
+<EXTREMOTRAN_GR id="3262" tipo="FA" fase_id="693" xizq="-567" yarr="-1190" ancho="383" alto="132"/>
+<EXTREMOTRAN_GR id="3261" tipo="FA" fase_id="691" xizq="-565" yarr="-893" ancho="394" alto="121"/>
+<EXTREMOTRAN_GR id="3260" tipo="I" fase_id="693" xizq="-399" yarr="-1380" ancho="53" alto="53"/>
+<EXTREMOTRAN_GR id="6831" tipo="FA" fase_id="6829" xizq="-1" yarr="-893" ancho="336" alto="119"/>
+<EXTREMOTRAN_GR id="6943" tipo="FA" fase_id="6941" xizq="529" yarr="-894" ancho="308" alto="118"/>
+<EXTREMOTRAN_GR id="6976" tipo="FA" fase_id="6974" xizq="1057" yarr="-891" ancho="289" alto="112"/>
+<EXTREMOTRAN_GR id="6995" tipo="FA" fase_id="6993" xizq="1057" yarr="-1123" ancho="311" alto="99"/>
+<EXTREMOTRAN_GR id="7019" tipo="FA" fase_id="7017" xizq="-562" yarr="-405" ancho="371" alto="107"/>
+<EXTREMOTRAN_GR id="7111" tipo="FA" fase_id="7109" xizq="527" yarr="-1314" ancho="307" alto="113"/>
+<EXTREMOTRAN_GR id="7454" tipo="FA" fase_id="7452" xizq="-2" yarr="-683" ancho="335" alto="102"/>
+<EXTREMOTRAN_GR id="7956" tipo="FA" fase_id="7954" xizq="476" yarr="-493" ancho="279" alto="117"/>
+<EXTREMOTRAN_GR id="7961" tipo="FA" fase_id="7959" xizq="855" yarr="-498" ancho="330" alto="123"/>
+<EXTREMOTRAN_GR id="41785" tipo="FA" fase_id="41783" xizq="1505" yarr="-880" ancho="316" alto="107"/>
+<EXTREMOTRAN_GR id="41890" tipo="FA" fase_id="41885" xizq="1965" yarr="-879" ancho="290" alto="104"/>
+<EXTREMOTRAN_GR id="42030" tipo="FA" fase_id="42025" xizq="2381" yarr="-870" ancho="284" alto="105"/>
+<EXTREMOTRAN_GR id="42086" tipo="FA" fase_id="42081" xizq="2383" yarr="-1173" ancho="293" alto="101"/>
+</GRAFICOS_EXTREMOS_TRANSICION>
+<GRAFICOS_TRANSICION>
+<TRANSICION_GR id="3030" transicion_id="1167" extremotran_ini="3262" extremotran_fin="3261" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73556" x="-376" y="-1058" orden="0"/><NODO_TRANGR id="73557" x="-374" y="-893" orden="1"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="3032" transicion_id="1169" extremotran_ini="3260" extremotran_fin="3262" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73558" x="-372" y="-1327" orden="0"/><NODO_TRANGR id="73559" x="-373" y="-1190" orden="1"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="6908" transicion_id="6907" extremotran_ini="3261" extremotran_fin="6831" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73560" x="-171" y="-834" orden="0"/><NODO_TRANGR id="73561" x="-1" y="-834" orden="1"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="6961" transicion_id="6960" extremotran_ini="6831" extremotran_fin="6943" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73562" x="335" y="-832" orden="0"/><NODO_TRANGR id="73563" x="529" y="-832" orden="1"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="6978" transicion_id="6977" extremotran_ini="6943" extremotran_fin="6976" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73564" x="837" y="-837" orden="0"/><NODO_TRANGR id="73565" x="1057" y="-836" orden="1"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="6997" transicion_id="6996" extremotran_ini="6976" extremotran_fin="6995" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73566" x="1219" y="-891" orden="0"/><NODO_TRANGR id="73567" x="1219" y="-1024" orden="1"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="7021" transicion_id="7020" extremotran_ini="6976" extremotran_fin="7019" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73568" x="1218" y="-779" orden="0"/><NODO_TRANGR id="73569" x="1226" y="-362" orden="1"/><NODO_TRANGR id="73570" x="-191" y="-367" orden="2"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="7113" transicion_id="7112" extremotran_ini="6943" extremotran_fin="7111" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73571" x="690" y="-894" orden="0"/><NODO_TRANGR id="73572" x="691" y="-1201" orden="1"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="7133" transicion_id="7132" extremotran_ini="3261" extremotran_fin="7111" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73573" x="-171" y="-883" orden="0"/><NODO_TRANGR id="73574" x="527" y="-1230" orden="1"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="7398" transicion_id="7397" extremotran_ini="3261" extremotran_fin="7019" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73575" x="-379" y="-772" orden="0"/><NODO_TRANGR id="73576" x="-381" y="-405" orden="1"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="7755" transicion_id="7754" extremotran_ini="3261" extremotran_fin="3259" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73577" x="-265" y="-772" orden="0"/><NODO_TRANGR id="73578" x="-265" y="-436" orden="1"/><NODO_TRANGR id="73579" x="-14" y="-433" orden="2"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="8034" transicion_id="8033" extremotran_ini="3259" extremotran_fin="7956" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73580" x="324" y="-429" orden="0"/><NODO_TRANGR id="73581" x="476" y="-432" orden="1"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="8150" transicion_id="8149" extremotran_ini="7956" extremotran_fin="7961" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73582" x="755" y="-426" orden="0"/><NODO_TRANGR id="73583" x="855" y="-425" orden="1"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="8355" transicion_id="8354" extremotran_ini="7961" extremotran_fin="7019" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73584" x="1019" y="-375" orden="0"/><NODO_TRANGR id="73585" x="1019" y="-340" orden="1"/><NODO_TRANGR id="73586" x="-191" y="-340" orden="2"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="8443" transicion_id="8442" extremotran_ini="7956" extremotran_fin="7111" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73587" x="617" y="-376" orden="0"/><NODO_TRANGR id="73588" x="617" y="-307" orden="1"/><NODO_TRANGR id="73589" x="1401" y="-307" orden="2"/><NODO_TRANGR id="73590" x="1400" y="-1255" orden="3"/><NODO_TRANGR id="73591" x="834" y="-1255" orden="4"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="10370" transicion_id="10369" extremotran_ini="6943" extremotran_fin="7454" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73592" x="595" y="-776" orden="0"/><NODO_TRANGR id="73593" x="595" y="-668" orden="1"/><NODO_TRANGR id="73594" x="333" y="-666" orden="2"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="10410" transicion_id="10409" extremotran_ini="7956" extremotran_fin="7454" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73595" x="597" y="-493" orden="0"/><NODO_TRANGR id="73596" x="595" y="-602" orden="1"/><NODO_TRANGR id="73597" x="333" y="-601" orden="2"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="31674" transicion_id="31673" extremotran_ini="7961" extremotran_fin="6831" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73598" x="1008" y="-498" orden="0"/><NODO_TRANGR id="73599" x="1010" y="-538" orden="1"/><NODO_TRANGR id="73600" x="-157" y="-538" orden="2"/><NODO_TRANGR id="73601" x="-157" y="-734" orden="3"/><NODO_TRANGR id="73602" x="145" y="-733" orden="4"/><NODO_TRANGR id="73603" x="145" y="-774" orden="5"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="41787" transicion_id="41786" extremotran_ini="6976" extremotran_fin="41785" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73604" x="1346" y="-822" orden="0"/><NODO_TRANGR id="73605" x="1505" y="-822" orden="1"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="41892" transicion_id="41891" extremotran_ini="41785" extremotran_fin="41890" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73606" x="1821" y="-826" orden="0"/><NODO_TRANGR id="73607" x="1965" y="-825" orden="1"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="41977" transicion_id="41976" extremotran_ini="41890" extremotran_fin="7111" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73608" x="2104" y="-879" orden="0"/><NODO_TRANGR id="73609" x="2097" y="-1359" orden="1"/><NODO_TRANGR id="73610" x="685" y="-1361" orden="2"/><NODO_TRANGR id="73611" x="685" y="-1314" orden="3"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="42032" transicion_id="42031" extremotran_ini="41890" extremotran_fin="42030" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73612" x="2255" y="-826" orden="0"/><NODO_TRANGR id="73613" x="2381" y="-825" orden="1"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="42088" transicion_id="42087" extremotran_ini="42030" extremotran_fin="42086" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73614" x="2521" y="-870" orden="0"/><NODO_TRANGR id="73615" x="2522" y="-1072" orden="1"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+<TRANSICION_GR id="42146" transicion_id="42145" extremotran_ini="42030" extremotran_fin="7019" color_linea="-16777216" color_texto="-16777216">
+<NODOS_TRANSICION>
+<NODO_TRANGR id="73616" x="2520" y="-765" orden="0"/><NODO_TRANGR id="73617" x="2524" y="-324" orden="1"/><NODO_TRANGR id="73618" x="-191" y="-321" orden="2"/>
+</NODOS_TRANSICION>
+</TRANSICION_GR>
+</GRAFICOS_TRANSICION>
+<GRAFICOS_POST_IT>
+</GRAFICOS_POST_IT>
+</DEFPROC_GR>
+</DEF_PROCEDIMIENTO>

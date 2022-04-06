@@ -1,0 +1,14 @@
+UPDATE AACI_T_SOLICITUDSUBONGD ats SET lg_checktipo3 = 0, lg_checktipo4 = 1 where nu_numexpediente = 1;
+UPDATE AACI_T_SOLICITUDSUBONGD ats SET lg_checktipo3 = 1, lg_checktipo4 = 0 where nu_numexpediente = 2;
+UPDATE AACI_T_SOLICITUDSUBONGD ats SET lg_checktipo3 = 0, lg_checktipo4 = 1 where nu_numexpediente = 3;
+UPDATE AACI_T_SOLICITUDSUBONGD ats SET lg_checktipo3 = 1, lg_checktipo4 = 0 where nu_numexpediente = 4;
+UPDATE AACI_T_SOLICITUDSUBONGD ats SET lg_checktipo3 = 1, lg_checktipo4 = 0 where nu_numexpediente = 9;
+UPDATE AACI_T_SOLICITUDSUBONGD ats SET lg_checktipo3 = 0, lg_checktipo4 = 1 where nu_numexpediente = 27;
+UPDATE AACI_T_SOLICITUDSUBONGD ats SET lg_checktipo3 = 1, lg_checktipo4 = 0 where nu_numexpediente = 40;
+UPDATE AACI_T_SOLICITUDSUBONGD ats SET lg_checktipo3 = 0, lg_checktipo4 = 1 where nu_numexpediente = 41;
+UPDATE AACI_T_SOLICITUDSUBONGD ats SET lg_checktipo3 = 1, lg_checktipo4 = 0 where nu_numexpediente = 124;
+UPDATE AACI_T_SOLICITUDSUBONGD ats SET lg_checktipo3 = 0, lg_checktipo4 = 1 where nu_numexpediente = 125;
+UPDATE AACI_T_SOLICITUDSUBONGD ats SET lg_checktipo3 = 0, lg_checktipo4 = 1 where nu_numexpediente = 129;
+UPDATE AACI_T_SOLICITUDSUBONGD ats SET lg_checktipo3 = 1, lg_checktipo4 = 0 where nu_numexpediente = 130;
+UPDATE AACI_T_SOLICITUDSUBONGD ats SET lg_checktipo3 = 0, lg_checktipo4 = 1 where nu_numexpediente = 135;
+UPDATE AACI_T_SOLICITUDSUBONGD ats SET lg_checktipo3 = 1, lg_checktipo4 = 0 where nu_numexpediente = 146;

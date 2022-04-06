@@ -1,0 +1,7 @@
+Instrucciones para la instalación del portletDatosExpedientes: 
+
+Sustituir los siguientes ficheros:
+ - escritorioPestana.js. Este está localizado en" ptwanda-web.war\modulos\comun\js\escritorio"
+ - funcAgenda.js. Este está localizado en "ptwanda-web.war\modulos\comun\js"
+ - funcTareas.js. Este está localizado en "ptwanda-web.war\modulos\comun\js"
+ - reserva_expediente.jsp. Este está localizado en "ptwanda-web.war\modulos\reserva"

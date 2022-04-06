@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>es.juntadeandalucia.aacid</groupId>
+  <artifactId>tramitadorAgenda</artifactId>
+  <version>1.9.4</version>
+  <packaging>pom</packaging>
+  <name>modulos y tareas tramitador agenda</name>
+  <description>proyecto padre para los módulos y tareas de PTWanda</description>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <modules>
+    <module>comunTramitacion</module>
+    <module>persistenciaTramitadorAgenda</module>
+    <module>tramitacionONGD</module>
+    <module>tramitacionUniv</module>
+    <module>otrasOpciones</module>
+    <module>valoracion</module>
+    <module>portletDatosExpediente</module>
+  </modules>
+
+  <dependencies>
+    <dependency>
+      <groupId>es.juntadeandalucia.ptwanda</groupId>
+      <artifactId>ptwanda-core</artifactId>
+      <version>2.5.0</version>
+      <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>trewa-api</artifactId>
+          <groupId>es.juntadeandalucia.trewa</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>tools</artifactId>
+          <groupId>com.sun</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>es.juntadeandalucia.trewa</groupId>
+      <artifactId>trewa-api</artifactId>
+      <version>2.6.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jdom</groupId>
+      <artifactId>jdom2</artifactId>
+      <version>2.0.6</version>
+    </dependency>
+  </dependencies>
+
+  <profiles>
+    <!-- TODO: PROVISIONAL, ELIMINAR DEL POM -->
+    <!-- PROFILE PARA DESARROLLO EN ENTORNOS LOCALES -->
+    <profile>
+      <id>local</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <!-- definir la ruta del ptwanda-web en tu setting -->
+        <path.deploy.ptwanda>${PATH_DEPLOY_PTWANDA}</path.deploy.ptwanda>
+      </properties>
+      <build>
+        <plugins>
+
+          <!-- El jar a desplegar contiene únicamente los hbm.xml y el jar. -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>2.4</version>
+            <configuration>
+              <includes>
+                <include>application*</include>
+                <include>appContext*</include>
+                <include>persistence*</include>
+                <include>struts*</include>
+                <include>META-INF/**</include>
+                <include>plantillas*/**</include>
+              </includes>
+              <excludes>
+                <exclude>webapp/**</exclude>
+                <exclude>despliegue.xml</exclude>
+                <exclude>conf/**</exclude>
+                <exclude>lib/**</exclude>
+                <exclude>ws/**</exclude>
+              </excludes>
+            </configuration>
+          </plugin>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <version>1.8</version>
+            <executions>
+              <execution>
+                <phase>package</phase>
+                <configuration>
+                  <target>
+                    <echo
+                      message="Copiando recursos en: ${path.deploy.ptwanda}" />
+
+                    <copy
+                      todir="${path.deploy.ptwanda}\WEB-INF\lib"
+                      verbose="true" overwrite="true">
+                      <fileset dir="target\">
+                        <include name="*.jar" />
+                      </fileset>
+                    </copy>
+
+                    <echo
+                      message="Finalizado proceso de despliegue local" />
+                  </target>
+                </configuration>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>

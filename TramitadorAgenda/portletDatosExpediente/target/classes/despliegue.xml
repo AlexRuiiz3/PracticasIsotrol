@@ -1,0 +1,15 @@
+<def-modulo>
+  <nombre>portletDatosExpediente</nombre>
+  <version>${project.version}</version>
+  <titulo>Datos del expediente</titulo>
+  <descripcion>Datos del expediente</descripcion>
+  <url>../modulos/portletDatosExpediente/inicio.action</url>
+  
+  <autor>
+    <nombre>Isotrol</nombre>
+    <email></email>
+    <grupo>staff</grupo>
+  </autor>
+  <type>STRUTS-2</type>
+  <tipoInstalacion>PORTLET</tipoInstalacion>
+</def-modulo>

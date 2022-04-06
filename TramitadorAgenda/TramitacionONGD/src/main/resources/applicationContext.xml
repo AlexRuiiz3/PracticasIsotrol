@@ -1,0 +1,93 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+  <bean id="tareasCONVOCATORIA_Action" class="es.juntadeandalucia.aacid.tramitacionongd.action.TareasConvocatoriaAction" scope="prototype">
+    <property name="convocatoriasService" ref="convocatoriasService" />
+    <property name="trewaService" ref="trewaService" />
+    <property name="validacionConvocatoriaService" ref="validacionConvocatoriaService" />
+    <property name="solicitudService" ref="solicitudService" />
+    <property name="paeSolicitudService" ref="paeSolicitudService" /> 
+    <property name="solicitudConcesionService" ref="solicitudConcesionService" /> 
+  </bean>
+  
+  <bean id="tareasSUBSANACION_Action" class="es.juntadeandalucia.aacid.tramitacionongd.action.TareasSubsanacionAction" scope="prototype">
+    <property name="tipoCatalogoService" ref="tipoCatalogoService" />
+    <property name="catalogoService" ref="catalogoService" />
+    <property name="subsanacionService" ref="subsanacionService" />
+    <property name="catalogoSubsanacionService" ref="catalogoSubsanacionService" />
+    <property name="historicoService" ref="historicoService" />
+    <property name="tareasService" ref="tareasService" />
+    <property name="envioEmailAutomaticoService" ref="envioEmailAutomaticoService" />
+    <property name="solicitudService" ref="solicitudService" />
+    <property name="reservaService" ref="reservaService" />
+    <property name="gestionUsuariosService" ref="gestionUsuariosService" />
+    <property name="documentoExpedienteService" ref="documentoExpedienteService"/>
+  </bean>
+  
+  <bean id="tareasEXCLUSION_Action" class="es.juntadeandalucia.aacid.tramitacionongd.action.TareasExclusionAction" scope="prototype">
+    <property name="exclusionService" ref="exclusionService" />
+    <property name="subsanacionService" ref="subsanacionService" />
+    <property name="solicitudService" ref="solicitudService" />
+    <property name="historicoService" ref="historicoService" />
+    <property name="tareasService" ref="tareasService" />
+    <property name="envioEmailAutomaticoService" ref="envioEmailAutomaticoService" />
+    <property name="reservaService" ref="reservaService" />
+    <property name="gestionUsuariosService" ref="gestionUsuariosService" />
+    <property name="documentoExpedienteService" ref="documentoExpedienteService"/>
+  </bean>
+
+ <bean id="tareasVALIDAR_PRESUPUESTO_Action" class="es.juntadeandalucia.aacid.tramitacionongd.action.TareasValidarPresupuestoAction" scope="prototype">
+    <property name="validacionPresupuestoService" ref="validacionPresupuestoService" />
+    <property name="solicitudService" ref="solicitudService" />
+    <property name="gastosService" ref="gastosService" />
+    <property name="finalidadService" ref="finalidadService" />
+    <property name="contrapartesService" ref="contrapartesService" />
+    <property name="contribucionesService" ref="contribucionesService" />
+    <property name="entidadContribucionService" ref="entidadContribucionService" />
+    <property name="gastosContribucionService" ref="gastosContribucionService" />
+    <property name="envioEmailAutomaticoService" ref="envioEmailAutomaticoService" />
+  </bean>
+  
+  <bean id="tareasNOTIF_REFORMULA_Action" class="es.juntadeandalucia.aacid.tramitacionongd.action.TareasNotifReformulaAction" scope="prototype">
+    <property name="solicitudService" ref="solicitudService" />
+    <property name="reformulaService" ref="reformulaService" />
+    <property name="finalidadService" ref="finalidadService" />
+    <property name="trewaService" ref="trewaService" />
+    <property name="generacionDocumentosService" ref="generacionDocumentosService" />
+        <property name="documentoExpedienteService" ref="documentoExpedienteService"/>
+  </bean>
+   <bean id="tareasRELACION_PROVISIONAL_CONCESION_Action" class="es.juntadeandalucia.aacid.tramitacionongd.action.TareasRelacionProvisionalConcesionAction" scope="prototype">
+     <property name="relacionProvisionalService" ref="relacionProvisionalService" />
+     <property name="tareasService" ref="tareasService" />
+     <property name="reservaService" ref="reservaService" />
+     <property name="gestionUsuariosService" ref="gestionUsuariosService" />
+     <property name="documentoExpedienteService" ref="documentoExpedienteService"/>
+    </bean>
+    
+   <bean id="anexoIVServiceOngd" class="es.juntadeandalucia.aacid.tramitacionongd.services.impl.AnexoIVServiceImplOngd">
+    <property name="solicitudDao" ref="solicitudDao" />
+  </bean>
+  
+    
+  <bean id="anexoVService" class="es.juntadeandalucia.aacid.tramitacionongd.services.impl.AnexoVServiceImpl">
+    <property name="solicitudDao" ref="solicitudDao" />
+  </bean>
+  
+   <bean id="anexoVIIService" class="es.juntadeandalucia.aacid.tramitacionongd.services.impl.AnexoVIIServiceImpl">
+    <property name="solicitudDao" ref="solicitudDao" />
+  </bean>  
+  
+  <bean id="tareasRESOLUCION_DEFINITIVA_CONCESION_Action" class="es.juntadeandalucia.aacid.tramitacionongd.action.TareasConcesionDefinitivaAction" scope="prototype">
+    <property name="solicitudService" ref="solicitudService" />
+    <property name="concesionDefinitivaService" ref="concesionDefinitivaService" />
+    <property name="envioEmailAutomaticoService" ref="envioEmailAutomaticoService" />
+    <property name="tareasService" ref="tareasService" />
+    <property name="reservaService" ref="reservaService" />
+    <property name="gestionUsuariosService" ref="gestionUsuariosService" />
+        <property name="documentoExpedienteService" ref="documentoExpedienteService"/>
+  </bean>
+  </beans>

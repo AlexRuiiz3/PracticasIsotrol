@@ -1,0 +1,13 @@
+<def-modulo>
+  <nombre>tramitacionONGD</nombre>
+  <version>1.0</version>
+  <titulo>Tramitacion del procedimiento de ONGD</titulo>
+  <descripcion>Tramitacion del procedimiento de ONGD</descripcion>
+  <autor>
+    <nombre>ISOTROL</nombre>
+    <email></email>
+    <grupo>staff</grupo>
+  </autor>
+  <type>STRUTS-2</type>
+  <tipoInstalacion>NONE</tipoInstalacion>
+</def-modulo>

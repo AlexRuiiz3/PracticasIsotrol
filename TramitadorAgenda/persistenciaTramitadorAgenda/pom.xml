@@ -1,0 +1,156 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>es.juntadeandalucia.aacid</groupId>
+    <artifactId>tramitadorAgenda</artifactId>
+    <version>1.9.4</version>
+  </parent>
+
+  <artifactId>persistenciaTramitadorAgenda</artifactId>
+  <name>persistencia de la tramitación de agenda</name>
+  <description>persistencia de la tramitación de agenda</description>
+  <packaging>jar</packaging>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <dependencies>
+    <dependency>
+      <groupId>es.juntadeandalucia.aacid</groupId>
+      <artifactId>comunTramitacion</artifactId>
+      <version>1.9.4</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>es.juntadeandalucia.trewa</groupId>
+      <artifactId>trewa-api</artifactId>
+      <version>2.6.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>es.juntadeandalucia.ptwanda</groupId>
+      <artifactId>ptwanda-core</artifactId>
+      <version>2.5.2</version>
+      <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>trewa-api</artifactId>
+          <groupId>es.juntadeandalucia.trewa</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>tools</artifactId>
+          <groupId>com.sun</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>5.4.28.Final</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- Quartz framework -->
+    <dependency>
+      <groupId>org.quartz-scheduler</groupId>
+      <artifactId>quartz</artifactId>
+      <version>1.8.6</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <!-- NO SE INCLUYEN EN EL JAR NI LOS RECURSOS WEB NI LOS XML DE CONFIGURACION -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <excludes>
+            <exclude>webapp/**</exclude>
+            <exclude>persistenciaTramitadorAgenda.xml</exclude>
+            <exclude>despliegue.xml</exclude>
+            <exclude>conf/**</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+      <!-- CON ESTE PLUGIN SE CONSTRUYE EL ZIP DEL MODULO -->
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <descriptors>
+            <descriptor>modulo-vertical-pt.xml</descriptor>
+          </descriptors>
+
+        </configuration>
+        <executions> <!-- FUERZO EL ASSEMBLY A LA FASE PACKAGE DEL PROYECTO -->
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.0</version>
+        <configuration>
+          <encoding>ISO-8859-1</encoding>
+          <source>1.8</source>
+          <target>1.8</target>
+          <showDeprecation>false</showDeprecation>
+          <showWarnings>false</showWarnings>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin </artifactId>
+        <version>2.4.2</version>
+        <executions>
+          <execution>
+            <id>copy-resources-struts</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/../../ptwanda-web/build/classes/modulos/persistenciaTramitadorAgenda</outputDirectory>
+              <encoding>UTF-8</encoding>
+              <resources>
+                <resource>
+                  <directory>${basedir}/src/main/resources/conf</directory>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>copy-resources-despliegue</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/../../ptwanda-web/build/classes/es/juntadeandalucia/plataforma/modulospredefinidos</outputDirectory>
+              <encoding>UTF-8</encoding>
+              <resources>
+                <resource>
+                  <directory>${basedir}/src/main/resources</directory>
+                  <includes>
+                    <include>persistenciaTramitadorAgenda.xml</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

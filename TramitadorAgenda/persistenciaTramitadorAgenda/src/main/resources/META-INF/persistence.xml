@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+  xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+  <persistence-unit name="persistenciaTramitadorAgenda"
+    transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.Agrupaciones</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.CapacidadGestion</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.Catalogo</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.CatalogoSubsanacion</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.CodmMunicipio</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.ConContraparte</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.ConOtrasAportaciones</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.Contrapartes</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.Contribuciones</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.Convocatoria</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.ConvocatoriaFecha</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.Criterios</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.CriteriosConvocatoria</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.DocumentoPoderAdminJA</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.DocumentoPoderOtrasAdmin</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.EntidadContraparte</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.EntidadesParticipantes</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.Exclusion</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.ExclusionesSolicitud</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.Finalidad</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.Funcion</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.Gasto</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.GastosFinalidad</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.Historico</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.Pais</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.PaisesSolicitud</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.Reformula</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.Solicitud</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.SolicitudConcesion</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.SolicitudCriterio</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.SolicitudTipoCriterio</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.SolicitudesAuxiliar</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.Subsanacion</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.TExclusionesSolicitud</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.TipoCatalogo</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.TipoConvocatoria</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.TipoEntidadContraparte</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.TipoEntidadParticipante</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.TipoExclusion</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.TiposCriterios</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.DocumentoExpediente</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.vea.AaciAgrupaciones</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.vea.AaciFinalidad</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.vea.AaciTConOtrasSubvenciones</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.vea.AaciTConvocatorias</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.vea.AaciTDocPoderAdminJa</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.vea.AaciTDocPoderOtrAdmin</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.vea.AaciTPaises</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.vea.AaciTPaisesSolicitud</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.vea.AaciTSolOtrasSubvenciones</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.vea.AaciTSolicitudsubongd</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.vea.AaciTTipoConv</class>
+    
+
+    <properties>
+      <property name="hibernate.connection.driver_class"
+        value="oracle.jdbc.driver.OracleDriver" />
+      <property name="hibernate.connection.datasource"
+        value="java:/ACCIDDS" />
+      <property name="hibernate.show_sql" value="true" />
+      <!-- SQL Dialect -->
+      <property name="hibernate.dialect"
+        value="org.hibernate.dialect.Oracle10gDialect" />
+      <!-- Specifying Session Context -->
+      <property name="hibernate.current_session_context_class"
+        value="org.hibernate.context.internal.ThreadLocalSessionContext" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="persistenciaTramitadorAgendaAntiguo"
+    transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.sistemaantiguo.PaeAgrupaciones</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.sistemaantiguo.PaeConContrapartes</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.sistemaantiguo.PaeConOtrasAportaciones</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.sistemaantiguo.PaeContrapartes</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.sistemaantiguo.PaeContribuciones</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.sistemaantiguo.PaeConvocatorias</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.sistemaantiguo.PaeEntidadesParticipantes</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.sistemaantiguo.PaeFinalidad</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.sistemaantiguo.PaeFunciones</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.sistemaantiguo.PaeGastos</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.sistemaantiguo.PaeMedGrupo</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.sistemaantiguo.PaeMedidasPais</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.sistemaantiguo.PaeMedidasSolModificado</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.sistemaantiguo.PaeMedidasSolicitud</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.sistemaantiguo.PaePaises</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.sistemaantiguo.PaeProgramacion</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.sistemaantiguo.PaeSolicitudes</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.sistemaantiguo.PaeTEntidadContraparte</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.sistemaantiguo.PaeTEntidadParticipante</class>
+    <class>es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.entidad.sistemaantiguo.PaeTipoSolicitud</class>
+    <properties>
+      <property name="hibernate.connection.driver_class"
+        value="oracle.jdbc.driver.OracleDriver" />
+      <property name="hibernate.connection.datasource"
+        value="java:/aacidViejo" />
+      <property name="hibernate.show_sql" value="true" />
+      <!-- SQL Dialect -->
+      <property name="hibernate.dialect"
+        value="org.hibernate.dialect.Oracle10gDialect" />
+      <!-- Specifying Session Context -->
+      <property name="hibernate.current_session_context_class"
+        value="org.hibernate.context.internal.ThreadLocalSessionContext" />
+    </properties>
+  </persistence-unit>
+</persistence>
