@@ -8,7 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-Index
-<s:action name="cocheExecute" executeResult="true"/>
+
+<s:form action="/tareaEntregaVerCoches">
+	<s:submit value="Action ver coches"></s:submit>
+</s:form>
+<s:form action="/tareaEntregaGuardarCoche">
+	<s:submit value="Action guardar coches"></s:submit>
+</s:form>
 </body>
 </html>

@@ -1,0 +1,428 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+  <constant name="struts.objectFactory" value="spring" />
+  <!-- Fixme: eliminar al entregar -->
+  <constant name="struts.devMode" value="true" />
+
+  <package name="tramitacionONGD" namespace="/agenda/tareas"  extends="struts-default, json-default">
+    <!-- Listar expedientes hijos convocatoria -->
+    <action name="tareaEntradaLISTAR_HIJOS_CONVOCATORIA_ONGD" method="cargarListadoExpedientesHijosConvocatoria" class="tareasCONVOCATORIA_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/convocatoria/listadoHijosConvocatoria.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+    </action>
+
+    <action name="mostrarTablaExpedientesHijosConvocatoria" method="cargarListadoExpedientesHijosConvocatoria" class="tareasCONVOCATORIA_Action">
+      <result name="success" type="json">
+        <param name="root">
+          listaExpedientesHijosConvocatoriaDTO
+        </param>
+      </result>
+      <interceptor-ref name="defaultStack" />
+    </action>
+
+    <!-- Fin de listar expedientes hijos convocatoria -->
+
+    <!-- Modificar convocatoria -->
+    <action name="tareaEntradaMODIFICAR_CONVOCATORIA" method="modificarConvocatoria" class="tareasCONVOCATORIA_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/convocatoria/modificarConvocatoria.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/convocatoria/modificarConvocatoria.jsp</result>
+    </action>
+
+    <action name="guardarDatosConvocatoria" method="guardarDatosConvocatoria" class="tareasCONVOCATORIA_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+    </action>
+
+    <!-- Fin de modificar convocatoria -->
+
+    <!-- Subsanaciones valorador -->
+
+    <action name="tareaEntradaSUBSANACIONES_VALORADOR" method="valorarSubsanacion" class="tareasSUBSANACION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/subsanacion/datosSubsanacion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/subsanacion/datosSubsanacion.jsp</result>
+    </action>
+    
+    <action name="tareaEntradaSUBSANACIONES_VALORADOR2" method="valorarSubsanacion" class="tareasSUBSANACION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/subsanacion/datosSubsanacion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/subsanacion/datosSubsanacion.jsp</result>
+    </action>
+
+    <action name="guardarSubsanacionesValorador" method="guardarSubsanacionesValorador" class="tareasSUBSANACION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+    </action>
+
+    <action name="buscarTipoCatalogo" method="buscarTipoCatalogo" class="tareasSUBSANACION_Action">
+      <interceptor-ref name="json" />
+      <interceptor-ref name="basicStack" />
+      <result name="success" type="json">
+        <param name="ignoreHierarchy">false</param>
+        <param name="includeProperties">
+          listaTipoCatalogo\[\d+\]\.id,
+          listaTipoCatalogo\[\d+\]\.nombre
+        </param>
+      </result>
+    </action>
+
+    <action name="buscarCatalogo" method="buscarCatalogo" class="tareasSUBSANACION_Action">
+      <interceptor-ref name="json" />
+      <interceptor-ref name="basicStack" />
+      <result name="success" type="json">
+        <param name="ignoreHierarchy">false</param>
+        <param name="includeProperties">
+          listaCatalogo\[\d+\]\.id,
+          listaCatalogo\[\d+\]\.descripcion,
+          listaCatalogo\[\d+\]\.motivo,
+          listaCatalogo\[\d+\]\.nombreCompleto,
+          listaCatalogo\[\d+\]\.puedeEditar
+        </param>
+      </result>
+  </action>
+
+    <action name="buscarSolicitudesSeleccionadas" method="buscarSolicitudesSeleccionadas" class="tareasSUBSANACION_Action">
+      <interceptor-ref name="json" />
+      <interceptor-ref name="basicStack" />
+      <result name="success" type="json">
+        <param name="ignoreHierarchy">false</param>
+        <param name="includeProperties">
+          catalogosSeleccionados\[\d+\]\.motivo,
+          catalogosSeleccionados\[\d+\]\.puedeEditar,
+          catalogosSeleccionados\[\d+\]\.catalogo,
+          catalogosSeleccionados\[\d+\]\.catalogo.id,
+          catalogosSeleccionados\[\d+\]\.catalogo.descripcion,
+          catalogosSeleccionados\[\d+\]\.catalogo.motivo,
+          catalogosSeleccionados\[\d+\]\.catalogo.nombreCompleto,
+          catalogosSeleccionados\[\d+\]\.catalogo.codigo
+        </param>
+      </result>
+  </action>
+  
+  <action name="tareaEntradaGENERAR_SUB_SOL" method="generarSubsanacionSolicitud" class="tareasSUBSANACION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/subsanacion/generarSubsanacion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/subsanacion/generarSubsanacion.jsp</result>
+    </action>
+    
+    <action name="tareaEntradaGENERAR_SUB_SOL_ALEG" method="generarSubsanacionSolicitud" class="tareasSUBSANACION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/subsanacion/generarSubsanacion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/subsanacion/generarSubsanacion.jsp</result>
+    </action>
+
+    <action name="tareaEntradaGENERAR_SUB_CONV" method="generarListadoSubsanaciones" class="tareasSUBSANACION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/subsanacion/generarSubsanacion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/subsanacion/generarSubsanacion.jsp</result>
+    </action>
+    
+    <action name="tareaEntradaGENERAR_SUB_CONV_ALE" method="generarListadoSubsanacionesAle" class="tareasSUBSANACION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/subsanacion/generarSubsanacion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/subsanacion/generarSubsanacion.jsp</result>
+    </action>
+    <!-- Fin de subsanaciones valorador -->
+
+    <!-- Exclusiones -->
+
+    <action name="tareaEntradaEXCL_TRAM" method="cargarExclusionNoAdmisionTramitacion" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/exclusion/exclusionAdmisionTramite.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/exclusion/exclusionAdmisionTramite.jsp</result>
+    </action>
+
+    <!-- Exclusiones tras subsanacion tipo 2 -->
+
+    <action name="tareaEntradaEXCL_POS_SU" method="cargarExclusionPosSubsanacion" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/exclusion/exclusionPosSubsanacion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/exclusion/exclusionPosSubsanacion.jsp</result>
+    </action>
+    <!-- Exclusiones tras subsanacion tipo 2 tras subsanacion -->
+
+    <action name="tareaEntradaEXCL_TRAM_ALEG" method="cargarExclusionPosSubsanacion" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/exclusion/exclusionPosSubsanacion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/exclusion/exclusionPosSubsanacion.jsp</result>
+    </action>
+
+    <action name="tareaEntradaEXCL_POS_SU2" method="cargarExclusionPosSubsanacion" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/exclusion/exclusionPosSubsanacion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/exclusion/exclusionPosSubsanacion.jsp</result>
+    </action>
+
+    <action name="guardarExclusionTramitacion" method="guardarExclusionTramitacion" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+    </action>
+
+    <action name="tareaEntradaGENERAR_EXCL_PROV_CONV" method="generarListaExclusionProvisional" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/exclusion/generarInformeExclusion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/exclusion/generarInformeExclusion.jsp</result>
+    </action>
+
+    <action name="tareaEntradaGENERAR_EXC_PROV" method="generarResolucionProvisionalExcluidas" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/exclusion/generarInformeExclusion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/exclusion/generarInformeExclusion.jsp</result>
+    </action>
+
+    <!-- Fin de exclusiones -->
+
+    <action name="guardarExclusionPosSubsanacion" method="guardarExclusionPosSubsanacion" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+    </action>
+
+    <action name="tareaEntradaGENERAR_EXCL_DEF_CONV" method="generarListaExclusionDefinitiva" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/exclusion/generarInformeExclusion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/exclusion/generarInformeExclusion.jsp</result>
+    </action>
+
+    <action name="tareaEntradaGENERAR_EXC_DEF" method="generarResolucionDefinitivaExcluidas" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/exclusion/generarInformeExclusion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/exclusion/generarInformeExclusion.jsp</result>
+    </action>
+    
+    <action name="tareaEntradaGENERAR_EXC_DEF_ALE" method="generarResolucionDefinitivaExcluidas" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+        <result name="success">/modulos/tramitacionONGD/exclusion/generarInformeExclusion.jsp</result>
+        <result name="error">/modulos/tramitacionONGD/exclusion/generarInformeExclusion.jsp</result>
+    </action>
+    
+    <action name="tareaEntradaGENERAR_EXCL_DESEST_CONV" method="generarListaDesestimadas" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/exclusion/generarInformeDesestimacion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/exclusion/generarInformeDesestimacion.jsp</result>
+    </action>
+
+  <action name="tareaEntradaGENERAR_DES" method="generarResolucionDesestimada" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/exclusion/generarInformeDesestimacion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/exclusion/generarInformeDesestimacion.jsp</result>
+    </action>
+
+        <!-- Action para envio automatico de email -->
+    <action name="tareaEntradaGENERAR_EMAIL_AUTOMATICO" method="envioEmailDocumentoSubsanacion" class="tareasSUBSANACION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/subsanacion/generarEmailAutomatico.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/subsanacion/generarEmailAutomatico.jsp</result>
+    </action>
+        <action name="tareaEntradaGENERAR_EMAIL_AUTOMATICO_VUELTA" method="envioEmailDocumentoSubsanacion" class="tareasSUBSANACION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/subsanacion/generarEmailAutomatico.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/subsanacion/generarEmailAutomatico.jsp</result>
+    </action>
+     <action name="tareaEntradaGENERAR_EMAIL_AUTOMATICO_ALEG" method="envioEmailDocumentoExclusion" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/exclusion/generarEmailAutomatico.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/exclusion/generarEmailAutomatico.jsp</result>
+    </action>
+    
+    <!--     Causas de desestimiento -->
+    <action name="tareaEntradaCAUSAS_DESEST" method="cargarExclusionCausasDesestimiento" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/exclusion/causasDesestimacion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/exclusion/causasDesestimacion.jsp</result>
+    </action>
+    <action name="guardarCausasDesestimacion" method="guardarCausasDesestimacion" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+    </action>
+    
+    <!--   Causas de Inadmision -->
+    <action name="tareaEntradaCAUSAS_ALEGA_ACEPT_REFOR_DOC" method="cargarExclusionCausasInadmisionPosPropProvConce" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/exclusion/causasInadmision.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/exclusion/causasInadmision.jsp</result>
+    </action>
+    <action name="guardarCausasInadmision" method="guardarCausasInadmision" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+    </action>
+    
+    <action name="tareaEntradaCAUSAS_INADMISION" method="cargarExclusionCausasInadmisionDocumentacionAportar" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/exclusion/causasInadmisionDocAportar.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/exclusion/causasInadmisionDocAportar.jsp</result>
+    </action>
+    <action name="guardarCausasInadmisionDocumentacionAportar" method="guardarCausasInadmisionDocumentacionAportar" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+    </action>
+    
+    <action name="tareaEntradaGENERAR_EMAIL_DESESTIMADAS_ONGD" method="envioEmailDocumentoResolucionDesestimadas" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/exclusion/generarEmailAutomatico.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/exclusion/generarEmailAutomatico.jsp</result>
+    </action>
+    
+    <!-- INICIO - Tarea de validar de presupuesto -->
+     <action name="tareaEntradaVALIDAR_PRESUPUESTO" method="inicioValidacionPresupuesto" class="tareasVALIDAR_PRESUPUESTO_Action">
+        <interceptor-ref name="basicStack" />
+        <result name="success">/modulos/tramitacionONGD/validacionPresupuesto/validacionPresupuesto.jsp</result>
+        <result name="error">/modulos/tramitacionONGD/validacionPresupuesto/validacionPresupuesto.jsp</result>
+    </action>
+     <action name="recargaTablaContribuciones" method="recargaTablaContribuciones" class="tareasVALIDAR_PRESUPUESTO_Action">
+      <result name="success" type="json">
+        <param name="includeProperties">
+          listaGastosEntidadSeleccionada\[\d+\]\.idGastoContribucion,
+          listaGastosEntidadSeleccionada\[\d+\]\.gasto,
+          listaGastosEntidadSeleccionada\[\d+\]\.gasto.descripcionCodigo,
+          listaGastosEntidadSeleccionada\[\d+\]\.gasto.idGasto,
+          listaGastosEntidadSeleccionada\[\d+\]\.valorTitle,
+          listaGastosEntidadSeleccionada\[\d+\]\.valorNoValidadoTitle,
+          listaGastosEntidadSeleccionada\[\d+\]\.valorValidadoTitle,
+          listaGastosEntidadSeleccionada\[\d+\]\.disabled
+        </param>
+      </result>
+            <interceptor-ref name="basicStack" />
+    </action>
+    <action name="guardarValidacionPresupuesto" method="guardar" class="tareasVALIDAR_PRESUPUESTO_Action">
+        <interceptor-ref name="basicStack" />
+        <result name="success">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+        <result name="error">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+    </action>
+    
+    <action name="tareaEntradaGENERAR_EMAIL_AUTOMATICO_PRESUPUESTO_VALIDADO"  method="envioEmailDocumentoPresupuestoValidado" class="tareasVALIDAR_PRESUPUESTO_Action">
+     <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/validacionPresupuesto/generarEmailAutomatico.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/validacionPresupuesto/generarEmailAutomatico.jsp</result>
+    </action>
+    
+    <action name="tareaEntradaGENERAR_EMAIL_AUTOMATICO_INF_VALORACION"  method="envioEmailDocumentoInformeValoracion" class="tareasVALIDAR_PRESUPUESTO_Action">
+     <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/validacionPresupuesto/generarEmailAutomatico.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/validacionPresupuesto/generarEmailAutomatico.jsp</result>
+    </action>
+    
+    <action name="tareaEntradaGENERAR_EMAIL_AUTOMATICO_BENEFICIARIAS_SUPLENTES"  method="envioEmailDocumentoBeneficiarosSuplentes" class="tareasVALIDAR_PRESUPUESTO_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/validacionPresupuesto/generarEmailAutomatico.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/validacionPresupuesto/generarEmailAutomatico.jsp</result>
+    </action>
+    <!-- FIN - Tarea validar de presupuesto -->
+    
+    <!-- Tarea de Notificacion de Reformulacion -->
+    <action name="tareaEntradaNOTIF_REFORMULA" method="inicioNotificacionReformulacion" class="tareasNOTIF_REFORMULA_Action">
+        <interceptor-ref name="basicStack" />
+        <result name="success">/modulos/tramitacionONGD/notificacionReformulacion/notificacionReformulacion.jsp</result>
+        <result name="error">/modulos/tramitacionONGD/notificacionReformulacion/notificacionReformulacion.jsp</result>
+    </action>
+    
+    <action name="guardarReformula" method="guardarReformula" class="tareasNOTIF_REFORMULA_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+    </action>
+    
+    <action name="incorporarNotificacionReformula" method="incorporarNotificacionReformula" class="tareasNOTIF_REFORMULA_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+    </action>
+    <!-- Fin de Notificacion de Reformulacion -->
+    
+    <!-- Concesion -->
+     <action name="tareaEntradaGENERAR_DOC_BEN_SUP"  method="generarDocumentoBeneficiariasSuplentes" class="tareasRELACION_PROVISIONAL_CONCESION_Action">
+     <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/relacionProvisionalConcesion/generarInformeConcesion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/relacionProvisionalConcesion/generarInformeConcesion.jsp</result>
+    </action>
+         <action name="tareaEntradaGENERAR_LISTADO_PROPUESTAS_PROV_BENEF_SUPLEN"  method="generarDocumentoListadoBeneficiariasSuplentes" class="tareasRELACION_PROVISIONAL_CONCESION_Action">
+     <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/relacionProvisionalConcesion/generarInformeConcesion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/relacionProvisionalConcesion/generarInformeConcesion.jsp</result>
+    </action>
+        <!-- Concesion definitiva -->
+     <action name="tareaEntradaGENERAR_DOC_RESOLUCION_DEFINITIVA_ONGD"  method="generarDocumentoResolucionDefinitiva" class="tareasRESOLUCION_DEFINITIVA_CONCESION_Action">
+     <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/resolucionDefinitivaConcesion/generarInformeConcesion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/resolucionDefinitivaConcesion/generarInformeConcesion.jsp</result>
+    </action>
+
+    <action name="tareaEntradaGENERAR_LIST_RESOLUCION_DEFINITIVA_ONGD"  method="generarDocumentoListadoResolucionDefinitiva" class="tareasRESOLUCION_DEFINITIVA_CONCESION_Action">
+     <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/resolucionDefinitivaConcesion/generarInformeConcesion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/resolucionDefinitivaConcesion/generarInformeConcesion.jsp</result>
+    </action>
+    
+    <action name="tareaEntradaGENERAR_EMAIL_RESOL_DEFADM_ONGD"  method="envioEmailDocumentoConcesionDefinitiva" class="tareasRESOLUCION_DEFINITIVA_CONCESION_Action">
+     <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/validacionPresupuesto/generarEmailAutomatico.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/validacionPresupuesto/generarEmailAutomatico.jsp</result>
+    </action>
+    
+    <action name="tareaEntradaGENERAR_EMAIL_AUTOMATICO_RES_EXCL_DEF"  method="envioEmailDocumentoResolucionExclusionDefinitiva" class="tareasEXCLUSION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/exclusion/generarEmailAutomatico.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/exclusion/generarEmailAutomatico.jsp</result>
+    </action>
+    
+     <!-- Listar expedientes hijos convocatoria -->
+    <action name="tareaEntradaLISTAR_SOLICITUDES_PROV_CONCE_ONGD" method="mostrarListadoExpedientesProvConce" class="tareasCONVOCATORIA_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/convocatoria/listados/listadoExpedientesProvConce.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+    </action>
+
+    <action name="mostrarTablaListadoExpedientesProvConce" method="cargarListadoExpedientesProvConceDesest" class="tareasCONVOCATORIA_Action">
+      <result name="success" type="json">
+        <param name="root">
+          listaExpedientesHijosConvocatoriaDTO
+        </param>
+      </result>
+      <interceptor-ref name="defaultStack" />
+    </action>
+    <!-- Fin de listar expedientes hijos convocatoria -->
+    <!--  Pantalla para seleccionar beneficiarios y suplentes -->
+    <action name="tareaEntradaSELECCIONAR_BENEFICIARIOS_SUPLENTES" method="seleccionarBeneficiariaSuplentes" class="tareasCONVOCATORIA_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/convocatoria/beneficiariasSuplentes/beneficiariasSuplentes.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+    </action>
+    
+    <action name="cargaListadoExpedientesPorFinalidad" method="cargarListadoExpedientesProvConce" class="tareasCONVOCATORIA_Action">
+      <result name="success" type="json">
+        <param name="root">
+          listaSolicitudConcesionDTO
+        </param>
+      </result>
+      <interceptor-ref name="defaultStack" />
+    </action>
+    
+    <action name="guardarBeneficiarioSuplente" method="guardarBeneficiariasSuplentes" class="tareasCONVOCATORIA_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+    </action>
+    
+    <action name="tareaEntradaGENERAR_AL_AC_RE_PRE_DOCUMENTACION" method="cargarListadoSolicitudesSubsanacionesDocumentacion" class="tareasSUBSANACION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/subsanacionDocumentacion/listadoSubsanacionesDocumentacion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+    </action>
+    
+    <action name="tareaEntradaGENERAR_REQ_SUB_DOC_APORTADAS" method="cargarDocumentoSubsanacionDocumentacionAportada" class="tareasSUBSANACION_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/subsanacionDocumentacion/generarSubsanacion.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+    </action>
+  </package>
+</struts>

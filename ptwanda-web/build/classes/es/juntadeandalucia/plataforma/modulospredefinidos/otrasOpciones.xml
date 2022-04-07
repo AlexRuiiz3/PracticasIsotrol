@@ -1,0 +1,16 @@
+<modulo>
+    <def-modulo>
+        <nombre>otrasOpciones</nombre>
+        <version>1.0</version>
+        <titulo>Utilidad Otras Opciones</titulo>
+        <descripcion>Utilidad otras opciones para la pantalla de DGA</descripcion>
+        <url>../modulos/otrasOpciones/inicio.action</url>
+        <tipoInstalacion>UTILIDADES</tipoInstalacion>
+        <autor>
+            <nombre>Isotrol</nombre>
+            <email></email>
+            <grupo>staff</grupo>
+        </autor>
+        <type>STRUTS-2</type>
+    </def-modulo>
+</modulo>

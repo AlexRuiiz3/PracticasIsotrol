@@ -1,0 +1,15 @@
+<modulo>
+	<def-modulo>
+		<nombre>comunTramitacion</nombre>
+		<version>1.0</version>
+		<titulo>Modulo común a las distintas tramitaciones</titulo>
+		<descripcion>Modulo común a las distintas tramitaciones</descripcion>
+		<tipoInstalacion>NONE</tipoInstalacion>
+		<autor>
+			<nombre>Isotrol</nombre>
+			<email></email>
+			<grupo>staff</grupo>
+		</autor>
+		<type>STRUTS-2</type>
+	</def-modulo>
+</modulo>

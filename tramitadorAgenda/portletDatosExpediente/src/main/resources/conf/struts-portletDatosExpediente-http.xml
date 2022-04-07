@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+  <!-- Copia los errores y los mensajes entre los tipos de result chaining. No copia los campos de los errores. -->
+  <!-- <constant name="struts.xwork.chaining.copyErrors" value="true" />
+  <constant name="struts.xwork.chaining.copyMessages" value="true" /> -->
+
+  <package name="portletDatosExpediente" namespace="/modulos/portletDatosExpediente" extends="struts-default">
+
+    <action name="inicio"> 
+      <interceptor-ref name="basicStack" />
+      <result name="success">index.jsp</result>
+      <result name="error">./templates/error.jsp</result>
+    </action>
+    
+  </package>
+
+</struts>
