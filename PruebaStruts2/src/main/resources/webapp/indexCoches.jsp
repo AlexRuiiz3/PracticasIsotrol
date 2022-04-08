@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script type="text/javascript" src="<s:url value="pruebaJS.js"/>"></script>
 <link rel="stylesheet" href = "./css/styles.css">
 Contenido en otro jsp mediante include -> <s:include value="/viewInclude.jsp"/>
 <title>Insert title here</title>
