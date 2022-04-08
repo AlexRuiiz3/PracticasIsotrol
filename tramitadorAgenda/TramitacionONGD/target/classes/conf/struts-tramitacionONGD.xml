@@ -7,6 +7,13 @@
   <constant name="struts.devMode" value="true" />
 
   <package name="tramitacionONGD" namespace="/agenda/tareas"  extends="struts-default, json-default">
+  
+     <action name="tareaEntradaPRACTICAS_TAREA" method="cargarListadoPaises" class="tareasCargarPaises_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/convocatoria/listadoHijosConvocatoria.jsp</result>
+      <result name="error">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+    </action>
+  
     <!-- Listar expedientes hijos convocatoria -->
     <action name="tareaEntradaLISTAR_HIJOS_CONVOCATORIA_ONGD" method="cargarListadoExpedientesHijosConvocatoria" class="tareasCONVOCATORIA_Action">
       <interceptor-ref name="basicStack" />
