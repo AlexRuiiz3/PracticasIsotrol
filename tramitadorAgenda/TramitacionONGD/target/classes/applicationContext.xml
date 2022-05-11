@@ -5,18 +5,14 @@
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
-<bean id="tareasCargarPaises_Action" class="es.juntadeandalucia.aacid.tramitacionongd.action.TareasCargarPaises_Action">
-</bean>
+  <bean id="tareasCrudPaises_Action" class="es.juntadeandalucia.aacid.tramitacionongd.action.TareasCrudPaisesAction" scope="prototype">
+ 	<property name="paisService" ref="paisService" />
+  </bean>
 
   <bean id="tareasCONVOCATORIA_Action" class="es.juntadeandalucia.aacid.tramitacionongd.action.TareasConvocatoriaAction" scope="prototype">
-    <property name="convocatoriasService" ref="convocatoriasService" />
-    <property name="trewaService" ref="trewaService" />
-    <property name="validacionConvocatoriaService" ref="validacionConvocatoriaService" />
-    <property name="solicitudService" ref="solicitudService" />
-    <property name="paeSolicitudService" ref="paeSolicitudService" /> 
-    <property name="solicitudConcesionService" ref="solicitudConcesionService" /> 
+    <property name="paisService" ref="paisService" />
   </bean>
-  
+
   <bean id="tareasSUBSANACION_Action" class="es.juntadeandalucia.aacid.tramitacionongd.action.TareasSubsanacionAction" scope="prototype">
     <property name="tipoCatalogoService" ref="tipoCatalogoService" />
     <property name="catalogoService" ref="catalogoService" />

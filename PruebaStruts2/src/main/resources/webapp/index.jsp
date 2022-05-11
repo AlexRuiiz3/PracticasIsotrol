@@ -10,10 +10,10 @@
 <body>
 
 <s:form action="/tareaEntregaVerCoches">
-	<s:submit value="Action ver coches"></s:submit>
+	<s:submit value="Action ver coches" />
 </s:form>
 <s:form action="/tareaEntregaGuardarCoche">
-	<s:submit value="Action guardar coches"></s:submit>
+	<s:submit value="Action guardar coches"/>
 </s:form>
 </body>
 </html>

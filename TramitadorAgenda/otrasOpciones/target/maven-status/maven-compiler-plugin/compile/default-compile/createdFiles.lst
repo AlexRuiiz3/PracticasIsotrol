@@ -1,0 +1,10 @@
+es\juntadeandalucia\aacid\otrasopciones\action\DatosGeneralesAction.class
+es\juntadeandalucia\aacid\otrasopciones\action\AbstractOtrasOpcionesAction.class
+es\juntadeandalucia\aacid\otrasopciones\exception\OtrasOpcionesException.class
+es\juntadeandalucia\aacid\otrasopciones\utils\UtilidadesTrewa.class
+es\juntadeandalucia\aacid\otrasopciones\service\IPermisosService.class
+es\juntadeandalucia\aacid\otrasopciones\action\DatosSubsanacionAction.class
+es\juntadeandalucia\aacid\otrasopciones\service\impl\PermisosServiceImpl.class
+es\juntadeandalucia\aacid\otrasopciones\action\DatosHistoricoAction.class
+es\juntadeandalucia\aacid\otrasopciones\action\GestionDocumentosAction.class
+es\juntadeandalucia\aacid\otrasopciones\utils\constantes\Constantes.class

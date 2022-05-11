@@ -1,0 +1,6 @@
+es\juntadeandalucia\aacid\portletdatosexpediente\dto\BloqueoDTO.class
+es\juntadeandalucia\aacid\portletdatosexpediente\exception\PortletDatosExpedienteException.class
+es\juntadeandalucia\aacid\portletdatosexpediente\dto\PortletDatosExpedienteDTO.class
+es\juntadeandalucia\aacid\portletdatosexpediente\services\impl\PortletDatosExpedienteServiceImpl.class
+es\juntadeandalucia\aacid\portletdatosexpediente\action\PortletDatosExpedienteAction.class
+es\juntadeandalucia\aacid\portletdatosexpediente\services\IPortletDatosExpedienteService.class

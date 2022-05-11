@@ -17,7 +17,7 @@
 	<classpathentry kind="lib" path="C:/Users/arcampos/Desktop/struts-2.5.30/lib/javassist-3.20.0-GA.jar"/>
 	<classpathentry kind="lib" path="C:/Users/arcampos/Desktop/struts-2.5.30/lib/log4j-api-2.12.4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/arcampos/Desktop/struts-2.5.30/lib/ognl-3.1.29.jar"/>
-	<classpathentry kind="lib" path="C:/Users/arcampos/Desktop/struts-2.5.30/lib/struts2-core-2.5.30.jar"/>
+	<classpathentry kind="lib" path="C:/Users/arcampos/Desktop/struts-2.5.30/lib/struts2-core-2.5.30.jar" sourcepath="C:/Users/arcampos/.m2/repository_PTCS/org/apache/struts/struts2-core/2.5.30/struts2-core-2.5.30-sources.jar"/>
 	<classpathentry kind="lib" path="C:/Users/arcampos/Downloads/javax.servlet.jsp-api-2.2.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/arcampos/Documents/jakarta.servlet-api-5.0.0.jar"/>
 	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">

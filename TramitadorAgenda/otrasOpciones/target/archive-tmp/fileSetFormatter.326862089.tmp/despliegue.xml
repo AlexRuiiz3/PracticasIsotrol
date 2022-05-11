@@ -1,0 +1,16 @@
+<def-modulo>
+	<nombre>otrasOpciones</nombre>
+	<version>1.9.4</version>
+	<titulo>Otras Opciones</titulo>
+	<descripcion>Módulo de utilidad de otras opciones</descripcion>
+	<url>../modulos/otrasOpciones/inicio.action</url>
+	<icono-on>../modulos/otrasOpciones/imagenes/otrasOpcionesON.png</icono-on>
+    <icono-off>../modulos/otrasOpciones/imagenes/otrasOpcionesOFF.png</icono-off>
+	<autor>
+		<nombre>Isotrol</nombre>
+		<email></email>
+		<grupo>staff</grupo>
+	</autor>
+	<type>STRUTS-2</type>
+  <tipoInstalacion>UTILIDADES</tipoInstalacion>
+</def-modulo>

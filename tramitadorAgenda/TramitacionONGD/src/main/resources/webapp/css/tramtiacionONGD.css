@@ -94,3 +94,11 @@ table.tableCriterios tfoot th, table.dataTable tfoot td {
 #tablaExpedientesProvConce tbody td {
     word-break: break-word;
 }
+
+h5{
+	color: white;
+}
+
+.modal-header{
+	background-color: #007934;
+}

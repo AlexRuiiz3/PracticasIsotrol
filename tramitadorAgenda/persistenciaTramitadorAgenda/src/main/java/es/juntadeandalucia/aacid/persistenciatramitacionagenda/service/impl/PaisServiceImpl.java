@@ -55,4 +55,24 @@ public class PaisServiceImpl implements IPaisService {
     this.paisDao = paisDao;
   }
 
+  @Override
+  public List<Pais> obtenerPaisesPorAnho(int anho) {
+    return paisDao.obtenerPaisesPorAnho(anho);
+  }
+
+  @Override
+  public Pais obtenerPais(Long id) {
+    return paisDao.obtenerPais(id);
+  }
+
+  @Override
+  public void eliminarPais(Long id) {
+    paisDao.eliminarPais(id);
+  }
+
+  @Override
+  public void guardarOActualizarPais(Pais pais) {
+    paisDao.guardarOActualizarPais(pais);
+  }
+
 }

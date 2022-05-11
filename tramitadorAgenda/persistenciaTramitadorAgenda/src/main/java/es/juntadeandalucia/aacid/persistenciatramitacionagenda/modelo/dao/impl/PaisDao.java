@@ -1,9 +1,11 @@
 package es.juntadeandalucia.aacid.persistenciatramitacionagenda.modelo.dao.impl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.NoResultException;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
@@ -44,5 +46,74 @@ public class PaisDao extends CustomHibernateDaoSupport implements IPaisDao {
     } catch (final Exception e) {
       throw new TramitacionException("Error obteniendo las contrapartes para la solicitud: " + idSolicitud + ". Causa: " + e.getMessage());
     }
+  }
+
+  @Override
+  public List<Pais> obtenerPaisesPorAnho(int anho) {
+    final List<Pais> paises = new ArrayList<Pais>();
+    try {
+      @SuppressWarnings("unchecked")
+      final List<Object> paisesObj = getEntityManager().createNativeQuery("SELECT * FROM AACI_T_PAISES WHERE nu_anio = ?").setParameter(1, anho)
+          .getResultList();
+      for (Object paisObj : paisesObj) {
+        final Object[] datosPais = (Object[]) paisObj;
+        paises.add(crearPais(datosPais));
+      }
+    } catch (Exception e) {
+      // e.printStackTrace();
+    }
+    return paises;
+  }
+
+  @Override
+  public Pais obtenerPais(Long id) {
+    Pais pais = new Pais();
+    try {
+      @SuppressWarnings("unchecked")
+      final List<Object> paisesObj = getEntityManager().createNativeQuery("SELECT * FROM AACI_T_PAISES WHERE ID_Pais = ?").setParameter(1, id).getResultList();
+      for (Object paisObj : paisesObj) {
+        final Object[] datosPais = (Object[]) paisObj;
+        pais = crearPais(datosPais);
+      }
+    } catch (Exception e) {
+
+    }
+    return pais;
+  }
+
+  @Override
+  @Transactional
+  public void eliminarPais(Long id) {
+    try {
+      Pais pais = obtenerPais(id);
+      getEntityManager().remove(getEntityManager().contains(pais) ? pais : getEntityManager().merge(pais));
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  @Override
+  @Transactional
+  public void guardarOActualizarPais(Pais pais) {
+    try {
+      getEntityManager().merge(pais);
+
+    } catch (Exception e) {
+
+    }
+  }
+
+  private Pais crearPais(Object[] datosPais) {
+    Pais pais = new Pais();
+    pais.setIdPais(Long.valueOf(datosPais[0].toString()));
+    pais.setNombre(datosPais[2].toString());
+    pais.setCodigo(datosPais[1].toString());
+    pais.setAnio(Integer.valueOf(datosPais[3].toString()));
+    if (datosPais[4] != null) {
+      pais.setPuntuacion(UtilidadesNumero.convertStringToBigDecimalIfNotBlank(datosPais[4].toString()));
+    } else {
+      pais.setPuntuacion(BigDecimal.ZERO);
+    }
+    return pais;
   }
 }

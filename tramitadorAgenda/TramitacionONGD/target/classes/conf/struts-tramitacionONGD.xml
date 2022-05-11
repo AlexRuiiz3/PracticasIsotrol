@@ -8,10 +8,44 @@
 
   <package name="tramitacionONGD" namespace="/agenda/tareas"  extends="struts-default, json-default">
   
-     <action name="tareaEntradaPRACTICAS_TAREA" method="cargarListadoPaises" class="tareasCargarPaises_Action">
+    <action name="tareaEntradaPRACTICAS_TAREA" method="getIndexPaises" class="tareasCrudPaises_Action">
       <interceptor-ref name="basicStack" />
-      <result name="success">/modulos/tramitacionONGD/convocatoria/listadoHijosConvocatoria.jsp</result>
+      <result name="success">/modulos/tramitacionONGD/crudPaises/index.jsp   </result> 
+    </action>
+  
+     <action name="obtenerPaisesPorAnho" method="obtenerPaisesPorAnho" class="tareasCrudPaises_Action">
+      <interceptor-ref name="json" />
+      <result name="success" type="json">
+        <param name="root">
+			listadoPaises
+        </param>
+      </result>
       <result name="error">/modulos/tramitacionONGD/templates/error_messages.jsp</result>
+    </action>
+  
+    <action name="cargarPais" method="cargarPais" class="tareasCrudPaises_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success" type="json">
+        <param name="root">
+			paisSeleccionado			
+        </param>
+	</result> 
+      <result name="error">/modulos/tramitacionONGD/crudPaises/index.jsp </result>
+    </action>
+  
+     <action name="eliminarPais" method="eliminarPais" class="tareasCrudPaises_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/crudPaises/index.jsp</result> 
+    </action>
+  
+    <action name="crearPais" method="crearPais" class="tareasCrudPaises_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/crudPaises/index.jsp</result> 
+    </action>
+  
+      <action name="actualizarPais" method="actualizarPais" class="tareasCrudPaises_Action">
+      <interceptor-ref name="basicStack" />
+      <result name="success">/modulos/tramitacionONGD/crudPaises/index.jsp</result> 
     </action>
   
     <!-- Listar expedientes hijos convocatoria -->

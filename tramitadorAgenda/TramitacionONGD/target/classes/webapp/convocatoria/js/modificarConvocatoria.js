@@ -25,7 +25,7 @@ if ($("#formDatosConvocatoria").valid()) {
 }
 
 /**
- * Función para inicializar fechas
+ * Funciï¿½n para inicializar fechas
  */
 function initPantalla() {
     inicializarDatepickers(window.idCamposFechas, "dd/mm/yyyy");
